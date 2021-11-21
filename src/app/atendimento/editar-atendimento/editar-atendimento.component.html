@@ -1,0 +1,159 @@
+<h1>Modificar atendimento</h1>
+    <div class="well">
+        <form #formAtendimento="ngForm">
+            <div class="form-group">
+                <label for="dentista">Dentista: </label>
+                <input type="text" class="form-control" id="dentista" name="dentista" minlength="2" required [(ngModel)]="atendimento.dentista" #dentista="ngModel">
+                <div *ngIf="dentista.errors && (dentista.dirty || dentista.touched)" class="alert alert-danger">
+                    <div [hidden]="!dentista.errors.required">Digite o nome do dentista</div>
+                    <div [hidden]="!dentista.errors.minlength">O nome do dentista deve conter ao menos dois caracteres</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dataAtendimento">Data do atendimento</label>
+                <input type="text" class="form-control" id="dataAtendimento" name="dataAtendimento" required [(ngModel)]="atendimento.dataAtendimento" #dataAtendimento="ngModel" required>
+                <div class="alert alert-danger" *ngIf="dataAtendimento.errors && (dataAtendimento.dirty || dataAtendimento.touched)">
+                    <div [hidden]="!dataAtendimento.errors.required">Digite a data do atendimento</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="paciente">Paciente: </label>
+                <input type="text" class="form-control" id="paciente" name="paciente" minlength="2" required [(ngModel)]="atendimento.paciente" #paciente="ngModel">
+                <div *ngIf="paciente.errors && (paciente.dirty || paciente.touched)" class="alert alert-danger">
+                    <div [hidden]="!paciente.errors.required">Digite o nome do paciente</div>
+                    <div [hidden]="!paciente.errors.minlength">O nome do paciente deve conter ao menos dois caracteres</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="convenio">Convênio: </label>
+                <input type="text" class="form-control" id="convenio" name="convenio" minlength="2" required [(ngModel)]="atendimento.convenio" #convenio="ngModel">
+                <div *ngIf="convenio.errors && (convenio.dirty || convenio.touched)" class="alert alert-danger">
+                    <div [hidden]="!convenio.errors.required">Digite o nome do convênio</div>
+                    <div [hidden]="!convenio.errors.minlength">O nome do convênio deve conter ao menos dois caracteres</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="numeroGTO">Número da GTO: </label>
+                <input type="text" class="form-control" id="numeroGTO" name="numeroGTO" [(ngModel)]="atendimento.numeroGTO" #numeroGTO="ngModel">
+                <div *ngIf="numeroGTO.errors && (numeroGTO.dirty || numeroGTO.touched)" class="alert alert-danger">
+                    <div [hidden]="!numeroGTO.errors.required">Digite o número da GTO</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="encaminhadoPor">Encaminhado por: </label>
+                <input type="text" class="form-control" id="encaminhadoPor" name="encaminhadoPor" [(ngModel)]="atendimento.encaminhadoPor" #encaminhadoPor="ngModel">
+                <div *ngIf="encaminhadoPor.errors && (encaminhadoPor.dirty || encaminhadoPor.touched)" class="alert alert-danger">
+                    <div [hidden]="!encaminhadoPor.errors.required">Digite o nome da pessoa que encaminhou o tratamento</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="formaPagamento">Forma de pagamento: </label>
+                <input type="text" class="form-control" id="formaPagamento" name="formaPagamento" minlength="2" required [(ngModel)]="atendimento.formaPagamento" #formaPagamento="ngModel">
+                <div *ngIf="formaPagamento.errors && (formaPagamento.dirty || formaPagamento.touched)" class="alert alert-danger">
+                    <div [hidden]="!formaPagamento.errors.required">Digite a forma de pagamento</div>
+                    <div [hidden]="!formaPagamento.errors.minlength">A forma de pagamento deve conter ao menos dois caracteres</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dataEnvio">Data de envio</label>
+                <input type="text" class="form-control" id="dataEnvio" name="dataEnvio" [(ngModel)]="atendimento.dataEnvio" #dataEnvio="ngModel">
+                <div class="alert alert-danger" *ngIf="dataEnvio.errors && (dataEnvio.dirty || dataEnvio.touched)">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="verificado">Atendimento verificado:</label>
+                <input type="checkbox" class="form-check-input" id="verificado" name="verificado" [(ngModel)]="atendimento.verificado" #verificado="ngModel">
+            </div>
+            
+            <!--
+            <div class="form-group">
+                <label for="idade">Idade: </label>
+                <input type="text" class="form-control" id="idade" name="idade" required [(ngModel)]="pessoa.idade" #idade="ngModel" numerico minimoValidador valorMinimo="0" required>
+                <div class="alert alert-danger" *ngIf="idade.errors && (idade.dirty || idade.touched)">
+                    <div [hidden]="!idade.errors.required">Digite a idade da pessoa</div>
+                    <div [hidden]="!idade.errors.minimo">Idade deve ser maior ou igual a {{ idade.errors.requiredValue }}</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dataNascimento">Data de nascimento</label>
+                <input type="text" class="form-control" id="dataNascimento" name="dataNascimento" required [(ngModel)]="pessoa.dataNascimento" #dataNascimento="ngModel" required>
+                <div class="alert alert-danger" *ngIf="dataNascimento.errors && (dataNascimento.dirty || dataNascimento.touched)">
+                    <div [hidden]="!dataNascimento.errors.required">Digite a idade da pessoa</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="motorista">Habilitação:</label> <br/>
+                <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="Não">Não <br/>
+                <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="A">A <br/>
+                <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="B">B <br/>
+                <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="AB">AB <br/>
+                <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="BA">BA <br/>
+            </div>
+            <div class="form-group">
+                <label for="fumante">Fumante:</label>
+                <input type="checkbox" class="form-check-input" id="fumante" name="fumante" [(ngModel)]="pessoa.fumante" #fumante="ngModel">
+            </div>
+        -->
+
+        <div>
+            <h3>Procedimentos:</h3>
+            <button type="button" class="btn btn-secondary" (click)="inserirProcedimentoAplicado()">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> Inserir procedimento
+            </button>
+        
+            <div *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados">
+                <!--<label for="procedimento">Procedimento</label>
+                <ng-select name="produto" [items]="produtos" bindLabel="descricao" [(ngModel)]="item.produto" placeholder="Selecione um produto"> </ng-select>-->
+                
+                <label for="procedimento">Procedimento</label>
+                <input type="text" class="form-control" id="procedimento" name="procedimento" [(ngModel)]="procedimentoAplicado.procedimento" #procedimento="ngModel" required>
+
+                <label for="dente">Dente</label>
+                <input type="text" class="form-control" id="dente" name="dente" [(ngModel)]="procedimentoAplicado.dente" #dente="ngModel" required>
+
+                <label for="valorBruto">Valor bruto (R$)</label>
+                <input type="text" class="form-control" id="valorBruto" name="valorBruto" [(ngModel)]="procedimentoAplicado.valorBruto" #valorBruto="ngModel" >
+
+                <label for="valorLiquido">Valor líquido recebido (R$)</label>
+                <input type="text" class="form-control" id="valorLiquido" name="valorLiquido" [(ngModel)]="procedimentoAplicado.valorLiquido" #valorLiquido="ngModel" >
+
+                <label for="valorRepassado">Valor repassado (R$)</label>
+                <input type="text" class="form-control" id="valorRepassado" name="valorRepassado" [(ngModel)]="procedimentoAplicado.valorRepassado" #valorRepassado="ngModel" >
+
+                <div class="form-group">
+                    <label for="recebido">Recebido</label>
+                    <input type="checkbox" class="form-check-input" id="recebido" name="recebido" [(ngModel)]="procedimentoAplicado.recebido" #recebido="ngModel">
+                </div>
+
+                <div class="form-group">
+                    <label for="glosado">Glosado</label>
+                    <input type="checkbox" class="form-check-input" id="glosado" name="glosado" [(ngModel)]="procedimentoAplicado.glosado" #glosado="ngModel">
+                </div>
+                
+                <label for="motivoGlosa">Motivo da glosa</label>
+                <input type="text" class="form-control" id="motivoGlosa" name="motivoGlosa" [(ngModel)]="procedimentoAplicado.motivoGlosa" #motivoGlosa="ngModel" >
+
+                <label for="dataRecebimento">Data de recebimento</label>
+                <input type="text" class="form-control" id="dataRecebimento" name="dataRecebimento" [(ngModel)]="procedimentoAplicado.dataRecebimento" #dataRecebimento="ngModel" >
+
+                <div class="form-group">
+                    <label for="repassado">Repassado</label>
+                    <input type="checkbox" class="form-check-input" id="repassado" name="repassado" [(ngModel)]="procedimentoAplicado.repassado" #repassado="ngModel">
+                </div>
+
+                <label for="dataRepasse">Data de repasse</label>
+                <input type="text" class="form-control" id="dataRepasse" name="dataRepasse" [(ngModel)]="procedimentoAplicado.dataRepasse" #dataRepasse="ngModel" >
+
+            </div>
+        </div>
+
+                <button type="button" class="btn btn-primary" (click)="atualizar()" [disabled]="!formAtendimento.form.valid">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Salvar
+                </button>
+                <a class="btn btn-secondary" [routerLink]="['/atendimentos']">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+                </a>
+            
+        </form>
+    </div>
+

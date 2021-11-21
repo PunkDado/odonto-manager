@@ -1,0 +1,52 @@
+
+<div><h1>Atendimentos</h1></div>
+
+<table class="table table-striped table-bordered table-hover">
+    <tbody>
+        <tr>
+            <!-- <th>Id</th> -->
+            <th>Dentista</th>
+            <th>Paciente</th>
+            <th>Data do Atendimento</th>
+            <th>Convênio</th>
+            <th>Número da GTO</th>
+            <th>Encaminhado por</th>
+            <th>Forma de pagamento</th>
+            <th>Data de envio</th>
+            <th>Atendimento verificado</th>
+            <th class="text-center">
+                <a href="#" title="Novo" alt="Novo" class="btn btn-xs btn-success" [routerLink]="['/atendimentos/novo']">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Novo
+                </a>
+            </th>
+        </tr>
+
+        <tr *ngFor="let atendimento of atendimentos">
+            <td> {{ atendimento.dentista }}</td>
+            <td> {{ atendimento.paciente }}</td>
+            <!-- <td> {{ atendimento.dataAtendimento! | mask: 'd0/M0/0000' }}</td> -->
+            <td> {{ atendimento.dataAtendimento }}</td>
+            <td> {{ atendimento.convenio }}</td>
+            <td> {{ atendimento.numeroGTO }}</td>
+            <td> {{ atendimento.encaminhadoPor }}</td>
+            <td> {{ atendimento.formaPagamento }}</td>
+            <td> {{ atendimento.dataEnvio }}</td>
+            <td> {{ atendimento.verificado! ? "Sim" : "Não" }}</td>
+            <td class="text-center" style="width: 300px">
+                <button type="button" class="btn btn-xs btn-info" (click)="abrirModalAtendimento(atendimento)">
+                    <i class="fa fa-eye" aria-hidden="true"></i>Ver
+                </button>
+                <a href="#" title="Editar" alt="Editar" class="btn btn-xs btn-primary" [routerLink]="['/atendimentos/editar', atendimento.id]">
+                    <i class="fa fa-edit" aria-hidden="true"></i> Editar
+                </a>
+                <a href="#" title="Remover" alt="Remover" class="btn btn-xs btn-danger" (click)="remover($event, atendimento)">
+                    <i class="fa fa-times" aria-hidden="true"></i> Remover
+                </a>
+                
+            </td>
+        </tr>
+        
+    </tbody>
+</table>
+<p *ngIf="atendimentos.length===0">Nenhum atendimento cadastrado.</p>
+

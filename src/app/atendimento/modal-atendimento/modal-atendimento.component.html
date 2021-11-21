@@ -1,0 +1,47 @@
+<div class="modal-header">
+    
+    <h4 class="modal-title" id="modalLabel">Atendimento</h4>
+    <button type="button" class="close" aria-label="Fechar" (click)="activeModal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+
+    
+</div>
+
+<div class="modal-body text-left">
+    <div>
+            <p> Dentista: {{ atendimento.dentista }}</p>
+            <p> Paciente: {{ atendimento.paciente }}</p>
+            <!-- <p> {{ atendimento.dataAtendimento! | mask: 'd0/M0/0000' }}</p> -->
+            <p> Data do atendimento: {{ atendimento.dataAtendimento }}</p>
+            <p> Convênio: {{ atendimento.convenio }}</p>
+            <p> Número da GTO: {{ atendimento.numeroGTO }}</p>
+            <p> Encaminhado por: {{ atendimento.encaminhadoPor }}</p>
+            <p> Forma de pagamento: {{ atendimento.formaPagamento }}</p>
+            <p> Data de envio: {{ atendimento.dataEnvio }}</p>
+            <p> Atendimento verificado: {{ atendimento.verificado! ? "Sim" : "Não" }}</p>
+    </div>
+    <div>
+        <h3>Procedimentos</h3>
+        <div *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados">
+            <h4>Procedimento: {{ procedimentoAplicado.procedimento }}</h4>
+            <p>Dente: {{ procedimentoAplicado.dente }}</p>
+            <p>Valor bruto (R$): {{ procedimentoAplicado.valorBruto }}</p>
+            <p>Valor líquido recebido (R$): {{ procedimentoAplicado.valorLiquido }}</p>
+            <p>Valor repassado (R$): {{ procedimentoAplicado.valorRepassado }}</p>
+            <p>Recebido: {{ procedimentoAplicado.recebido! ? "Sim" : "Não" }}</p>
+            <p>Glosado: {{ procedimentoAplicado.glosado! ? "Sim" : "Não" }}</p>
+            <p>Motivo da glosa: {{ procedimentoAplicado.motivoGlosa }}</p>
+            <p>Data de recebimento: {{ procedimentoAplicado.dataRecebimento }}</p>
+            <p>Repassado: {{ procedimentoAplicado.repassado! ? "Sim" : "Não" }}</p>
+            <p>Data de repasse: {{ procedimentoAplicado.dataRepasse }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="#" title="Editar" alt="Editar" class="btn btn-xs btn-primary" (click)="activeModal.close()" [routerLink]="['/atendimentos/editar', atendimento.id]">
+        <i class="fa fa-edit" aria-hidden="true"></i> Editar
+    </a>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Fechar</button>
+</div>
