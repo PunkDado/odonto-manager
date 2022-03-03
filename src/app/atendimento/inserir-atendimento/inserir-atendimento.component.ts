@@ -39,3 +39,54 @@ export class InserirAtendimentoComponent implements OnInit {
   }
 
 }
+
+/*
+export class InserirPedidoComponent implements OnInit {
+
+  @ViewChild('formPedido') formPedido! : NgForm;
+
+  pedido!: Pedido;
+  clientes!: Cliente[];
+  produtos!: Produto[];
+
+  constructor(
+    private pedidoService: PedidoService,
+    private clienteService: ClienteService,
+    private produtoService: ProdutoService,
+    private router: Router) { }
+
+  ngOnInit(): void {
+    this.pedido = new Pedido();
+    this.clienteService.listarTodos().subscribe((dados: Cliente[]) => {
+      if (dados == null) {
+        this.clientes = [];
+      }
+      else {
+        this.clientes = dados;
+      }
+    });
+    this.produtoService.listarTodos().subscribe(
+      (dados: Produto[]) =>{
+        if(dados == null) {
+          this.produtos = [];
+        }
+        else {
+          this.produtos = dados;
+        }
+    } );
+  }
+
+  inserir(): void {
+    if (this.formPedido.form.valid) {
+      this.pedidoService.inserirNovoPedido(this.pedido).subscribe(
+        () => this.router.navigate( ["/pedidos"] )
+      );
+    }
+  }
+
+  inserirItemDoPedido(): void {
+    this.pedido.itensDoPedido.push(new ItemDoPedido());
+  }
+
+}
+*/
