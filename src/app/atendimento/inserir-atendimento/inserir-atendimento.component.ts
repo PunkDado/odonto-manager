@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DentistaService } from 'src/app/dentista/services/dentista.service';
 import { Atendimento } from 'src/app/shared/models/atendimento.model';
+import { Dentista } from 'src/app/shared/models/dentista.model';
 import { ProcedimentoAplicado } from 'src/app/shared/models/procedimento-aplicado.model';
 import { AtendimentoService } from '../services/atendimento.service';
 //import { ProcedimentoAplicadoService } from 'src/app/procedimento-aplicado/services/procedimento-aplicado.service';
@@ -16,14 +18,28 @@ export class InserirAtendimentoComponent implements OnInit {
   @ViewChild('formAtendimento') formAtendimento!: NgForm;
 
   atendimento!: Atendimento;
+  //dentistas!: Dentista[];
 
   constructor(
     private atendimentoService: AtendimentoService,
+    private dentistaService: DentistaService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.atendimento = new Atendimento();
+    
+    /*
+    this.dentistas = this.dentistaService.listarTodos().subscribe(
+      (dados: Dentista[]) => {
+        if (dados == null) {
+          this.dentistas = [];
+        }
+        else {
+          this.dentistas = dados;
+        }
+      }
+    );*/
   }
 
   inserir(): void {

@@ -1,10 +1,11 @@
+import { Dentista } from "./dentista.model";
 import { ProcedimentoAplicado } from "./procedimento-aplicado.model";
 
 
 export class Atendimento {
     constructor(
         public id?: number,
-        public dentista?: string,
+        public dentista?: Dentista,
         public paciente?: string,
         public dataAtendimento?: string,
         public convenio?: string,

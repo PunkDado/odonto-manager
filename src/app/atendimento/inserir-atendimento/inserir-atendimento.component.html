@@ -3,7 +3,9 @@
         
         <form #formAtendimento="ngForm">
             <div class="form-group">
-                <label for="dentista">Dentista: </label>
+                <!--<label for="dentista">Procedimento</label>
+                <ng-select name="dentista" [items]="dentistas" bindLabel="nomeDentista" [(ngModel)]="atendimento.dentista" placeholder="Selecione um dentista"> </ng-select>-->
+                -<label for="dentista">Dentista: </label>
                 <input type="text" class="form-control" id="dentista" name="dentista" minlength="2" required [(ngModel)]="atendimento.dentista" #dentista="ngModel">
                 <div *ngIf="dentista.errors && (dentista.dirty || dentista.touched)" class="alert alert-danger">
                     <div [hidden]="!dentista.errors.required">Digite o nome do dentista</div>
