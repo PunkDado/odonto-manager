@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AtendimentoModule } from './atendimento/atendimento.module';
 import { DentistaModule } from './dentista/dentista.module';
+//import { AngularFontAwesomeModule } from 'angular-font-awesome';
 //import { ProcedimentoAplicadoModule } from './procedimento-aplicado/procedimento-aplicado.module';
 
 
@@ -19,6 +20,7 @@ import { DentistaModule } from './dentista/dentista.module';
     AtendimentoModule,
     DentistaModule,
     HttpClientModule,
+    //AngularFontAwesomeModule,
     //ProcedimentoAplicadoModule
   ],
   providers: [],

@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditarAtendimentoComponent } from './atendimento/editar-atendimento/editar-atendimento.component';
 import { InserirAtendimentoComponent } from './atendimento/inserir-atendimento/inserir-atendimento.component';
 import { ListarAtendimentoComponent } from './atendimento/listar-atendimento/listar-atendimento.component';
+import { EditarDentistaComponent } from './dentista/editar-dentista/editar-dentista.component';
+import { InserirDentistaComponent } from './dentista/inserir-dentista/inserir-dentista.component';
+import { ListarDentistaComponent } from './dentista/listar-dentista/listar-dentista.component';
 //import { EditarProcedimentoAplicadoComponent } from './procedimento-aplicado/editar-procedimento-aplicado/editar-procedimento-aplicado.component';
 //import { InserirProcedimentoAplicadoPorAtendimentoComponent } from './procedimento-aplicado/inserir-procedimento-aplicado-por-atendimento/inserir-procedimento-aplicado-por-atendimento.component';
 //import { InserirProcedimentoAplicadoComponent } from './procedimento-aplicado/inserir-procedimento-aplicado/inserir-procedimento-aplicado.component';
@@ -14,6 +17,12 @@ const routes: Routes = [
   { path: 'atendimentos/listar', component: ListarAtendimentoComponent},
   { path: 'atendimentos/novo', component: InserirAtendimentoComponent},
   { path: 'atendimentos/editar/:id', component: EditarAtendimentoComponent},
+
+  { path: 'dentistas', redirectTo: 'dentistas/listar'},
+  { path: 'dentistas/listar', component: ListarDentistaComponent},
+  { path: 'dentistas/novo', component: InserirDentistaComponent},
+  { path: 'dentistas/editar/:id', component: EditarDentistaComponent},
+  
   //{ path: 'procedimentos-aplicados', redirectTo: 'procedimentos-aplicados/listar'},
   //{ path: 'procedimentos-aplicados/listar', component: ListarProcedimentoAplicadoComponent},
   //{ path: 'procedimentos-aplicados/novo', component: InserirProcedimentoAplicadoComponent},
