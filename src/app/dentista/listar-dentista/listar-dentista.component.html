@@ -1,0 +1,20 @@
+<h2>DENTISTAS</h2>
+
+<table>
+    <tr>
+        <th>
+            Dentista
+        </th>
+    </tr>
+    <tr *ngFor="let dentista of dentistas">
+        <td>
+            {{ dentista.nomeDentista }} {{ dentista.sobrenomeDentista }}
+        </td>
+        <td>
+            <i class="fa fa-edit"></i>
+        </td>
+        <td>
+            <i class="fa fa-edit"></i>
+        </td>
+    </tr>
+</table>
