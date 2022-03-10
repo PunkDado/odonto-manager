@@ -14,7 +14,7 @@ import { AtendimentoService } from '../services/atendimento.service';
 })
 export class ListarAtendimentoComponent implements OnInit {
 
-  atendimentos!: Atendimento[];
+  atendimentos: Atendimento[] = [];
   dentistas!: Dentista[];
   pageSize: number = 10;
   page: number = 1;

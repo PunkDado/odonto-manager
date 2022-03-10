@@ -1,16 +1,20 @@
-<h1>Novo atendimento</h1>
+<h1>Inserir atendimento</h1>
     <div class="well">
-        
         <form #formAtendimento="ngForm">
             <div class="form-group">
-                <!--<label for="dentista">Procedimento</label>
-                <ng-select name="dentista" [items]="dentistas" bindLabel="nomeDentista" [(ngModel)]="atendimento.dentista" placeholder="Selecione um dentista"> </ng-select>-->
-                -<label for="dentista">Dentista: </label>
+
+                <label for="dentista">Dentista</label>
+                <ng-select name="dentista" [items]="dentistas" bindLabel="nomeDentista" [(ngModel)]="atendimento.dentista" placeholder="Selecione um dentista"> </ng-select>
+                
+                <!--
+                <label for="dentista">Dentista: </label>
                 <input type="text" class="form-control" id="dentista" name="dentista" minlength="2" required [(ngModel)]="atendimento.dentista" #dentista="ngModel">
                 <div *ngIf="dentista.errors && (dentista.dirty || dentista.touched)" class="alert alert-danger">
                     <div [hidden]="!dentista.errors.required">Digite o nome do dentista</div>
                     <div [hidden]="!dentista.errors.minlength">O nome do dentista deve conter ao menos dois caracteres</div>
                 </div>
+                -->
+
             </div>
             <div class="form-group">
                 <label for="dataAtendimento">Data do atendimento</label>
@@ -98,69 +102,65 @@
             </div>
         -->
 
-            
-            <div>
-                <h3>Procedimentos:</h3>
-                <button type="button" class="btn btn-secondary" (click)="inserirProcedimentoAplicado()">
-                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Inserir procedimento
-                </button>
-            
-                <div *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados">
-                    <!--<label for="procedimento">Procedimento</label>
-                    <ng-select name="produto" [items]="produtos" bindLabel="descricao" [(ngModel)]="item.produto" placeholder="Selecione um produto"> </ng-select>-->
-                    
-                    <label for="procedimento">Procedimento</label>
-                    <input type="text" class="form-control" id="procedimento" name="procedimento" [(ngModel)]="procedimentoAplicado.procedimento" #procedimento="ngModel" required>
+        <div>
+            <h3>Procedimentos:</h3>
+            <button type="button" class="btn btn-secondary" (click)="inserirProcedimentoAplicado()">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> Inserir procedimento
+            </button>
+        
+            <div *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados">
+                <!--<label for="procedimento">Procedimento</label>
+                <ng-select name="produto" [items]="produtos" bindLabel="descricao" [(ngModel)]="item.produto" placeholder="Selecione um produto"> </ng-select>-->
+                
+                <label for="procedimento">Procedimento</label>
+                <input type="text" class="form-control" id="procedimento" name="procedimento" [(ngModel)]="procedimentoAplicado.procedimento" #procedimento="ngModel" required>
 
-                    <label for="dente">Dente</label>
-                    <input type="text" class="form-control" id="dente" name="dente" [(ngModel)]="procedimentoAplicado.dente" #dente="ngModel" required>
+                <label for="dente">Dente</label>
+                <input type="text" class="form-control" id="dente" name="dente" [(ngModel)]="procedimentoAplicado.dente" #dente="ngModel" required>
 
-                    <label for="valorBruto">Valor bruto (R$)</label>
-                    <input type="text" class="form-control" id="valorBruto" name="valorBruto" [(ngModel)]="procedimentoAplicado.valorBruto" #valorBruto="ngModel" >
+                <label for="valorBruto">Valor bruto (R$)</label>
+                <input type="text" class="form-control" id="valorBruto" name="valorBruto" [(ngModel)]="procedimentoAplicado.valorBruto" #valorBruto="ngModel" >
 
-                    <label for="valorLiquido">Valor líquido recebido (R$)</label>
-                    <input type="text" class="form-control" id="valorLiquido" name="valorLiquido" [(ngModel)]="procedimentoAplicado.valorLiquido" #valorLiquido="ngModel" >
+                <label for="valorLiquido">Valor líquido recebido (R$)</label>
+                <input type="text" class="form-control" id="valorLiquido" name="valorLiquido" [(ngModel)]="procedimentoAplicado.valorLiquido" #valorLiquido="ngModel" >
 
-                    <label for="valorRepassado">Valor repassado (R$)</label>
-                    <input type="text" class="form-control" id="valorRepassado" name="valorRepassado" [(ngModel)]="procedimentoAplicado.valorRepassado" #valorRepassado="ngModel" >
+                <label for="valorRepassado">Valor repassado (R$)</label>
+                <input type="text" class="form-control" id="valorRepassado" name="valorRepassado" [(ngModel)]="procedimentoAplicado.valorRepassado" #valorRepassado="ngModel" >
 
-                    <div class="form-group">
-                        <label for="recebido">Recebido</label>
-                        <input type="checkbox" class="form-check-input" id="recebido" name="recebido" [(ngModel)]="procedimentoAplicado.recebido" #recebido="ngModel">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="glosado">Glosado</label>
-                        <input type="checkbox" class="form-check-input" id="glosado" name="glosado" [(ngModel)]="procedimentoAplicado.glosado" #glosado="ngModel">
-                    </div>
-                    
-                    <label for="motivoGlosa">Motivo da glosa</label>
-                    <input type="text" class="form-control" id="motivoGlosa" name="motivoGlosa" [(ngModel)]="procedimentoAplicado.motivoGlosa" #motivoGlosa="ngModel" >
-
-                    <label for="dataRecebimento">Data de recebimento</label>
-                    <input type="text" class="form-control" id="dataRecebimento" name="dataRecebimento" [(ngModel)]="procedimentoAplicado.dataRecebimento" #dataRecebimento="ngModel" >
-
-                    <div class="form-group">
-                        <label for="repassado">Repassado</label>
-                        <input type="checkbox" class="form-check-input" id="repassado" name="repassado" [(ngModel)]="procedimentoAplicado.repassado" #repassado="ngModel">
-                    </div>
-
-                    <label for="dataRepasse">Data de repasse</label>
-                    <input type="text" class="form-control" id="dataRepasse" name="dataRepasse" [(ngModel)]="procedimentoAplicado.dataRepasse" #dataRepasse="ngModel" >
-
+                <div class="form-group">
+                    <label for="recebido">Recebido</label>
+                    <input type="checkbox" class="form-check-input" id="recebido" name="recebido" [(ngModel)]="procedimentoAplicado.recebido" #recebido="ngModel">
                 </div>
+
+                <div class="form-group">
+                    <label for="glosado">Glosado</label>
+                    <input type="checkbox" class="form-check-input" id="glosado" name="glosado" [(ngModel)]="procedimentoAplicado.glosado" #glosado="ngModel">
+                </div>
+                
+                <label for="motivoGlosa">Motivo da glosa</label>
+                <input type="text" class="form-control" id="motivoGlosa" name="motivoGlosa" [(ngModel)]="procedimentoAplicado.motivoGlosa" #motivoGlosa="ngModel" >
+
+                <label for="dataRecebimento">Data de recebimento</label>
+                <input type="text" class="form-control" id="dataRecebimento" name="dataRecebimento" [(ngModel)]="procedimentoAplicado.dataRecebimento" #dataRecebimento="ngModel" >
+
+                <div class="form-group">
+                    <label for="repassado">Repassado</label>
+                    <input type="checkbox" class="form-check-input" id="repassado" name="repassado" [(ngModel)]="procedimentoAplicado.repassado" #repassado="ngModel">
+                </div>
+
+                <label for="dataRepasse">Data de repasse</label>
+                <input type="text" class="form-control" id="dataRepasse" name="dataRepasse" [(ngModel)]="procedimentoAplicado.dataRepasse" #dataRepasse="ngModel" >
+
             </div>
-            <div>
+        </div>
+
                 <button type="button" class="btn btn-primary" (click)="inserir()" [disabled]="!formAtendimento.form.valid">
                     <i class="fa fa-arrow-left" aria-hidden="true"></i> Salvar
                 </button>
                 <a class="btn btn-secondary" [routerLink]="['/atendimentos']">
                     <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
                 </a>
-            </div>
-
             
         </form>
     </div>
-    
 

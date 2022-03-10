@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DentistaService } from 'src/app/dentista/services/dentista.service';
 import { Atendimento } from 'src/app/shared/models/atendimento.model';
 import { Dentista } from 'src/app/shared/models/dentista.model';
-import { ProcedimentoAplicado } from 'src/app/shared/models/procedimento-aplicado.model';
+import { ProcedimentoAplicado } from '../../shared/models/procedimento-aplicado.model';
 import { AtendimentoService } from '../services/atendimento.service';
-//import { ProcedimentoAplicadoService } from 'src/app/procedimento-aplicado/services/procedimento-aplicado.service';
 
 @Component({
   selector: 'app-inserir-atendimento',
@@ -18,34 +17,36 @@ export class InserirAtendimentoComponent implements OnInit {
   @ViewChild('formAtendimento') formAtendimento!: NgForm;
 
   atendimento!: Atendimento;
-  //dentistas!: Dentista[];
+  dentistas!: Dentista[];
 
   constructor(
     private atendimentoService: AtendimentoService,
     private dentistaService: DentistaService,
+    //private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.atendimento = new Atendimento();
-    
-    /*
-    this.dentistas = this.dentistaService.listarTodos().subscribe(
+    this.dentistaService.listarTodos().subscribe(
       (dados: Dentista[]) => {
-        if (dados == null) {
+        if(dados == null) {
           this.dentistas = [];
         }
         else {
           this.dentistas = dados;
         }
       }
-    );*/
+    );
+    console.log(this.dentistas);
   }
 
   inserir(): void {
-    if(this.formAtendimento.form.valid) {
-      this.atendimentoService.inserir(this.atendimento);
-      this.router.navigate(['/atendimentos']);
+    if (this.formAtendimento.form.valid) {
+      this.atendimentoService.inserir(this.atendimento).subscribe(
+        () => this.router.navigate(['/atendimentos'])
+      );
+      
     }
   }
 
@@ -55,6 +56,7 @@ export class InserirAtendimentoComponent implements OnInit {
   }
 
 }
+
 
 /*
 export class InserirPedidoComponent implements OnInit {
