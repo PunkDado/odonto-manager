@@ -61,11 +61,20 @@ export class ListarAtendimentoComponent implements OnInit {
   }
 
   
-  remover($event: any, atendimento: Atendimento): void {
+  /*remover($event: any, atendimento: Atendimento): void {
     $event.preventDefault();
     if (confirm('Deseja remover o atendimento?')) {
       this.atendimentoService.remover(atendimento.id!);
       this.listarTodos();
+    }
+  }*/
+
+  remover($event: any, atendimento: Atendimento): void {
+    $event.preventDefault();
+    if (confirm('Deseja realmente remover o atendimento "' + atendimento.paciente + ' ' + atendimento.dataAtendimento + '"?')) {
+      this.atendimentoService.remover(atendimento.id!).subscribe(
+        () => this.listarTodos()
+      );
     }
   }
   
