@@ -22,7 +22,7 @@
         </tr>
 
         <tr *ngFor="let atendimento of atendimentos">
-            <td> {{ atendimento.dentista }}</td>
+            <td> {{ atendimento?.dentista?.nomeDentista }} {{ atendimento?.dentista?.sobrenomeDentista}}</td>
             <td> {{ atendimento.paciente }}</td>
             <!-- <td> {{ atendimento.dataAtendimento! | mask: 'd0/M0/0000' }}</td> -->
             <td> {{ atendimento.dataAtendimento }}</td>

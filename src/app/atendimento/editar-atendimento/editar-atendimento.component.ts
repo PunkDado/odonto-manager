@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Atendimento } from 'src/app/shared/models/atendimento.model';
+import { Dentista } from 'src/app/shared/models/dentista.model';
 import { ProcedimentoAplicado } from '../../shared/models/procedimento-aplicado.model';
 import { AtendimentoService } from '../services/atendimento.service';
 
@@ -15,6 +16,7 @@ export class EditarAtendimentoComponent implements OnInit {
   @ViewChild('formAtendimento') formAtendimento!: NgForm;
 
   atendimento!: Atendimento;
+  dentistas!: Dentista[];
 
   constructor(
     private atendimentoService: AtendimentoService,
@@ -24,7 +26,17 @@ export class EditarAtendimentoComponent implements OnInit {
 
   ngOnInit(): void {
     let id = +this.route.snapshot.params['id'];
-    this.atendimento = this.atendimentoService.buscarPorId(id)!;
+    this.atendimentoService.buscarPorId(id)!;
+    this.atendimentoService.listarTodos().subscribe(
+      (dados: Dentista[]) => {
+        if(dados == null) {
+          this.dentistas = [];
+        }
+        else {
+          this.dentistas = dados;
+        }
+      }
+    )
   }
 
   atualizar(): void {

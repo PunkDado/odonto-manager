@@ -36,6 +36,15 @@ export class ListarDentistaComponent implements OnInit {
   
   }
 
+  remover($event: any, dentista: Dentista): void {
+    $event.preventDefault();
+    if (confirm('Deseja realmente remover o dentista "' + dentista.nomeDentista + ' ' + dentista.sobrenomeDentista + '"?')) {
+      this.dentistaService.remover(dentista.id!).subscribe(
+        () => this.listarDentistas()
+      );
+    }
+  }
+
 }
 
 /*

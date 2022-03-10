@@ -1,1 +1,75 @@
-<p>editar-dentista works!</p>
+<h1>Editar dentista</h1>
+    <div class="well">
+        
+        <form #formDentista="ngForm">
+            <div class="form-group">
+                <label for="nomeDentista">Nome: </label>
+                <input type="text" class="form-control" id="nomeDentista" name="nomeDentista" minlength="2" required [(ngModel)]="dentista.nomeDentista" #nomeDentista="ngModel">
+                <div *ngIf="nomeDentista.errors && (nomeDentista.dirty || nomeDentista.touched)" class="alert alert-danger">
+                    <div [hidden]="!nomeDentista.errors.required">Digite o nome do dentista</div>
+                    <div [hidden]="!nomeDentista.errors.minlength">O nome do dentista deve conter ao menos dois caracteres</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="sobrenomeDentista">Sobrenome: </label>
+                <input type="text" class="form-control" id="sobrenomeDentista" name="sobrenomeDentista" minlength="2" required [(ngModel)]="dentista.sobrenomeDentista" #sobrenomeDentista="ngModel">
+                <div *ngIf="sobrenomeDentista.errors && (sobrenomeDentista.dirty || sobrenomeDentista.touched)" class="alert alert-danger">
+                    <div [hidden]="!sobrenomeDentista.errors.required">Digite o sobrenome do dentista</div>
+                    <div [hidden]="!sobrenomeDentista.errors.minlength">O sobrenome do dentista deve conter ao menos dois caracteres</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="numCro">Número do CRO: </label>
+                <input type="text" class="form-control" id="numCro" name="numCro" minlength="2" required [(ngModel)]="dentista.numCro" #numCro="ngModel">
+                <div *ngIf="numCro.errors && (numCro.dirty || numCro.touched)" class="alert alert-danger">
+                    <div [hidden]="!numCro.errors.required">Digite o número do CRO</div>
+                    <div [hidden]="!numCro.errors.minlength">O número do CRO deve conter ao menos dois caracteres</div>
+                </div>
+            </div>
+            
+            <!--
+            <div class="form-group">
+                <label for="idade">Idade: </label>
+                <input type="text" class="form-control" id="idade" name="idade" required [(ngModel)]="pessoa.idade" #idade="ngModel" numerico minimoValidador valorMinimo="0" required>
+                <div class="alert alert-danger" *ngIf="idade.errors && (idade.dirty || idade.touched)">
+                    <div [hidden]="!idade.errors.required">Digite a idade da pessoa</div>
+                    <div [hidden]="!idade.errors.minimo">Idade deve ser maior ou igual a {{ idade.errors.requiredValue }}</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dataNascimento">Data de nascimento</label>
+                <input type="text" class="form-control" id="dataNascimento" name="dataNascimento" required [(ngModel)]="pessoa.dataNascimento" #dataNascimento="ngModel" required>
+                <div class="alert alert-danger" *ngIf="dataNascimento.errors && (dataNascimento.dirty || dataNascimento.touched)">
+                    <div [hidden]="!dataNascimento.errors.required">Digite a idade da pessoa</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="motorista">Habilitação:</label> <br/>
+                <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="Não">Não <br/>
+                <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="A">A <br/>
+                <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="B">B <br/>
+                <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="AB">AB <br/>
+                <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="BA">BA <br/>
+            </div>
+            <div class="form-group">
+                <label for="fumante">Fumante:</label>
+                <input type="checkbox" class="form-check-input" id="fumante" name="fumante" [(ngModel)]="pessoa.fumante" #fumante="ngModel">
+            </div>
+        -->
+
+            <div>
+                <button type="button" class="btn btn-primary" (click)="atualizar()" [disabled]="!formDentista.form.valid">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Salvar
+                </button>
+                <a class="btn btn-secondary" [routerLink]="['/dentistas']">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+                </a>
+            </div>
+
+            
+        </form>
+    </div>
+    
+

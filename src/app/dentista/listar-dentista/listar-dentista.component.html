@@ -26,20 +26,29 @@
             {{ dentista.nomeDentista }} {{ dentista.sobrenomeDentista }}
         </td>
         <td>
-            <a href = "dentistas/editar/1">
+            <a href = "#" title="Editar" alt="Editar" [routerLink]="['/dentistas/editar', dentista.id]">
                 <i class="fa fa-eye" aria-hidden="true"></i>
             </a>
         </td>
         <td>
-            <a href = "dentistas/editar/1">
+            <a href = "#" title="Editar" alt="Editar" [routerLink]="['/dentistas/editar', dentista.id]">
                 <i class="fa fa-edit" aria-hidden="true"></i>
             </a>
         </td>
         <td>
-            <a href = #>
+            <a href = "#" title="Remover" alt="Remover" (click)="remover($event, dentista)">
                 <i class="fa fa-times" aria-hidden="true"></i> 
             </a>
         </td>
     </tr>
 </table>
+
+<!--
+<a href="#" title="Editar" alt="Editar" class="btn btn-xs btn-primary" [routerLink]="['/dentistas/editar', dentista.id]">
+    <i class="fa fa-edit" aria-hidden="true"></i> Editar
+</a>
+<a href="#" title="Remover" alt="Remover" class="btn btn-xs btn-danger" (click)="remover($event, dentista)">
+    <i class="fa fa-times" aria-hidden="true"></i> Remover
+</a>
+-->
 

@@ -1,4 +1,6 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Atendimento } from 'src/app/shared/models/atendimento.model';
 import { ProcedimentoAplicado } from 'src/app/shared/models/procedimento-aplicado.model';
 
@@ -10,9 +12,84 @@ const LS_CHAVE_2: string = 'procedimentosAplicados';
 })
 export class AtendimentoService {
 
-  constructor() { }
+  BASE_URL = "http://localhost:8080/atendimentos/";
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
 
-  listarTodos(): Atendimento[] {
+    })
+  };
+
+  constructor(private httpClient: HttpClient) { }
+
+  listarTodos(): Observable<Atendimento[]> {
+    return this.httpClient.get<Atendimento[]>(this.BASE_URL, this.httpOptions);
+  }
+
+  inserir(atendimento: Atendimento): Observable<Atendimento> {
+    return this.httpClient.post<Atendimento>(this.BASE_URL, JSON.stringify(atendimento),this.httpOptions);
+  }
+
+  buscarPorId(id: number): Observable<Atendimento> {
+    return this.httpClient.get<Atendimento>(this.BASE_URL + id, this.httpOptions);
+  }
+
+  atualizar(atendimento: Atendimento): Observable<Atendimento> {
+    return this.httpClient.put<Atendimento>(this.BASE_URL + atendimento.id, JSON.stringify(atendimento), this.httpOptions);
+  }
+
+  remover(id: number): Observable<Atendimento | undefined> {
+    return this.httpClient.delete<Atendimento>(this.BASE_URL + id, this.httpOptions);
+  }
+
+  inserirNovoProcedimentoAplicado(procedimentoAplicado: ProcedimentoAplicado): Observable<ProcedimentoAplicado> {
+    return this.httpClient.post<ProcedimentoAplicado>(this.BASE_URL, JSON.stringify(procedimentoAplicado),this.httpOptions);
+  }
+
+}
+
+/*
+
+export class PedidoService {
+
+  BASE_URL = "https://pedido-produtos-api.herokuapp.com/pedidos/";
+  //BASE_URL = "http://localhost:8080/pedidos/";
+  // Esta acima é a URL para usar uma API rodando localmente
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+
+    })
+  };
+
+  constructor(private httpClient: HttpClient) { }
+
+  listarTodosOsPedidos(): Observable<Pedido[]> {
+    return this.httpClient.get<Pedido[]>(this.BASE_URL, this.httpOptions);
+  }
+
+  inserirNovoPedido(pedido: Pedido): Observable<Pedido> {
+    return this.httpClient.post<Pedido>(this.BASE_URL, JSON.stringify(pedido),this.httpOptions);
+  }
+
+  listarItensDoPedidoPorPedido(pedido: Pedido): Observable<ItemDoPedido[]> {
+    return this.httpClient.get<ItemDoPedido[]>(this.BASE_URL + "itens-do-pedido/pedido/" + pedido.id, this.httpOptions);
+  }
+
+  inserirNovoItemDoPedido(itemDoPedido: ItemDoPedido): Observable<ItemDoPedido> {
+    return this.httpClient.post<ItemDoPedido>(this.BASE_URL, JSON.stringify(itemDoPedido),this.httpOptions);
+  }
+
+  listarPedidosPorCliente(id: number): Observable<Pedido[]> {
+    return this.httpClient.get<Pedido[]>(this.BASE_URL + "cliente/" + id , this.httpOptions);
+  }
+
+}
+
+//Código para armazenamento local
+
+listarTodos(): Atendimento[] {
     const atendimentos = localStorage[LS_CHAVE];
     return atendimentos ? JSON.parse(atendimentos) : [];
   }
@@ -77,46 +154,4 @@ export class AtendimentoService {
       );
     localStorage[LS_CHAVE_2] = JSON.stringify(procedimentosAplicados);
   }
-
-
-}
-
-/*
-
-export class PedidoService {
-
-  BASE_URL = "https://pedido-produtos-api.herokuapp.com/pedidos/";
-  //BASE_URL = "http://localhost:8080/pedidos/";
-  // Esta acima é a URL para usar uma API rodando localmente
-
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-
-    })
-  };
-
-  constructor(private httpClient: HttpClient) { }
-
-  listarTodosOsPedidos(): Observable<Pedido[]> {
-    return this.httpClient.get<Pedido[]>(this.BASE_URL, this.httpOptions);
-  }
-
-  inserirNovoPedido(pedido: Pedido): Observable<Pedido> {
-    return this.httpClient.post<Pedido>(this.BASE_URL, JSON.stringify(pedido),this.httpOptions);
-  }
-
-  listarItensDoPedidoPorPedido(pedido: Pedido): Observable<ItemDoPedido[]> {
-    return this.httpClient.get<ItemDoPedido[]>(this.BASE_URL + "itens-do-pedido/pedido/" + pedido.id, this.httpOptions);
-  }
-
-  inserirNovoItemDoPedido(itemDoPedido: ItemDoPedido): Observable<ItemDoPedido> {
-    return this.httpClient.post<ItemDoPedido>(this.BASE_URL, JSON.stringify(itemDoPedido),this.httpOptions);
-  }
-
-  listarPedidosPorCliente(id: number): Observable<Pedido[]> {
-    return this.httpClient.get<Pedido[]>(this.BASE_URL + "cliente/" + id , this.httpOptions);
-  }
-
-}
 */

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DentistaService } from 'src/app/dentista/services/dentista.service';
 import { Atendimento } from 'src/app/shared/models/atendimento.model';
+import { Dentista } from 'src/app/shared/models/dentista.model';
 import { ModalAtendimentoComponent } from '../modal-atendimento/modal-atendimento.component';
 import { AtendimentoService } from '../services/atendimento.service';
 
@@ -12,24 +15,60 @@ import { AtendimentoService } from '../services/atendimento.service';
 export class ListarAtendimentoComponent implements OnInit {
 
   atendimentos!: Atendimento[];
+  dentistas!: Dentista[];
+  pageSize: number = 10;
+  page: number = 1;
+  size: number = 10;
 
-  constructor(private atendimentoService: AtendimentoService, private modalService: NgbModal) { }
+  constructor(
+    private atendimentoService: AtendimentoService, 
+    private dentistaService: DentistaService,
+    private modalService: NgbModal,
+    private router: Router,
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
-    this.atendimentos = this.listarTodos();
+    this.listarTodos();
+    this.listarDentistas();
   }
 
-  listarTodos(): Atendimento[] {
-    return this.atendimentoService.listarTodos();
+  listarTodos(): void {
+
+    this.atendimentoService.listarTodos().subscribe((dados) => {
+      if (dados == null) {
+        this.atendimentos = [];
+        this.size = this.atendimentos.length;
+      }
+      else {
+        this.atendimentos = dados;
+        this.size = this.atendimentos.length;
+      }
+    });
+
   }
 
+  listarDentistas(): void {
+    this.dentistaService.listarTodos().subscribe(
+      (dados: Dentista[]) => {
+        if (dados == null){
+          this.dentistas = []
+        }
+        else {
+          this.dentistas = dados;
+        }
+      });
+  }
+
+  
   remover($event: any, atendimento: Atendimento): void {
     $event.preventDefault();
     if (confirm('Deseja remover o atendimento?')) {
       this.atendimentoService.remover(atendimento.id!);
-      this.atendimentos = this.listarTodos();
+      this.listarTodos();
     }
   }
+  
 
   abrirModalAtendimento(atendimento: Atendimento) {
     const modalRef = this.modalService.open(ModalAtendimentoComponent);
