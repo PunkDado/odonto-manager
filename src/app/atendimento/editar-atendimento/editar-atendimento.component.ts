@@ -47,14 +47,14 @@ export class EditarAtendimentoComponent implements OnInit {
 
   atualizar(): void {
     if (this.formAtendimento.form.valid) {
-      this.atendimentoService.atualizar(this.atendimento);
-      this.router.navigate(['/atendimentos']);
+      this.atendimentoService.atualizar(this.atendimento).subscribe(
+        () => this.router.navigate(['/atendimentos'])
+      );
     }
   }
 
   inserirProcedimentoAplicado(): void {
     this.atendimento.procedimentosAplicados!.push(new ProcedimentoAplicado());
-    
   }
 
 }

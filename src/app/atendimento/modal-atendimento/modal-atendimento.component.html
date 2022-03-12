@@ -10,7 +10,7 @@
 
 <div class="modal-body text-left">
     <div>
-            <p> Dentista: {{ atendimento.dentista }}</p>
+            <p> Dentista: {{ atendimento.dentista!.nomeDentista }} {{ atendimento.dentista!.sobrenomeDentista }}</p>
             <p> Paciente: {{ atendimento.paciente }}</p>
             <!-- <p> {{ atendimento.dataAtendimento! | mask: 'd0/M0/0000' }}</p> -->
             <p> Data do atendimento: {{ atendimento.dataAtendimento }}</p>
