@@ -28,7 +28,11 @@ export class EditarAtendimentoComponent implements OnInit {
 
   ngOnInit(): void {
     let id = +this.route.snapshot.params['id'];
-    this.atendimentoService.buscarPorId(id)!;
+    this.atendimentoService.buscarPorId(id).subscribe(
+      (dados: Atendimento) => {
+        this.atendimento = dados;
+      }
+    );
     this.dentistaService.listarTodos().subscribe(
       (dados: Dentista[]) => {
         if(dados == null) {
@@ -39,7 +43,6 @@ export class EditarAtendimentoComponent implements OnInit {
         }
       }
     );
-    console.log(this.dentistas);
   }
 
   atualizar(): void {
