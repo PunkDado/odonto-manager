@@ -57,4 +57,8 @@ export class EditarAtendimentoComponent implements OnInit {
     this.atendimento.procedimentosAplicados!.push(new ProcedimentoAplicado());
   }
 
+  removerProcedimentoAplicado(i: number): void {
+    this.atendimento.procedimentosAplicados!.splice(i, 1);
+  }
+
 }
