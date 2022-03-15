@@ -1,47 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <h2>DENTISTAS</h2>
+        </div>
+        <div class="col-3">
+            <a href = "dentistas/novo">
+                <button type="button" class="btn btn-primary btn-floating rounded-circle">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
 
-<tr>
-    <th>
-        <h2>DENTISTAS</h2>
-    </th>
-    <th>
-        <a href = "dentistas/novo">
-            <button type="button" class="btn btn-primary btn-floating">
-                <i class="fas fa-plus"></i>
-            </button>
-        </a>
-    </th>
-</tr>
-
-
-
-
-<table>
-    <tr>
-        <th>
-            Dentista
-        </th>
-    </tr>
-    <tr *ngFor="let dentista of dentistas">
-        <td>
+<br/>
+<div class="container" *ngFor="let dentista of dentistas">
+    <div class="row">
+        <div class="col-9">
             {{ dentista.nomeDentista }} {{ dentista.sobrenomeDentista }}
-        </td>
-        <td>
+        </div>
+        <div class="col-1">
             <a href = "#" title="Editar" alt="Editar" [routerLink]="['/dentistas/editar', dentista.id]">
                 <i class="fa fa-eye" aria-hidden="true"></i>
             </a>
-        </td>
-        <td>
+        </div>
+        <div class="col-1">
             <a href = "#" title="Editar" alt="Editar" [routerLink]="['/dentistas/editar', dentista.id]">
                 <i class="fa fa-edit" aria-hidden="true"></i>
             </a>
-        </td>
-        <td>
+        </div>
+        <div class="col-1">
             <a href = "#" title="Remover" alt="Remover" (click)="remover($event, dentista)">
                 <i class="fa fa-times" aria-hidden="true"></i> 
             </a>
-        </td>
-    </tr>
-</table>
+        </div>
+    </div>
+</div>
+
 
 <!--
 <a href="#" title="Editar" alt="Editar" class="btn btn-xs btn-primary" [routerLink]="['/dentistas/editar', dentista.id]">
