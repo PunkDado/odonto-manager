@@ -52,7 +52,10 @@ export class InserirAtendimentoComponent implements OnInit {
 
   inserirProcedimentoAplicado(): void {
     this.atendimento.procedimentosAplicados!.push(new ProcedimentoAplicado());
-    
+  }
+
+  removerProcedimentoAplicado(i: number): void {
+    this.atendimento.procedimentosAplicados!.splice(i, 1);
   }
 
 }
