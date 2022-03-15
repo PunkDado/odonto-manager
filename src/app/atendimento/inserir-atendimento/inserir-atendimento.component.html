@@ -104,22 +104,29 @@
         -->
         <br/>
         <div>
-            <h3>Procedimentos aplicados</h3>
-            <button type="button" class="btn btn-secondary" (click)="inserirProcedimentoAplicado()">
-                <i class="fa fa-arrow-left" aria-hidden="true"></i> Inserir procedimento
-            </button>
-            
+            <div class="container">
+                <div class="row">
+                    <div class="col-10">
+                        <h3>Procedimentos aplicados</h3>
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-secondary" (click)="inserirProcedimentoAplicado()">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         
-            <div *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados">
+            <div *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados; let i = index">
                 <!--<label for="procedimento">Procedimento</label>
                 <ng-select name="produto" [items]="produtos" bindLabel="descricao" [(ngModel)]="item.produto" placeholder="Selecione um produto"> </ng-select>-->
                 <br/>
                 <div class="container">
-                    <div class="row p-3 mb-2 bg-secondary text-light">
-                        <div class="col-10">
-                            <h4>Procedimento aplicado</h4>
+                    <div class="row p-3 bg-secondary text-light">
+                        <div class="col-11">
+                            <h4>Procedimento aplicado #{{i+1}}</h4>
                         </div>
-                        <div class="col-2">
+                        <div class="col-1">
                             <button type="button" class="rounded-circle">
                                 <i class="fa fa-times" aria-hidden="true"></i>
                             </button>
@@ -178,12 +185,23 @@
             </div>
         </div>
 
-                <button type="button" class="btn btn-primary" (click)="inserir()" [disabled]="!formAtendimento.form.valid">
-                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Salvar
-                </button>
-                <a class="btn btn-secondary" [routerLink]="['/atendimentos']">
-                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
-                </a>
+        <div>
+            <br/>
+            <button type="button" class="btn btn-light text-success" (click)="inserirProcedimentoAplicado()">
+                <i class="fa fa-plus" aria-hidden="true"></i> Adicionar outro procedimento
+            </button>
+        </div>
+
+        <div>
+            <br/>
+            <button type="button" class="btn btn-primary" (click)="inserir()" [disabled]="!formAtendimento.form.valid">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> Salvar
+            </button>
+            <a class="btn btn-secondary" [routerLink]="['/atendimentos']">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+            </a>
+        </div>
+    
             
         </form>
     </div>
