@@ -1,6 +1,6 @@
 <h1>Inserir atendimento</h1>
     <div class="well">
-        <form #formAtendimento="ngForm">
+        <form #formAtendimento="ngForm" class="p-3">
             <div class="form-group">
 
                 <label for="dentista">Dentista</label>
@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label for="dataAtendimento">Data do atendimento</label>
-                <input type="text" class="form-control" id="dataAtendimento" name="dataAtendimento" required [(ngModel)]="atendimento.dataAtendimento" #dataAtendimento="ngModel" required>
+                <input type="date" class="form-control" id="dataAtendimento" name="dataAtendimento" [(ngModel)]="atendimento.dataAtendimento" #dataAtendimento="ngModel" required>
                 <div class="alert alert-danger" *ngIf="dataAtendimento.errors && (dataAtendimento.dirty || dataAtendimento.touched)">
                     <div [hidden]="!dataAtendimento.errors.required">Digite a data do atendimento</div>
                 </div>
@@ -63,13 +63,14 @@
             </div>
             <div class="form-group">
                 <label for="dataEnvio">Data de envio</label>
-                <input type="text" class="form-control" id="dataEnvio" name="dataEnvio" [(ngModel)]="atendimento.dataEnvio" #dataEnvio="ngModel">
+                <input type="date" class="form-control" id="dataEnvio" name="dataEnvio" [(ngModel)]="atendimento.dataEnvio" #dataEnvio="ngModel">
                 <div class="alert alert-danger" *ngIf="dataEnvio.errors && (dataEnvio.dirty || dataEnvio.touched)">
                 </div>
             </div>
             <div class="form-group">
-                <label for="verificado">Atendimento verificado:</label>
+                <label for="verificado"></label>
                 <input type="checkbox" class="form-check-input" id="verificado" name="verificado" [(ngModel)]="atendimento.verificado" #verificado="ngModel">
+                Atendimento verificado
             </div>
             
             <!--
@@ -101,16 +102,31 @@
                 <input type="checkbox" class="form-check-input" id="fumante" name="fumante" [(ngModel)]="pessoa.fumante" #fumante="ngModel">
             </div>
         -->
-
+        <br/>
         <div>
-            <h3>Procedimentos:</h3>
+            <h3>Procedimentos aplicados</h3>
             <button type="button" class="btn btn-secondary" (click)="inserirProcedimentoAplicado()">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i> Inserir procedimento
             </button>
+            
         
             <div *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados">
                 <!--<label for="procedimento">Procedimento</label>
                 <ng-select name="produto" [items]="produtos" bindLabel="descricao" [(ngModel)]="item.produto" placeholder="Selecione um produto"> </ng-select>-->
+                <br/>
+                <div class="container">
+                    <div class="row p-3 mb-2 bg-secondary text-light">
+                        <div class="col-10">
+                            <h4>Procedimento aplicado</h4>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="rounded-circle">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
                 
                 <label for="procedimento">Procedimento</label>
                 <input type="text" class="form-control" id="procedimento" name="procedimento" [(ngModel)]="procedimentoAplicado.procedimento" #procedimento="ngModel" required>
@@ -127,29 +143,37 @@
                 <label for="valorRepassado">Valor repassado (R$)</label>
                 <input type="text" class="form-control" id="valorRepassado" name="valorRepassado" [(ngModel)]="procedimentoAplicado.valorRepassado" #valorRepassado="ngModel" >
 
-                <div class="form-group">
-                    <label for="recebido">Recebido</label>
-                    <input type="checkbox" class="form-check-input" id="recebido" name="recebido" [(ngModel)]="procedimentoAplicado.recebido" #recebido="ngModel">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="recebido"></label>
+                            <input type="checkbox" class="form-check-input" id="recebido" name="recebido" [(ngModel)]="procedimentoAplicado.recebido" #recebido="ngModel">
+                            Recebido
+                        </div>
+        
+                        <div class="form-group col">
+                            <label for="glosado"></label>
+                            <input type="checkbox" class="form-check-input" id="glosado" name="glosado" [(ngModel)]="procedimentoAplicado.glosado" #glosado="ngModel">
+                            Glosado
+                        </div>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="glosado">Glosado</label>
-                    <input type="checkbox" class="form-check-input" id="glosado" name="glosado" [(ngModel)]="procedimentoAplicado.glosado" #glosado="ngModel">
-                </div>
+                
                 
                 <label for="motivoGlosa">Motivo da glosa</label>
                 <input type="text" class="form-control" id="motivoGlosa" name="motivoGlosa" [(ngModel)]="procedimentoAplicado.motivoGlosa" #motivoGlosa="ngModel" >
 
                 <label for="dataRecebimento">Data de recebimento</label>
-                <input type="text" class="form-control" id="dataRecebimento" name="dataRecebimento" [(ngModel)]="procedimentoAplicado.dataRecebimento" #dataRecebimento="ngModel" >
+                <input type="date" class="form-control" id="dataRecebimento" name="dataRecebimento" [(ngModel)]="procedimentoAplicado.dataRecebimento" #dataRecebimento="ngModel" >
 
                 <div class="form-group">
-                    <label for="repassado">Repassado</label>
+                    <label for="repassado"></label>
                     <input type="checkbox" class="form-check-input" id="repassado" name="repassado" [(ngModel)]="procedimentoAplicado.repassado" #repassado="ngModel">
+                    Repassado
                 </div>
 
                 <label for="dataRepasse">Data de repasse</label>
-                <input type="text" class="form-control" id="dataRepasse" name="dataRepasse" [(ngModel)]="procedimentoAplicado.dataRepasse" #dataRepasse="ngModel" >
+                <input type="date" class="form-control" id="dataRepasse" name="dataRepasse" [(ngModel)]="procedimentoAplicado.dataRepasse" #dataRepasse="ngModel" >
 
             </div>
         </div>
@@ -163,4 +187,5 @@
             
         </form>
     </div>
+
 
