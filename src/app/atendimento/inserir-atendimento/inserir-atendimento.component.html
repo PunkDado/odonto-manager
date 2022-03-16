@@ -118,8 +118,6 @@
             </div>
         
             <div *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados; let i = index">
-                <!--<label for="procedimento">Procedimento</label>
-                <ng-select name="produto" [items]="produtos" bindLabel="descricao" [(ngModel)]="item.produto" placeholder="Selecione um produto"> </ng-select>-->
                 <br/>
                 <div class="container">
                     <div class="row p-3 bg-secondary text-light">
@@ -141,8 +139,8 @@
                 <label for="dente">Dente</label>
                 <input type="text" class="form-control" id="dente" name="dente" [(ngModel)]="procedimentoAplicado.dente" #dente="ngModel" required>
 
-                <label for="valorBruto">Valor bruto (R$)</label>
-                <input type="text" class="form-control" id="valorBruto" name="valorBruto" [(ngModel)]="procedimentoAplicado.valorBruto" #valorBruto="ngModel" >
+                <label for="valor">Valor bruto (R$)</label>
+                <input type="text" class="form-control" id="valorBruto" name="valorBruto" [(ngModel)]="procedimentoAplicado.valor" #valorBruto="ngModel" >
 
                 <label for="valorLiquido">Valor líquido recebido (R$)</label>
                 <input type="text" class="form-control" id="valorLiquido" name="valorLiquido" [(ngModel)]="procedimentoAplicado.valorLiquido" #valorLiquido="ngModel" >

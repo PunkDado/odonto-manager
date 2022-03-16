@@ -6,7 +6,7 @@ export class ProcedimentoAplicado {
         //public atendimento?: Atendimento,
         public procedimento?: string,
         public dente?: string,
-        public valorBruto?: number,
+        public valor?: number,
         public valorLiquido?: number,
         public valorRepassado?: number,
         public recebido?: boolean,

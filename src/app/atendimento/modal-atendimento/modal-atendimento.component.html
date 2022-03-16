@@ -26,7 +26,7 @@
         <div *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados">
             <h4>Procedimento: {{ procedimentoAplicado.procedimento }}</h4>
             <p>Dente: {{ procedimentoAplicado.dente }}</p>
-            <p>Valor bruto (R$): {{ procedimentoAplicado.valorBruto }}</p>
+            <p>Valor bruto (R$): {{ procedimentoAplicado.valor }}</p>
             <p>Valor líquido recebido (R$): {{ procedimentoAplicado.valorLiquido }}</p>
             <p>Valor repassado (R$): {{ procedimentoAplicado.valorRepassado }}</p>
             <p>Recebido: {{ procedimentoAplicado.recebido! ? "Sim" : "Não" }}</p>

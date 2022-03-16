@@ -38,7 +38,6 @@ export class InserirAtendimentoComponent implements OnInit {
         }
       }
     );
-    console.log(this.dentistas);
   }
 
   inserir(): void {
