@@ -132,54 +132,56 @@
                     </div>
                 </div>
                 
-                
-                <label for="procedimento">Procedimento</label>
-                <input type="text" class="form-control" id="procedimento" name="procedimento" [(ngModel)]="procedimentoAplicado.procedimento" #procedimento="ngModel" required>
+                <form>
 
-                <label for="dente">Dente</label>
-                <input type="text" class="form-control" id="dente" name="dente" [(ngModel)]="procedimentoAplicado.dente" #dente="ngModel" required>
+                    <label for="procedimento">Procedimento</label>
+                    <input type="text" class="form-control" id="procedimento" name="procedimento" [(ngModel)]="procedimentoAplicado.procedimento" #procedimento="ngModel" required>
 
-                <label for="valor">Valor bruto (R$)</label>
-                <input type="text" class="form-control" id="valorBruto" name="valorBruto" [(ngModel)]="procedimentoAplicado.valor" #valorBruto="ngModel" >
+                    <label for="dente">Dente</label>
+                    <input type="text" class="form-control" id="dente" name="dente" [(ngModel)]="procedimentoAplicado.dente" #dente="ngModel" required>
 
-                <label for="valorLiquido">Valor líquido recebido (R$)</label>
-                <input type="text" class="form-control" id="valorLiquido" name="valorLiquido" [(ngModel)]="procedimentoAplicado.valorLiquido" #valorLiquido="ngModel" >
+                    <label for="valor">Valor bruto (R$)</label>
+                    <input type="text" class="form-control" id="valorBruto" name="valorBruto" [(ngModel)]="procedimentoAplicado.valor" #valorBruto="ngModel" >
 
-                <label for="valorRepassado">Valor repassado (R$)</label>
-                <input type="text" class="form-control" id="valorRepassado" name="valorRepassado" [(ngModel)]="procedimentoAplicado.valorRepassado" #valorRepassado="ngModel" >
+                    <label for="valorLiquido">Valor líquido recebido (R$)</label>
+                    <input type="text" class="form-control" id="valorLiquido" name="valorLiquido" [(ngModel)]="procedimentoAplicado.valorLiquido" #valorLiquido="ngModel" >
 
-                <div class="container">
-                    <div class="row">
-                        <div class="form-group col">
-                            <label for="recebido"></label>
-                            <input type="checkbox" class="form-check-input" id="recebido" name="recebido" [(ngModel)]="procedimentoAplicado.recebido" #recebido="ngModel">
-                            Recebido
-                        </div>
-        
-                        <div class="form-group col">
-                            <label for="glosado"></label>
-                            <input type="checkbox" class="form-check-input" id="glosado" name="glosado" [(ngModel)]="procedimentoAplicado.glosado" #glosado="ngModel">
-                            Glosado
+                    <label for="valorRepassado">Valor repassado (R$)</label>
+                    <input type="text" class="form-control" id="valorRepassado" name="valorRepassado" [(ngModel)]="procedimentoAplicado.valorRepassado" #valorRepassado="ngModel" >
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="form-group col">
+                                <label for="recebido"></label>
+                                <input type="checkbox" class="form-check-input" id="recebido" name="recebido" [(ngModel)]="procedimentoAplicado.recebido" #recebido="ngModel">
+                                Recebido
+                            </div>
+            
+                            <div class="form-group col">
+                                <label for="glosado"></label>
+                                <input type="checkbox" class="form-check-input" id="glosado" name="glosado" [(ngModel)]="procedimentoAplicado.glosado" #glosado="ngModel">
+                                Glosado
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                
-                <label for="motivoGlosa">Motivo da glosa</label>
-                <input type="text" class="form-control" id="motivoGlosa" name="motivoGlosa" [(ngModel)]="procedimentoAplicado.motivoGlosa" #motivoGlosa="ngModel" >
+                    
+                    
+                    <label for="motivoGlosa">Motivo da glosa</label>
+                    <input type="text" class="form-control" id="motivoGlosa" name="motivoGlosa" [(ngModel)]="procedimentoAplicado.motivoGlosa" #motivoGlosa="ngModel" >
 
-                <label for="dataRecebimento">Data de recebimento</label>
-                <input type="date" class="form-control" id="dataRecebimento" name="dataRecebimento" [(ngModel)]="procedimentoAplicado.dataRecebimento" #dataRecebimento="ngModel" >
+                    <label for="dataRecebimento">Data de recebimento</label>
+                    <input type="date" class="form-control" id="dataRecebimento" name="dataRecebimento" [(ngModel)]="procedimentoAplicado.dataRecebimento" #dataRecebimento="ngModel" >
 
-                <div class="form-group">
-                    <label for="repassado"></label>
-                    <input type="checkbox" class="form-check-input" id="repassado" name="repassado" [(ngModel)]="procedimentoAplicado.repassado" #repassado="ngModel">
-                    Repassado
-                </div>
+                    <div class="form-group">
+                        <label for="repassado"></label>
+                        <input type="checkbox" class="form-check-input" id="repassado" name="repassado" [(ngModel)]="procedimentoAplicado.repassado" #repassado="ngModel">
+                        Repassado
+                    </div>
 
-                <label for="dataRepasse">Data de repasse</label>
-                <input type="date" class="form-control" id="dataRepasse" name="dataRepasse" [(ngModel)]="procedimentoAplicado.dataRepasse" #dataRepasse="ngModel" >
+                    <label for="dataRepasse">Data de repasse</label>
+                    <input type="date" class="form-control" id="dataRepasse" name="dataRepasse" [(ngModel)]="procedimentoAplicado.dataRepasse" #dataRepasse="ngModel" >
 
+                </form>
             </div>
         </div>
 

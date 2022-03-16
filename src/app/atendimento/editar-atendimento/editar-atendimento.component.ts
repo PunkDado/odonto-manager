@@ -15,6 +15,7 @@ import { AtendimentoService } from '../services/atendimento.service';
 export class EditarAtendimentoComponent implements OnInit {
 
   @ViewChild('formAtendimento') formAtendimento!: NgForm;
+  
 
   atendimento!: Atendimento;
   dentistas!: Dentista[];
@@ -58,7 +59,10 @@ export class EditarAtendimentoComponent implements OnInit {
   }
 
   removerProcedimentoAplicado(i: number): void {
-    this.atendimento.procedimentosAplicados!.splice(i, 1);
+    //$event.preventDefault();
+    if (confirm('Deseja realmente remover o procedimento "' + this.atendimento.procedimentosAplicados[i].procedimento + '"?')) {
+      this.atendimento.procedimentosAplicados!.splice(i, 1);
+    }
   }
 
 }
