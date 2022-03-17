@@ -1,0 +1,42 @@
+<h3>PAGAMENTOS</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <button class="btn btn-primary" href="#">
+                <i class="fa fa-pen"></i>
+                LANÇAR PAGAMENTOS
+            </button>
+        </div>
+        <div class="col-4">
+            <button class="btn btn-danger" href="#">
+                <i class="fa fa-add"></i>
+                NOVA DATA DE REPASSE
+            </button>
+        </div>
+        <div class="col-4">
+            <button class="btn btn-secondary" href="#">
+                <i class="fa fa-eye"></i>
+                RELATÓRIOS
+            </button>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="container">
+    <h4>DATA DE REPASSE</h4>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Dentista</th>
+                <th scope="col" *ngFor="let dataRepasse of datasRepasse">{{ dataRepasse }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dentista of dentistas">
+                <th>{{ dentista.nomeDentista }} {{ dentista.sobrenomeDentista }} </th>
+                <th *ngFor="let linhaDeRepasse of valoresRepassados">{{ linhaDeRepasse }}</th>
+            </tr>
+        </tbody>
+    </table>
+</div>

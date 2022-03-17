@@ -6,6 +6,7 @@ import { ListarAtendimentoComponent } from './atendimento/listar-atendimento/lis
 import { EditarDentistaComponent } from './dentista/editar-dentista/editar-dentista.component';
 import { InserirDentistaComponent } from './dentista/inserir-dentista/inserir-dentista.component';
 import { ListarDentistaComponent } from './dentista/listar-dentista/listar-dentista.component';
+import { MostrarPagamentoComponent } from './pagamento/mostrar-pagamento/mostrar-pagamento.component';
 //import { EditarProcedimentoAplicadoComponent } from './procedimento-aplicado/editar-procedimento-aplicado/editar-procedimento-aplicado.component';
 //import { InserirProcedimentoAplicadoPorAtendimentoComponent } from './procedimento-aplicado/inserir-procedimento-aplicado-por-atendimento/inserir-procedimento-aplicado-por-atendimento.component';
 //import { InserirProcedimentoAplicadoComponent } from './procedimento-aplicado/inserir-procedimento-aplicado/inserir-procedimento-aplicado.component';
@@ -22,6 +23,8 @@ const routes: Routes = [
   { path: 'dentistas/listar', component: ListarDentistaComponent},
   { path: 'dentistas/novo', component: InserirDentistaComponent},
   { path: 'dentistas/editar/:id', component: EditarDentistaComponent},
+
+  { path: 'pagamentos', component: MostrarPagamentoComponent},
   
   //{ path: 'procedimentos-aplicados', redirectTo: 'procedimentos-aplicados/listar'},
   //{ path: 'procedimentos-aplicados/listar', component: ListarProcedimentoAplicadoComponent},

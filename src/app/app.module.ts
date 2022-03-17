@@ -8,6 +8,7 @@ import { AtendimentoModule } from './atendimento/atendimento.module';
 import { DentistaModule } from './dentista/dentista.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { PagamentoModule } from './pagamento/pagamento.module';
 //import { AngularFontAwesomeModule } from 'angular-font-awesome';
 //import { ProcedimentoAplicadoModule } from './procedimento-aplicado/procedimento-aplicado.module';
 
@@ -23,7 +24,8 @@ import { RouterModule } from '@angular/router';
     DentistaModule,
     HttpClientModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    PagamentoModule
     //AngularFontAwesomeModule,
     //ProcedimentoAplicadoModule
   ],
