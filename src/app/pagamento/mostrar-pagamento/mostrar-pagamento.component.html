@@ -35,7 +35,7 @@
         <tbody>
             <tr *ngFor="let dentista of dentistas">
                 <th>{{ dentista.nomeDentista }} {{ dentista.sobrenomeDentista }} </th>
-                <th *ngFor="let linhaDeRepasse of valoresRepassados">{{ linhaDeRepasse }}</th>
+                <th *ngFor="let linhaDeRepasse of repassesDentistas(dentista)">{{ linhaDeRepasse }}</th>
             </tr>
         </tbody>
     </table>

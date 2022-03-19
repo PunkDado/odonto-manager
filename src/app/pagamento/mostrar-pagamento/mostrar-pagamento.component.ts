@@ -3,6 +3,7 @@ import { AtendimentoService } from 'src/app/atendimento/services/atendimento.ser
 import { DentistaService } from 'src/app/dentista/services/dentista.service';
 import { Atendimento } from 'src/app/shared/models/atendimento.model';
 import { Dentista } from 'src/app/shared/models/dentista.model';
+import { ProcedimentoAplicado } from 'src/app/shared/models/procedimento-aplicado.model';
 import { Repasse } from 'src/app/shared/models/repasse.model';
 import { RepasseService } from '../services/repasse.service';
 
@@ -15,8 +16,7 @@ export class MostrarPagamentoComponent implements OnInit {
 
   dentistas!: Dentista[];
   atendimentos!: Atendimento[];
-  datasRepasse!: (string | undefined)[];
-  valoresRepassados!: number[][];
+  datasRepasse!: (string)[];
 
   constructor(
     private atendimentoService: AtendimentoService,
@@ -28,7 +28,6 @@ export class MostrarPagamentoComponent implements OnInit {
     this.listarAtendimentos();
     this.listarDentistas();
     this.listarDatasRepasse();
-    this.calcularValoresRepassados();
   }
 
   listarAtendimentos(): void {
@@ -63,25 +62,60 @@ export class MostrarPagamentoComponent implements OnInit {
           this.datasRepasse = [];
         }
         else {
-          //this.datasRepasse = repasses.map(getDataRepasse);
-          // Usa a função abaixo para fazer o map
-          this.datasRepasse = repasses.map(repasse => repasse.dataRepasse);
+          this.datasRepasse = repasses.map(repasse => repasse.dataRepasse!);
         }
       }
     )  
   }
 
-  calcularValoresRepassados(): void {
-    this.valoresRepassados = [
-      [1200, 3405.34, 5213.1],
-      [1200, 3405.34, 5213.1],
-      [1200, 3405.34, 5213.1],
-      [1200, 3405.34, 5213.1]
-    ]
-  }  
+  repassesDentistas(dentista: Dentista): number[] {
+    
+    let totalRepassesPorDataRepasse:number[] = [];
+    
+    let atendimentosDentista: Atendimento[] = [];
+    for(let atendimento of this.atendimentos) {
+      if(atendimento.dentista?.id == dentista?.id) {
+        atendimentosDentista.push(atendimento);
+      }
+      
+    }
+
+    //Para cada data de repasses, calcula o valorRepassado ao dentista
+    for(let dataRepasse of this.datasRepasse) {
+
+      let procedimentosAplicadosDentista: ProcedimentoAplicado[] =
+        procedimentosAplicadosAtendimentos(atendimentosDentista);
+
+      let procedimentosAplicadosDentistaData: ProcedimentoAplicado[] = 
+        procedimentosAplicadosDentista.filter(
+          procedimentoAplicadoDentista => procedimentoAplicadoDentista.dataRepasse == dataRepasse
+        );
+      
+      let repasse: number = sumValorRepassado(procedimentosAplicadosDentistaData);
+
+      totalRepassesPorDataRepasse.push(repasse);
+    }
+    
+    return totalRepassesPorDataRepasse;
+  }
 
 }
 
-function getDataRepasse(repasse: Repasse) {
-  return repasse.dataRepasse;
+function sumValorRepassado(procedimentosAplicados: ProcedimentoAplicado[]): number {
+  let sum: number = 0;
+  procedimentosAplicados.forEach(
+    (procedimentoAplicado, index, array) => sum = sum + procedimentoAplicado.valorRepassado!
+    );
+  return sum;
+}
+
+function procedimentosAplicadosAtendimentos(atendimentos: Atendimento[]): ProcedimentoAplicado[] {
+  let procedimentosAplicadosAtendimentos: ProcedimentoAplicado[] = [];
+  let arrayDeProcedimentosAplicados = atendimentos.map(
+    atendimento => atendimento.procedimentosAplicados
+  );
+  arrayDeProcedimentosAplicados.forEach(
+    (procedimentosAplicados) => procedimentosAplicadosAtendimentos = procedimentosAplicadosAtendimentos.concat(procedimentosAplicados)
+  );
+  return procedimentosAplicadosAtendimentos;
 }
