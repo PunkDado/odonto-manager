@@ -94,7 +94,7 @@
                     </div>
                     
                     dentistaId {{ dentistaId }}
-                    dentista.id {{ dentista.id }}
+                    
                 </div>
 
                 
@@ -105,32 +105,43 @@
     </form>
     <br/>
 
-    
+    <h5>Procedimentos</h5>
 
-    <table class="table table-striped table-bordered">
+    <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Dentista</th>
-                <th scope="col">Data Atendimento</th>
+                <th scope="col">Data atendimento</th>
                 <th scope="col">Convênio</th>
                 <th scope="col">GTO</th>
                 <th scope="col">Forma pagamento</th>
                 <th scope="col">Data envio</th>
                 <th scope="col">Verificado</th>
+                <th scope="col">Procedimento</th>
+                <th scope="col">Data repasse</th>
             </tr>
         </thead>
-        <tbody>
-            <tr *ngFor="let atendimento of listarAtendimentosPorDentista(dentista.id!)">
-                <th>{{ atendimento.dentista!.nomeDentista }} {{ atendimento.dentista!.sobrenomeDentista }}</th>
-                <th>{{ atendimento.dataAtendimento }}</th>
-                <th>{{ atendimento.convenio }}</th>
-                <th>{{ atendimento.numeroGTO }}</th>
-                <th>{{ atendimento.formaPagamento }}</th>
-                <th>{{ atendimento.dataEnvio }}</th>
-                <th>{{ atendimento.verificado }}</th>
-            </tr>
+        <tbody *ngFor="let atendimento of listarAtendimentosPorDentistaPorDataRepasse(dentistaId, '2022-03-08')"> 
+            
+                <tr *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados">
+                    <th>{{ atendimento.dentista!.nomeDentista }} {{ atendimento.dentista!.sobrenomeDentista }}</th>
+                    <th>{{ atendimento.dataAtendimento }}</th>
+                    <th>{{ atendimento.convenio }}</th>
+                    <th>{{ atendimento.numeroGTO }}</th>
+                    <th>{{ atendimento.formaPagamento }}</th>
+                    <th>{{ atendimento.dataEnvio }}</th>
+                    <th>{{ atendimento.verificado }}</th>
+                    <th>{{ procedimentoAplicado.procedimento }}</th>
+                    <th>{{ procedimentoAplicado.dataRepasse }}</th>
+                </tr>
+                <!--<tr *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados">
+
+                </tr>-->
+            
+            
         </tbody>
     </table>
+
 </div>
 
 

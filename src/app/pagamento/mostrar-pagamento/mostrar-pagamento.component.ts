@@ -25,6 +25,7 @@ export class MostrarPagamentoComponent implements OnInit {
   dentista!: Dentista;
   atendimentos!: Atendimento[];
   datasRepasse!: string[];
+  
 
   constructor(
     private atendimentoService: AtendimentoService,
@@ -36,6 +37,7 @@ export class MostrarPagamentoComponent implements OnInit {
     this.listarAtendimentos();
     this.listarDentistas();
     this.listarDatasRepasse();
+    
   }
 
   listarAtendimentos(): void {
@@ -107,15 +109,21 @@ export class MostrarPagamentoComponent implements OnInit {
     return totalRepassesPorDataRepasse;
   }
 
-  listarAtendimentosPorDentista(dentistaId: number): Atendimento[] {
+  listarAtendimentosPorDentistaPorDataRepasse(dentistaId: number, dataRepasse: string): Atendimento[] {
     if (dentistaId == null) {
+      console.log(this.atendimentos);
+      return this.atendimentos;
+    }
+    else if (dentistaId == 0) {
       return this.atendimentos;
     }
     else {
-      //console.log(dentista.nomeDentista);
-      return this.atendimentos.filter(
-        atendimentos => atendimentos.dentista!.id == dentistaId
-      );
+      console.log(dentistaId);
+      let atendimentosFiltrados: Atendimento[];
+      atendimentosFiltrados = this.atendimentos
+        .filter(atendimento => atendimento.dentista!.id == dentistaId);
+        console.log(atendimentosFiltrados);
+      return atendimentosFiltrados;
     }
   }
 
