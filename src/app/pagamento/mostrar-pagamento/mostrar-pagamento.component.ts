@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AtendimentoService } from 'src/app/atendimento/services/atendimento.service';
 import { DentistaService } from 'src/app/dentista/services/dentista.service';
 import { Atendimento } from 'src/app/shared/models/atendimento.model';
@@ -14,9 +15,16 @@ import { RepasseService } from '../services/repasse.service';
 })
 export class MostrarPagamentoComponent implements OnInit {
 
+  @ViewChild('formDentistaDataRepasse') formDentistaDataRepasse!: NgForm;
+
   dentistas!: Dentista[];
+  nomeDentista!: string;
+  dentistaId!: number;
+  dataRepasse!: string;
+  selectedDentista!: Dentista;
+  dentista!: Dentista;
   atendimentos!: Atendimento[];
-  datasRepasse!: (string)[];
+  datasRepasse!: string[];
 
   constructor(
     private atendimentoService: AtendimentoService,
@@ -99,6 +107,18 @@ export class MostrarPagamentoComponent implements OnInit {
     return totalRepassesPorDataRepasse;
   }
 
+  listarAtendimentosPorDentista(dentistaId: number): Atendimento[] {
+    if (dentistaId == null) {
+      return this.atendimentos;
+    }
+    else {
+      //console.log(dentista.nomeDentista);
+      return this.atendimentos.filter(
+        atendimentos => atendimentos.dentista!.id == dentistaId
+      );
+    }
+  }
+
 }
 
 function sumValorRepassado(procedimentosAplicados: ProcedimentoAplicado[]): number {
@@ -119,3 +139,18 @@ function procedimentosAplicadosAtendimentos(atendimentos: Atendimento[]): Proced
   );
   return procedimentosAplicadosAtendimentos;
 }
+
+/*
+listarAtendimentosPorDentista(dentista: Dentista): Atendimento[] {
+    if (typeof dentista === "undefined") {
+      console.log("indefinido");
+      return this.atendimentos;
+    }
+    else {
+      console.log(dentista.nomeDentista);
+      return this.atendimentos.filter(
+        atendimentos => atendimentos.dentista!.id == dentista!.id
+      );
+    } 
+  }
+*/
