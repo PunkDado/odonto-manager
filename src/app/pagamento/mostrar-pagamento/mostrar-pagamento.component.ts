@@ -111,7 +111,7 @@ export class MostrarPagamentoComponent implements OnInit {
 
   listarAtendimentosPorDentistaPorDataRepasse(dentistaId: number, dataRepasse: string): Atendimento[] {
     if (dentistaId == null) {
-      console.log(this.atendimentos);
+      //console.log(this.atendimentos);
       return this.atendimentos;
     }
     else if (dentistaId == 0) {
@@ -122,7 +122,17 @@ export class MostrarPagamentoComponent implements OnInit {
       let atendimentosFiltrados: Atendimento[];
       atendimentosFiltrados = this.atendimentos
         .filter(atendimento => atendimento.dentista!.id == dentistaId);
-        console.log(atendimentosFiltrados);
+      console.log("Dentista", atendimentosFiltrados);
+
+      /*let atendimentosPorDataRepasse: Atendimento[] = [];
+      atendimentosFiltrados.forEach(
+        (atendimento, index, array) => {
+          atendimentosPorDataRepasse[index] = atendimento;
+          atendimentosPorDataRepasse[index].procedimentosAplicados = [];
+        } 
+      );
+      console.log("Data repasse", atendimentosPorDataRepasse);*/
+      
       return atendimentosFiltrados;
     }
   }
