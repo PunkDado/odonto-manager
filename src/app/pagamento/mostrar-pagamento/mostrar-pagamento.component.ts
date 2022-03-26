@@ -25,6 +25,7 @@ export class MostrarPagamentoComponent implements OnInit {
   dentista!: Dentista;
   atendimentos!: Atendimento[];
   datasRepasse!: string[];
+  atendimentosPorDentistaPorDataDeRepasse!: Atendimento[];
   
 
   constructor(
@@ -110,31 +111,51 @@ export class MostrarPagamentoComponent implements OnInit {
   }
 
   listarAtendimentosPorDentistaPorDataRepasse(dentistaId: number, dataRepasse: string): Atendimento[] {
-    if (dentistaId == null) {
+    
+    if (dentistaId == null || dentistaId == 0 || dataRepasse == null || dataRepasse == "") {
       //console.log(this.atendimentos);
       return this.atendimentos;
     }
-    else if (dentistaId == 0) {
+    /*else if (dentistaId == 0) {
       return this.atendimentos;
     }
+    else if (dataRepasse == "") {
+      return this.atendimentos;
+    }*/
     else {
-      console.log(dentistaId);
+      //console.log(dentistaId);
       let atendimentosFiltrados: Atendimento[];
       atendimentosFiltrados = this.atendimentos
         .filter(atendimento => atendimento.dentista!.id == dentistaId);
-      console.log("Dentista", atendimentosFiltrados);
+      //console.log("atendimentosFiltrados", atendimentosFiltrados);
 
-      /*let atendimentosPorDataRepasse: Atendimento[] = [];
       atendimentosFiltrados.forEach(
-        (atendimento, index, array) => {
-          atendimentosPorDataRepasse[index] = atendimento;
-          atendimentosPorDataRepasse[index].procedimentosAplicados = [];
+        atendimento => {
+          let procedimentosAplicadosFiltrados: ProcedimentoAplicado[] = [];
+          atendimento.procedimentosAplicados.forEach(
+            (procedimentoAplicado, index, array) => {
+              //console.log("atendimento.procedimentosAplicados", array[index]);
+              if (procedimentoAplicado.dataRepasse == dataRepasse) {
+                procedimentosAplicadosFiltrados.push(procedimentoAplicado);
+                //console.log("procedAplicFiltrados", procedimentosAplicadosFiltrados);
+              }
+            }
+          );
+          atendimento.procedimentosAplicados = procedimentosAplicadosFiltrados;
+          //console.log("atendimentoFiltrado", atendimento);
         } 
       );
-      console.log("Data repasse", atendimentosPorDataRepasse);*/
+
+      //console.log("atendimentosFiltradosDataRepasse", atendimentosFiltradosDataRepasse)
       
       return atendimentosFiltrados;
     }
+  }
+
+  reiniciar(): void {
+    this.dataRepasse = "";
+    this.dentistaId = 0;
+    this.listarAtendimentosPorDentistaPorDataRepasse(0,"");
   }
 
 }

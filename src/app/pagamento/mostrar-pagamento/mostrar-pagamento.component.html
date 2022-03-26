@@ -74,7 +74,7 @@
                     </div>
                 -->
                     
-                    <div class="col-3">
+                    <div hidden class="col-3">
                         <select 
                             class="form-control"
                             name="dentista"
@@ -90,11 +90,22 @@
                     </div>
 
                     <div class="col-3">
-                        <input type="text" class="form-control" id="dentistaId" name="dentistaId" size="20" [(ngModel)]="dentistaId" placeholder="Dentista Id">
+                        <input type="text" class="form-control" id="dataRepasse" name="dataRepasse" size="20" [(ngModel)]="dataRepasse" placeholder="Data de repasse">
                     </div>
                     
-                    dentistaId {{ dentistaId }}
-                    
+                    <div class="col-3">
+                        <input type="text" class="form-control" id="dentistaId" name="dentistaId" size="20" [(ngModel)]="dentistaId" placeholder="Dentista Id">
+                    </div>
+
+                    <div class="col-3">
+                        <button type="button" class="btn btn-primary" (click)="reiniciar()">
+                            Reiniciar
+                        </button>
+                    </div>
+
+                    dentistaId.{{ dentistaId }}.
+                    dataRepasse.{{ dataRepasse }}.
+
                 </div>
 
                 
@@ -121,7 +132,7 @@
                 <th scope="col">Data repasse</th>
             </tr>
         </thead>
-        <tbody *ngFor="let atendimento of listarAtendimentosPorDentistaPorDataRepasse(dentistaId, '2022-03-08')"> 
+        <tbody *ngFor="let atendimento of listarAtendimentosPorDentistaPorDataRepasse(dentistaId, dataRepasse)"> 
             
                 <tr *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados">
                     <th>{{ atendimento.dentista!.nomeDentista }} {{ atendimento.dentista!.sobrenomeDentista }}</th>
