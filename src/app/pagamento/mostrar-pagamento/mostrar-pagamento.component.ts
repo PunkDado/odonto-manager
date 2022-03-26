@@ -19,13 +19,13 @@ export class MostrarPagamentoComponent implements OnInit {
 
   dentistas!: Dentista[];
   nomeDentista!: string;
-  dentistaId!: number;
-  dataRepasse!: string;
+  dentistaId: number = 0;
+  dataRepasse: string = "";
   selectedDentista!: Dentista;
   dentista!: Dentista;
   atendimentos!: Atendimento[];
   datasRepasse!: string[];
-  atendimentosPorDentistaPorDataDeRepasse!: Atendimento[];
+  atendimentosPorDentistaPorDataRepasse!: Atendimento[];
   
 
   constructor(
@@ -38,7 +38,7 @@ export class MostrarPagamentoComponent implements OnInit {
     this.listarAtendimentos();
     this.listarDentistas();
     this.listarDatasRepasse();
-    
+    this.listarAtendimentosPorDentistaPorDataRepasse(0, "");
   }
 
   listarAtendimentos(): void {
@@ -110,11 +110,15 @@ export class MostrarPagamentoComponent implements OnInit {
     return totalRepassesPorDataRepasse;
   }
 
-  listarAtendimentosPorDentistaPorDataRepasse(dentistaId: number, dataRepasse: string): Atendimento[] {
+  listarAtendimentosPorDentistaPorDataRepasse(dentistaId: number, dataRepasse: string): void {
+
+    //this.atendimentosPorDentistaPorDataRepasse.splice(0, this.atendimentosPorDentistaPorDataRepasse.length);
+    //this.atendimentosPorDentistaPorDataRepasse = this.atendimentos.slice(this.atendimentos.length);
     
     if (dentistaId == null || dentistaId == 0 || dataRepasse == null || dataRepasse == "") {
       //console.log(this.atendimentos);
-      return this.atendimentos;
+      //return this.atendimentos;
+      this.atendimentosPorDentistaPorDataRepasse = this.atendimentos;
     }
     /*else if (dentistaId == 0) {
       return this.atendimentos;
@@ -148,14 +152,19 @@ export class MostrarPagamentoComponent implements OnInit {
 
       //console.log("atendimentosFiltradosDataRepasse", atendimentosFiltradosDataRepasse)
       
-      return atendimentosFiltrados;
+      
+      //return atendimentosFiltrados;
+      this.atendimentosPorDentistaPorDataRepasse = atendimentosFiltrados;
+      console.log(this.atendimentosPorDentistaPorDataRepasse);
+      console.log(this.atendimentos);
     }
   }
 
   reiniciar(): void {
     this.dataRepasse = "";
     this.dentistaId = 0;
-    this.listarAtendimentosPorDentistaPorDataRepasse(0,"");
+    this.atendimentosPorDentistaPorDataRepasse.splice(0, this.atendimentosPorDentistaPorDataRepasse.length);
+    this.atendimentosPorDentistaPorDataRepasse = this.atendimentos.slice(this.atendimentos.length);
   }
 
 }
