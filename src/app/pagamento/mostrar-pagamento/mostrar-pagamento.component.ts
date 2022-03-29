@@ -17,15 +17,15 @@ export class MostrarPagamentoComponent implements OnInit {
 
   @ViewChild('formDentistaDataRepasse') formDentistaDataRepasse!: NgForm;
 
-  dentistas!: Dentista[];
-  nomeDentista!: string;
+  dentistas: Dentista[] = [];
+  //nomeDentista!: string;
   dentistaId!: number;
   dataRepasse!: string;
-  selectedDentista!: Dentista;
+  //selectedDentista!: Dentista;
   dentista!: Dentista;
   atendimentos!: Atendimento[];
   datasRepasse!: string[];
-  atendimentosPorDentistaPorDataDeRepasse!: Atendimento[];
+  //atendimentosPorDentistaPorDataDeRepasse!: Atendimento[];
   
 
   constructor(

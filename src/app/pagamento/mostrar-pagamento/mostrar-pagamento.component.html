@@ -53,43 +53,25 @@
             <div class="container">
                 <div class="row">
                     
-                    <!--
-                    <div class="col-3">
-                        <ng-select [(ngModel)]="dentistas" placeholder="Dentista">
-                            <ng-option 
-                                *ngFor="let dentista of dentistas" 
-                                [value]="dentista.nomeDentista">
-                                {{ dentista.nomeDentista }}
-                            </ng-option>
-                        </ng-select>
-                    </div>
-                    <div class="col-3">
-                        <ng-select [(ngModel)]="datasRepasse" placeholder="Data de repasse">
-                            <ng-option 
-                                *ngFor="let dataRepasse of datasRepasse" 
-                                [value]="dataRepasse">
-                                {{ dataRepasse }}
-                            </ng-option>
-                        </ng-select>
-                    </div>
-                -->
-                    
-                    <div hidden class="col-3">
-                        <select 
-                            class="form-control"
-                            name="dentista"
-                            [(ngModel)]="dentista">
-                            <option></option>
-                            <option
-                                *ngFor="let dentista of dentistas"
-                                [ngValue]="dentista">
-                                {{ dentista.nomeDentista }}
-                            </option>
-
-                        </select>
+                    <div class="col-5">
+                        <ng-select  name="dataRepasse"
+                                    [items]="datasRepasse" 
+                                    bindLabel="dataRepasse"
+                                    bindValue="dataRepasse"
+                                    [(ngModel)]="dataRepasse" 
+                                    placeholder="Selecione uma data de repasse"> </ng-select>
                     </div>
 
-                    <div class="col-3">
+                    <div class="col-5">
+                            <ng-select  name="dentista"
+                                        [items]="dentistas" 
+                                        bindLabel="nomeDentista"
+                                        bindValue="id"
+                                        [(ngModel)]="dentistaId" 
+                                        placeholder="Selecione um dentista"> </ng-select>
+                    </div>
+
+                    <!--<div class="col-3">
                         <input type="text" class="form-control" id="dataRepasse" name="dataRepasse" size="20" [(ngModel)]="dataRepasse" placeholder="Data de repasse">
                     </div>
                     
@@ -97,7 +79,7 @@
                         <input type="text" class="form-control" id="dentistaId" name="dentistaId" size="20" [(ngModel)]="dentistaId" placeholder="Dentista Id">
                     </div>
 
-                    <div class="col-3">
+                    <div class="col-2">
                         <button type="button" class="btn btn-primary" (click)="reiniciar()">
                             Reiniciar
                         </button>
@@ -105,6 +87,7 @@
 
                     dentistaId.{{ dentistaId }}.
                     dataRepasse.{{ dataRepasse }}.
+                -->
 
                 </div>
 
