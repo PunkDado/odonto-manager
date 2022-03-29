@@ -98,12 +98,6 @@
                     </div>
 
                     <div class="col-3">
-                        <button type="button" class="btn btn-primary" (click)="listarAtendimentosPorDentistaPorDataRepasse(dentistaId, dataRepasse)">
-                            Filtrar
-                        </button>
-                    </div>
-
-                    <div class="col-3">
                         <button type="button" class="btn btn-primary" (click)="reiniciar()">
                             Reiniciar
                         </button>
@@ -138,7 +132,7 @@
                 <th scope="col">Data repasse</th>
             </tr>
         </thead>
-        <tbody *ngFor="let atendimento of atendimentosPorDentistaPorDataRepasse"> 
+        <tbody *ngFor="let atendimento of listarAtendimentosPorDentistaPorDataRepasse(dentistaId, dataRepasse)"> 
             
                 <tr *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados">
                     <th>{{ atendimento.dentista!.nomeDentista }} {{ atendimento.dentista!.sobrenomeDentista }}</th>
