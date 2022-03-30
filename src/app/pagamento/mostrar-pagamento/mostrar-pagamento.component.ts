@@ -20,7 +20,7 @@ export class MostrarPagamentoComponent implements OnInit {
 
   dentistas: Dentista[] = [];
   //nomeDentista!: string;
-  dentistaId: number = 0;
+  dentistaId!: number;
   dataRepasse!: string;
   //selectedDentista!: Dentista;
   dentista!: Dentista;
@@ -167,6 +167,10 @@ export class MostrarPagamentoComponent implements OnInit {
 
   downloadReport(): void {
     let atendimentosToDownload: Atendimento[] = this.listarAtendimentosPorDentistaPorDataRepasse(this.dentistaId, this.dataRepasse);
+    if (this.dentistaId == undefined) {
+      atendimentosToDownload = this.atendimentos;
+    }
+    
     console.log(this.dentistaId);
     let filename: string = getFilename(this.dentistaId) + "_" + this.dataRepasse;
     this.downloadService.downloadFile(atendimentosToDownload, filename);
@@ -202,7 +206,13 @@ function getFilename(dentistaId: number): string {
       dentista => dentista.id == dentistaId
     ).nomeDentista;
   }*/
-  return "atendimentos_" + dentistaId.toString();
+  if (dentistaId == undefined) {
+    return "atendimentos_"
+  }
+  else {
+    return "atendimentos_" + dentistaId.toString();
+  }
+  
   
 }
 
