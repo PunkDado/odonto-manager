@@ -77,6 +77,16 @@
                                         placeholder="Selecione um dentista"> </ng-select>
                     </div>
 
+                    <div class="col-2">
+                        <button class="btn btn-default"
+                            data-toggle="tooltip" data-placement="top" 
+                            title="Clique para baixar o relatório de repasses"
+                            (click)="downloadReport()" 
+                            >
+                            <i class="fa fa-arrow-down"></i>
+                        </button>
+                    </div>
+
                     <!--<div class="col-3">
                         <input type="text" class="form-control" id="dataRepasse" name="dataRepasse" size="20" [(ngModel)]="dataRepasse" placeholder="Data de repasse">
                     </div>

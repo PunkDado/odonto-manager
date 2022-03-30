@@ -6,6 +6,7 @@ import { Atendimento } from 'src/app/shared/models/atendimento.model';
 import { Dentista } from 'src/app/shared/models/dentista.model';
 import { ProcedimentoAplicado } from 'src/app/shared/models/procedimento-aplicado.model';
 import { Repasse } from 'src/app/shared/models/repasse.model';
+import { DownloadService } from '../services/download.service';
 import { RepasseService } from '../services/repasse.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class MostrarPagamentoComponent implements OnInit {
 
   dentistas: Dentista[] = [];
   //nomeDentista!: string;
-  dentistaId!: number;
+  dentistaId: number = 0;
   dataRepasse!: string;
   //selectedDentista!: Dentista;
   dentista!: Dentista;
@@ -31,7 +32,8 @@ export class MostrarPagamentoComponent implements OnInit {
   constructor(
     private atendimentoService: AtendimentoService,
     private dentistaService: DentistaService,
-    private repasseService: RepasseService
+    private repasseService: RepasseService,
+    private downloadService: DownloadService
   ) { }
 
   ngOnInit(): void {
@@ -163,6 +165,13 @@ export class MostrarPagamentoComponent implements OnInit {
     this.dentistaId = dentista.id!;
   }
 
+  downloadReport(): void {
+    let atendimentosToDownload: Atendimento[] = this.listarAtendimentosPorDentistaPorDataRepasse(this.dentistaId, this.dataRepasse);
+    console.log(this.dentistaId);
+    let filename: string = getFilename(this.dentistaId) + "_" + this.dataRepasse;
+    this.downloadService.downloadFile(atendimentosToDownload, filename);
+  }
+
 }
 
 function sumValorRepassado(procedimentosAplicados: ProcedimentoAplicado[]): number {
@@ -182,6 +191,19 @@ function procedimentosAplicadosAtendimentos(atendimentos: Atendimento[]): Proced
     (procedimentosAplicados) => procedimentosAplicadosAtendimentos = procedimentosAplicadosAtendimentos.concat(procedimentosAplicados)
   );
   return procedimentosAplicadosAtendimentos;
+}
+
+function getFilename(dentistaId: number): string {
+  /*if (dentistaId == 0) {
+    return "Todos_os_atendimentos";
+  }
+  else {
+    return this.dentistas.filter(
+      dentista => dentista.id == dentistaId
+    ).nomeDentista;
+  }*/
+  return "atendimentos_" + dentistaId.toString();
+  
 }
 
 /*

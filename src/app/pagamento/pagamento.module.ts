@@ -7,6 +7,7 @@ import { RepasseService } from './services/repasse.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { DownloadService } from './services/download.service';
 
 
 
@@ -26,7 +27,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
   providers: [
     AtendimentoService,
     DentistaService,
-    RepasseService
+    RepasseService,
+    DownloadService
   ]
 })
 export class PagamentoModule { }
