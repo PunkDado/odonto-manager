@@ -158,6 +158,11 @@ export class MostrarPagamentoComponent implements OnInit {
     this.listarAtendimentosPorDentistaPorDataRepasse(0,"");
   }
 
+  setDentistaDataRepasse(dentista: Dentista, dataRepasse: string): void {
+    this.dataRepasse = dataRepasse;
+    this.dentistaId = dentista.id!;
+  }
+
 }
 
 function sumValorRepassado(procedimentosAplicados: ProcedimentoAplicado[]): number {

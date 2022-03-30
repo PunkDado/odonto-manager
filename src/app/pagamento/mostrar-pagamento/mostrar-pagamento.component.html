@@ -35,7 +35,13 @@
         <tbody>
             <tr *ngFor="let dentista of dentistas">
                 <th>{{ dentista.nomeDentista }} {{ dentista.sobrenomeDentista }} </th>
-                <th *ngFor="let linhaDeRepasse of repassesDentistas(dentista)">{{ linhaDeRepasse }}</th>
+                <th *ngFor="let linhaDeRepasse of repassesDentistas(dentista); let i = index">
+                    <a class="btn" data-toggle="tooltip" data-placement="top" 
+                        title="Clique para selecionar data de repasse e dentista" 
+                        (click)="setDentistaDataRepasse(dentista, datasRepasse[i])">
+                        {{ linhaDeRepasse }}
+                    </a>
+                </th>
             </tr>
         </tbody>
     </table>
