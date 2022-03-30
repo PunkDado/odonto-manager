@@ -113,20 +113,43 @@ export class MostrarPagamentoComponent implements OnInit {
   }
 
   listarAtendimentosPorDentistaPorDataRepasse(dentistaId: number, dataRepasse: string): Atendimento[] {
-    
-    if (dentistaId == null || dentistaId == 0 || dataRepasse == null || dataRepasse == "") {
+    let atendimentosFiltrados: Atendimento[];
+    if ((dentistaId == null || dentistaId == 0) && (dataRepasse == null || dataRepasse == "")) {
       //console.log(this.atendimentos);
       return this.atendimentos;
     }
-    /*else if (dentistaId == 0) {
-      return this.atendimentos;
+    else if (dentistaId == null || dentistaId == 0) {
+      //return this.atendimentos;
+      atendimentosFiltrados = this.atendimentos;
+
+      atendimentosFiltrados.forEach(
+        atendimento => {
+          let procedimentosAplicadosFiltrados: ProcedimentoAplicado[] = [];
+          atendimento.procedimentosAplicados.forEach(
+            (procedimentoAplicado, index, array) => {
+              //console.log("atendimento.procedimentosAplicados", array[index]);
+              if (procedimentoAplicado.dataRepasse == dataRepasse) {
+                procedimentosAplicadosFiltrados.push(procedimentoAplicado);
+                //console.log("procedAplicFiltrados", procedimentosAplicadosFiltrados);
+              }
+            }
+          );
+          atendimento.procedimentosAplicados = procedimentosAplicadosFiltrados;
+          //console.log("atendimentoFiltrado", atendimento);
+        } 
+      );
+
+      return atendimentosFiltrados;
     }
-    else if (dataRepasse == "") {
-      return this.atendimentos;
-    }*/
+    else if (dataRepasse == null || dataRepasse == "") {
+      //return this.atendimentos;
+      atendimentosFiltrados = this.atendimentos
+        .filter(atendimento => atendimento.dentista!.id == dentistaId);
+      return atendimentosFiltrados;
+    }
     else {
       //console.log(dentistaId);
-      let atendimentosFiltrados: Atendimento[];
+      //let atendimentosFiltrados: Atendimento[];
       atendimentosFiltrados = this.atendimentos
         .filter(atendimento => atendimento.dentista!.id == dentistaId);
       //console.log("atendimentosFiltrados", atendimentosFiltrados);
@@ -171,7 +194,7 @@ export class MostrarPagamentoComponent implements OnInit {
       atendimentosToDownload = this.atendimentos;
     }
     
-    console.log(this.dentistaId);
+    //console.log(this.dentistaId);
     let filename: string = getFilename(this.dentistaId) + "_" + this.dataRepasse;
     this.downloadService.downloadFile(atendimentosToDownload, filename);
   }
