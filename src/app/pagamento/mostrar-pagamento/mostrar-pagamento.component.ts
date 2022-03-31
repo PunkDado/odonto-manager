@@ -179,6 +179,13 @@ export class MostrarPagamentoComponent implements OnInit {
     this.downloadService.downloadFile(atendimentosToDownload, filename);
   }
 
+  downloadAllReports(dataRepasse: string): void {
+    let atendimentosToDownload: Atendimento[] = 
+      this.listarAtendimentosPorDentistaPorDataRepasse(this.dentistaId, this.dataRepasse);
+    let filename: string = getFilename(this.dentistaId) + "_" + this.dataRepasse;
+    this.downloadService.downloadFile(atendimentosToDownload, filename);
+  }
+
 }
 
 function sumValorRepassado(procedimentosAplicados: ProcedimentoAplicado[]): number {
@@ -201,6 +208,7 @@ function procedimentosAplicadosAtendimentos(atendimentos: Atendimento[]): Proced
 }
 
 function getFilename(dentistaId: number): string {
+  
   /*if (dentistaId == 0) {
     return "Todos_os_atendimentos";
   }
@@ -219,17 +227,6 @@ function getFilename(dentistaId: number): string {
   
 }
 
-/*
-listarAtendimentosPorDentista(dentista: Dentista): Atendimento[] {
-    if (typeof dentista === "undefined") {
-      console.log("indefinido");
-      return this.atendimentos;
-    }
-    else {
-      console.log(dentista.nomeDentista);
-      return this.atendimentos.filter(
-        atendimentos => atendimentos.dentista!.id == dentista!.id
-      );
-    } 
-  }
-*/
+function copyFile(fileToCopy: string, directoryDestination: string): void {
+
+}
