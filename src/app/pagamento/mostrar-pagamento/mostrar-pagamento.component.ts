@@ -173,12 +173,8 @@ export class MostrarPagamentoComponent implements OnInit {
   }
 
   downloadReport(): void {
-    let atendimentosToDownload: Atendimento[] = this.listarAtendimentosPorDentistaPorDataRepasse(this.dentistaId, this.dataRepasse);
-    /*if (this.dentistaId == undefined) {
-      atendimentosToDownload = this.atendimentos;
-    }*/
-    
-    console.log(atendimentosToDownload);
+    let atendimentosToDownload: Atendimento[] = 
+      this.listarAtendimentosPorDentistaPorDataRepasse(this.dentistaId, this.dataRepasse);
     let filename: string = getFilename(this.dentistaId) + "_" + this.dataRepasse;
     this.downloadService.downloadFile(atendimentosToDownload, filename);
   }
