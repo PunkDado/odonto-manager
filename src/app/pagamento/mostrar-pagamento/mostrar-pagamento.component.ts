@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { AtendimentoService } from 'src/app/atendimento/services/atendimento.service';
 import { DentistaService } from 'src/app/dentista/services/dentista.service';
 import { Atendimento } from 'src/app/shared/models/atendimento.model';
@@ -19,21 +20,18 @@ export class MostrarPagamentoComponent implements OnInit {
   @ViewChild('formDentistaDataRepasse') formDentistaDataRepasse!: NgForm;
 
   dentistas: Dentista[] = [];
-  //nomeDentista!: string;
   dentistaId!: number;
   dataRepasse!: string;
-  //selectedDentista!: Dentista;
   dentista!: Dentista;
   atendimentos!: Atendimento[];
   datasRepasse!: string[];
-  //atendimentosPorDentistaPorDataDeRepasse!: Atendimento[];
   
-
   constructor(
     private atendimentoService: AtendimentoService,
     private dentistaService: DentistaService,
     private repasseService: RepasseService,
-    private downloadService: DownloadService
+    private downloadService: DownloadService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -201,6 +199,24 @@ export class MostrarPagamentoComponent implements OnInit {
 
   }
 
+  novaDataRepasse(): void {
+    let repasse = new Repasse();
+
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+    let date = yyyy + "-" + mm + "-" + dd;
+    repasse.dataRepasse = date;
+
+    if (confirm('Deseja definir a data de ' + dd + '/' + mm + '/' + yyyy + ' como data de repasse?')) {
+      this.repasseService.inserir(repasse).subscribe(
+        () => this.router.navigate(['/pagamentos'])
+      );
+    }
+    
+  }
+
 }
 
 function sumValorRepassado(procedimentosAplicados: ProcedimentoAplicado[]): number {
@@ -239,8 +255,4 @@ function getFilename(dentistaId: number): string {
     return "atendimentos_" + dentistaId.toString();
   }
   
-}
-
-function copyFile(fileToCopy: string, directoryDestination: string): void {
-
 }
