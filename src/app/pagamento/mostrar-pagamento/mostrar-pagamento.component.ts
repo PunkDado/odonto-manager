@@ -179,11 +179,31 @@ export class MostrarPagamentoComponent implements OnInit {
     this.downloadService.downloadFile(atendimentosToDownload, filename);
   }
 
-  downloadAllReports(dataRepasse: string): void {
-    let atendimentosToDownload: Atendimento[] = 
+  downloadAllReports(): void {
+
+    let dentistaIds = this.dentistas.map(
+      dentista => dentista.id!
+    );
+    
+    for (let id of dentistaIds) {
+      //let dentistaId = parseInt(id, 10);
+      //console.log(dentistaId);
+      let atendimentosToDownload: Atendimento[] = 
+        this.listarAtendimentosPorDentistaPorDataRepasse(id, this.dataRepasse);
+      let filename: string;
+      if (this.dataRepasse == undefined) {
+        filename = getFilename(id) + "_todas_as_datas";
+      }
+      else {
+        filename = getFilename(id) + "_" + this.dataRepasse;
+      }
+      this.downloadService.downloadFile(atendimentosToDownload, filename);
+    }
+
+    /*let atendimentosToDownload: Atendimento[] = 
       this.listarAtendimentosPorDentistaPorDataRepasse(this.dentistaId, this.dataRepasse);
     let filename: string = getFilename(this.dentistaId) + "_" + this.dataRepasse;
-    this.downloadService.downloadFile(atendimentosToDownload, filename);
+    this.downloadService.downloadFile(atendimentosToDownload, filename);*/
   }
 
 }
@@ -223,7 +243,6 @@ function getFilename(dentistaId: number): string {
   else {
     return "atendimentos_" + dentistaId.toString();
   }
-  
   
 }
 
