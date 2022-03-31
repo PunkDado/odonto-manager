@@ -186,8 +186,7 @@ export class MostrarPagamentoComponent implements OnInit {
     );
     
     for (let id of dentistaIds) {
-      //let dentistaId = parseInt(id, 10);
-      //console.log(dentistaId);
+      
       let atendimentosToDownload: Atendimento[] = 
         this.listarAtendimentosPorDentistaPorDataRepasse(id, this.dataRepasse);
       let filename: string;
@@ -200,10 +199,6 @@ export class MostrarPagamentoComponent implements OnInit {
       this.downloadService.downloadFile(atendimentosToDownload, filename);
     }
 
-    /*let atendimentosToDownload: Atendimento[] = 
-      this.listarAtendimentosPorDentistaPorDataRepasse(this.dentistaId, this.dataRepasse);
-    let filename: string = getFilename(this.dentistaId) + "_" + this.dataRepasse;
-    this.downloadService.downloadFile(atendimentosToDownload, filename);*/
   }
 
 }

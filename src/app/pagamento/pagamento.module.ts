@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DownloadService } from './services/download.service';
+import { LancarPagamentoComponent } from './lancar-pagamento/lancar-pagamento.component';
 
 
 
@@ -15,6 +16,7 @@ import { DownloadService } from './services/download.service';
 @NgModule({
   declarations: [
     MostrarPagamentoComponent,
+    LancarPagamentoComponent,
     
   ],
   imports: [
