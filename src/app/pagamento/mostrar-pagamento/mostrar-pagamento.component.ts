@@ -183,18 +183,24 @@ export class MostrarPagamentoComponent implements OnInit {
       dentista => dentista.id!
     );
     
-    for (let id of dentistaIds) {
+    if (confirm('Deseja fazer o download de todos os relatórios, por dentista, \
+      para a data selecionada?\nSe não selecionar nenhuma data, fará o download \
+      de todas as datas de repasse, também separados por dentista.')) {
       
-      let atendimentosToDownload: Atendimento[] = 
-        this.listarAtendimentosPorDentistaPorDataRepasse(id, this.dataRepasse);
-      let filename: string;
-      if (this.dataRepasse == undefined) {
-        filename = getFilename(id) + "_todas_as_datas";
+      for (let id of dentistaIds) {
+        
+        let atendimentosToDownload: Atendimento[] = 
+          this.listarAtendimentosPorDentistaPorDataRepasse(id, this.dataRepasse);
+        let filename: string;
+        if (this.dataRepasse == undefined) {
+          filename = getFilename(id) + "_todas_as_datas";
+        }
+        else {
+          filename = getFilename(id) + "_" + this.dataRepasse;
+        }
+        this.downloadService.downloadFile(atendimentosToDownload, filename);
       }
-      else {
-        filename = getFilename(id) + "_" + this.dataRepasse;
-      }
-      this.downloadService.downloadFile(atendimentosToDownload, filename);
+      
     }
 
   }
