@@ -62,6 +62,11 @@
                 <th scope="col">Data envio</th>
                 <th scope="col">Verificado</th>
                 <th scope="col">Procedimento</th>
+                <th scope="col">Valor (R$)</th>
+                <th scope="col">Valor líquido</th>
+                <th scope="col">Recebido</th>
+                <th scope="col">Repassado</th>
+                <th scope="col">Valor repasse</th>
                 <th scope="col">Data repasse</th>
             </tr>
         </thead>
@@ -76,6 +81,11 @@
                     <th>{{ atendimento.dataEnvio }}</th>
                     <th>{{ atendimento.verificado }}</th>
                     <th>{{ procedimentoAplicado.procedimento }}</th>
+                    <th>{{ procedimentoAplicado.valor }}</th>
+                    <th>{{ procedimentoAplicado.valorLiquido }}</th>
+                    <th>{{ procedimentoAplicado.recebido }}</th>
+                    <th>{{ procedimentoAplicado.repassado }}</th>
+                    <th>{{ procedimentoAplicado.valorRepassado }}</th>
                     <th>{{ procedimentoAplicado.dataRepasse }}</th>
                 </tr>
         </tbody>
