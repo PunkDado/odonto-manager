@@ -200,7 +200,7 @@ export class MostrarPagamentoComponent implements OnInit {
         }
         this.downloadService.downloadFile(atendimentosToDownload, filename);
       }
-      
+
     }
 
   }
