@@ -1,0 +1,84 @@
+<div class="container">
+    <h3>LANÇAR PAGAMENTOS</h3>
+    <br/>
+    <form #formDentistaDataRepasse="ngForm" class="inline-form">
+        <div class="form-group">
+            <div class="container">
+                <div class="row">
+                    
+                    <!--<div class="col-5">
+                        <ng-select  name="dataRepasse"
+                                    [items]="datasRepasse" 
+                                    bindLabel="dataRepasse"
+                                    bindValue="dataRepasse"
+                                    [(ngModel)]="dataRepasse" 
+                                    placeholder="Selecione uma data de repasse"> </ng-select>
+                    </div>-->
+
+                    <div class="col-5">
+                            <ng-select  name="convenio"
+                                        [items]="convenios" 
+                                        bindLabel="nomeConvenio"
+                                        bindValue="nomeConvenio"
+                                        [(ngModel)]="convenio" 
+                                        placeholder="Selecione um convenio"> 
+                            </ng-select>
+                    </div>
+
+                    <div class="col-3">
+                        <button class="btn btn-default"
+                            data-toggle="tooltip" data-placement="top" 
+                            title="Clique para baixar o relatório de repasses"
+                            (click)="downloadReport()" 
+                            >
+                            <i class="fa fa-arrow-down"></i>
+                        </button>
+                    </div>
+
+                    <div class="col-4">
+                        <button class="btn btn-danger"
+                            (click)="novaDataRepasse()">
+                            <i class="fa fa-add"></i>
+                            NOVA DATA DE REPASSE
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+    <br/>
+
+    <h5>Procedimentos</h5>
+
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Dentista</th>
+                <th scope="col">Data atendimento</th>
+                <th scope="col">Convênio</th>
+                <th scope="col">GTO</th>
+                <th scope="col">Forma pagamento</th>
+                <th scope="col">Data envio</th>
+                <th scope="col">Verificado</th>
+                <th scope="col">Procedimento</th>
+                <th scope="col">Data repasse</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let atendimento of listarAtendimentosPorConvenio(convenio)"> 
+            
+                <tr *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados">
+                    <th>{{ atendimento.dentista!.nomeDentista }} {{ atendimento.dentista!.sobrenomeDentista }}</th>
+                    <th>{{ atendimento.dataAtendimento }}</th>
+                    <th>{{ atendimento.convenio }}</th>
+                    <th>{{ atendimento.numeroGTO }}</th>
+                    <th>{{ atendimento.formaPagamento }}</th>
+                    <th>{{ atendimento.dataEnvio }}</th>
+                    <th>{{ atendimento.verificado }}</th>
+                    <th>{{ procedimentoAplicado.procedimento }}</th>
+                    <th>{{ procedimentoAplicado.dataRepasse }}</th>
+                </tr>
+        </tbody>
+    </table>
+
+</div>
