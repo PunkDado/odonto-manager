@@ -216,21 +216,41 @@ export class LancarPagamentoComponent implements OnInit {
   }
 
   novaDataRepasse(): void {
-    let repasse = new Repasse();
 
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     let yyyy = today.getFullYear();
     let date = yyyy + "-" + mm + "-" + dd;
-    repasse.dataRepasse = date;
 
     if (confirm('Deseja definir a data de ' + dd + '/' + mm + '/' + yyyy + ' como data de repasse?')) {
-      this.repasseService.inserir(repasse).subscribe(
-        () => this.router.navigate(['/pagamentos'])
-      );
+      if (this.datasRepasse.indexOf(date) == -1) {
+        let repasse = new Repasse();
+        repasse.dataRepasse = date;
+        this.repasseService.inserir(repasse).subscribe(
+          () => this.router.navigate(['/pagamentos'])
+        );
+        this.setDataRepasse(date);
+      }
+      else {
+        this.setDataRepasse(date);
+      }
     }
     
+  }
+
+  setDataRepasse(dataRepasse: string): void {
+    for (let atendimento of this.atendimentos) {
+      for (let procedimentoAplicado of atendimento.procedimentosAplicados) {
+        if (procedimentoAplicado.recebido == true && procedimentoAplicado.repassado == false) {
+          procedimentoAplicado.dataRepasse = dataRepasse;
+        }
+      }
+    //Persistir o atendimento no banco, chamar método POST /atendimentos/atendimento.id body = {atendimento}
+    this.atendimentoService.atualizar(atendimento).subscribe(
+      () => this.router.navigate(['/pagamentos/lancar'])
+    );
+    }
   }
 
 }

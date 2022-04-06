@@ -49,12 +49,13 @@
     </form>
     <br/>
 
-    <h5>Procedimentos</h5>
+    <h5>Procedimentos ainda não repassados</h5>
 
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Dentista</th>
+                <th scope="col">Paciente</th>
                 <th scope="col">Data atendimento</th>
                 <th scope="col">Convênio</th>
                 <th scope="col">GTO</th>
@@ -71,9 +72,9 @@
             </tr>
         </thead>
         <tbody *ngFor="let atendimento of listarAtendimentosPorConvenio(convenio)"> 
-            
                 <tr *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados">
                     <th>{{ atendimento.dentista!.nomeDentista }} {{ atendimento.dentista!.sobrenomeDentista }}</th>
+                    <th>{{ atendimento.paciente }}</th>
                     <th>{{ atendimento.dataAtendimento }}</th>
                     <th>{{ atendimento.convenio }}</th>
                     <th>{{ atendimento.numeroGTO }}</th>
