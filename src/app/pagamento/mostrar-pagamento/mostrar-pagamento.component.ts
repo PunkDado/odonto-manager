@@ -221,9 +221,11 @@ export class MostrarPagamentoComponent implements OnInit {
           () => this.router.navigate(['/pagamentos'])
         );
         this.setDataRepasse(date);
+        this.router.navigate(['/pagamentos']);
       }
       else {
         this.setDataRepasse(date);
+        this.router.navigate(['/pagamentos']);
       }
     }
     
@@ -234,11 +236,14 @@ export class MostrarPagamentoComponent implements OnInit {
       for (let procedimentoAplicado of atendimento.procedimentosAplicados) {
         if (procedimentoAplicado.recebido == true && procedimentoAplicado.repassado == false) {
           procedimentoAplicado.dataRepasse = dataRepasse;
+          procedimentoAplicado.repassado = true;
         }
       }
     //Persistir o atendimento no banco, chamar método POST /atendimentos/atendimento.id body = {atendimento}
     this.atendimentoService.atualizar(atendimento).subscribe(
-      () => this.router.navigate(['/pagamentos'])
+      () => {
+        console.log(atendimento);
+      }
     );
     }
   }

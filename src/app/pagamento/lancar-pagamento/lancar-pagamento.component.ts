@@ -42,8 +42,6 @@ export class LancarPagamentoComponent implements OnInit {
     this.listarDentistas();
     this.listarDatasRepasse();
     this.listarConvenios();
-    //console.log(this.atendimentos);
-    
   }
 
   listarAtendimentos(): void {
@@ -105,8 +103,8 @@ export class LancarPagamentoComponent implements OnInit {
 
   listarAtendimentosPorConvenio(convenio: string): Atendimento[] {
     let atendimentosFiltrados: Atendimento[];
-    console.log("convenio=", convenio);
-    console.log("atendimentos", this.atendimentos);
+    //console.log("convenio=", convenio);
+    //console.log("atendimentos", this.atendimentos);
     
     if ((convenio == null || convenio == '')) {
       atendimentosFiltrados = this.atendimentos.sort(
@@ -135,7 +133,7 @@ export class LancarPagamentoComponent implements OnInit {
           atendimento.procedimentosAplicados = procedimentosAplicadosFiltrados;
         } 
       );
-      console.log("atendimentosFiltrados", atendimentosFiltrados);
+      //console.log(this.atendimentos);
       return atendimentosFiltrados;
     }
     else {
@@ -166,7 +164,6 @@ export class LancarPagamentoComponent implements OnInit {
           atendimento.procedimentosAplicados = procedimentosAplicadosFiltrados;
         } 
       );
-      console.log(atendimentosFiltrados);
       return atendimentosFiltrados;
     }
   }
@@ -231,24 +228,28 @@ export class LancarPagamentoComponent implements OnInit {
           () => this.router.navigate(['/pagamentos'])
         );
         this.setDataRepasse(date);
+        this.router.navigate(['/pagamentos/lancar']);
       }
       else {
         this.setDataRepasse(date);
+        this.router.navigate(['/pagamentos/lancar']);
       }
     }
     
   }
 
   setDataRepasse(dataRepasse: string): void {
+    
     for (let atendimento of this.atendimentos) {
       for (let procedimentoAplicado of atendimento.procedimentosAplicados) {
         if (procedimentoAplicado.recebido == true && procedimentoAplicado.repassado == false) {
           procedimentoAplicado.dataRepasse = dataRepasse;
+          procedimentoAplicado.repassado = true;
         }
       }
     //Persistir o atendimento no banco, chamar método POST /atendimentos/atendimento.id body = {atendimento}
     this.atendimentoService.atualizar(atendimento).subscribe(
-      () => this.router.navigate(['/pagamentos/lancar'])
+      () => {console.log(atendimento)}
     );
     }
   }

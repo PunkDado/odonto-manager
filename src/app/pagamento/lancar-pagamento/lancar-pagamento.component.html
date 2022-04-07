@@ -35,11 +35,18 @@
                         </button>
                     </div>
 
-                    <div class="col-4">
+                    <!--<div class="col-4">
                         <button class="btn btn-danger"
                             (click)="novaDataRepasse()">
                             <i class="fa fa-add"></i>
                             NOVA DATA DE REPASSE
+                        </button>
+                    </div>-->
+                    <div class="col-4">
+                        <button class="btn btn-primary"
+                            [routerLink]="['/pagamentos']">
+                            <i class="fa fa-arrow-left"></i>
+                            PAGAMENTOS
                         </button>
                     </div>
 
@@ -91,5 +98,13 @@
                 </tr>
         </tbody>
     </table>
+
+    <div>
+        <button class="btn btn-primary"
+            [routerLink]="['/pagamentos']">
+            <i class="fa fa-arrow-left"></i>
+            PAGAMENTOS
+        </button>
+    </div>
 
 </div>
