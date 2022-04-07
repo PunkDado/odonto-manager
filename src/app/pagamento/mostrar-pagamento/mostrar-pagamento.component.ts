@@ -184,7 +184,7 @@ export class MostrarPagamentoComponent implements OnInit {
     );
     
     if (confirm('Deseja fazer o download de todos os relatórios, por dentista, \
-      para a data selecionada?\nSe não selecionar nenhuma data, fará o download \
+      para a data selecionada?\nSe não selecionar nenhuma data, fará o download\
       de todas as datas de repasse, também separados por dentista.')) {
       
       for (let id of dentistaIds) {

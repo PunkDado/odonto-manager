@@ -1,0 +1,6 @@
+.transparent-outline {
+    background-color: rgba(0, 0, 0, 0);
+    border:none !important;
+    width: 75px;
+    
+}

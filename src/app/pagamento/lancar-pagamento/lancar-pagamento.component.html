@@ -71,6 +71,7 @@
                 <th scope="col">Verificado</th>
                 <th scope="col">Procedimento</th>
                 <th scope="col">Valor (R$)</th>
+                
                 <th scope="col">Valor líquido</th>
                 <th scope="col">Recebido</th>
                 <th scope="col">Repassado</th>
@@ -89,12 +90,53 @@
                     <th>{{ atendimento.dataEnvio }}</th>
                     <th>{{ atendimento.verificado }}</th>
                     <th>{{ procedimentoAplicado.procedimento }}</th>
-                    <th>{{ procedimentoAplicado.valor }}</th>
+                    <th> 
+                        <form #formDentistaDataRepasse="ngForm">
+                            <input  type="text" 
+                                    class="form-control transparent-outline"
+                                    minlength="20"
+                                    id="valor" 
+                                    name="valor" 
+                                    [(ngModel)]="procedimentoAplicado.valor" 
+                                    #valor="ngModel" 
+                                    required>
+                        </form> 
+                    </th>
+                    
                     <th>{{ procedimentoAplicado.valorLiquido }}</th>
-                    <th>{{ procedimentoAplicado.recebido }}</th>
-                    <th>{{ procedimentoAplicado.repassado }}</th>
+                    <th>
+                        <form #formDentistaDataRepasse="ngForm">
+                            <input  type="checkbox" 
+                                    class="form-check-input" 
+                                    id="recebido" 
+                                    name="recebido" 
+                                    [(ngModel)]="procedimentoAplicado.recebido" 
+                                    #recebido="ngModel" 
+                                    >
+                        </form>
+                    </th>
+                    <th>
+                        <form #formDentistaDataRepasse="ngForm">
+                            <input  type="checkbox" 
+                                    class="form-check-input" 
+                                    id="repassado" 
+                                    name="repassado" 
+                                    [(ngModel)]="procedimentoAplicado.repassado" 
+                                    #repassado="ngModel" 
+                                    >
+                        </form>
+                    </th>
                     <th>{{ procedimentoAplicado.valorRepassado }}</th>
                     <th>{{ procedimentoAplicado.dataRepasse }}</th>
+                    <th>
+                        <button     class="btn btn-default"
+                                    data-toggle="tooltip" data-placement="top" 
+                                    title="Editar o atendimento"
+                                    [routerLink]="['/atendimentos/editar', atendimento.id]">
+                                    <i class="fa fa-pen"></i>
+                            
+                        </button>
+                    </th>
                 </tr>
         </tbody>
     </table>
