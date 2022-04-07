@@ -249,8 +249,16 @@ export class LancarPagamentoComponent implements OnInit {
       }
     //Persistir o atendimento no banco, chamar método POST /atendimentos/atendimento.id body = {atendimento}
     this.atendimentoService.atualizar(atendimento).subscribe(
-      () => {console.log(atendimento)}
+      () => {}
     );
+    }
+  }
+
+  atualizar(atendimento: Atendimento): void {
+    if (this.formDentistaDataRepasse.form.valid) {
+      this.atendimentoService.atualizar(atendimento).subscribe(
+        () => {}
+      );
     }
   }
 

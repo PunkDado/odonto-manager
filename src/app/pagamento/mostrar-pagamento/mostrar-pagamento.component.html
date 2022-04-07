@@ -120,6 +120,14 @@
                     <th>{{ atendimento.verificado }}</th>
                     <th>{{ procedimentoAplicado.procedimento }}</th>
                     <th>{{ procedimentoAplicado.dataRepasse }}</th>
+                    <th>
+                        <button     class="btn btn-default"
+                                    data-toggle="tooltip" data-placement="top" 
+                                    title="Editar o atendimento"
+                                    [routerLink]="['/atendimentos/editar', atendimento.id]">
+                                    <i class="fa fa-pen"></i>
+                        </button>
+                    </th>
                 </tr>
         </tbody>
     </table>

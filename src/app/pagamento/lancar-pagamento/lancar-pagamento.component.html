@@ -100,7 +100,13 @@
                                     [(ngModel)]="procedimentoAplicado.valor" 
                                     #valor="ngModel" 
                                     required>
-                        </form> 
+                        </form>
+                        <button     class="btn btn-default"
+                                    data-toggle="tooltip" data-placement="top" 
+                                    title="Salvar a alteração"
+                                    (click)="atualizar(atendimento)">
+                                    <i class="fa fa-save"></i>
+                        </button>
                     </th>
                     
                     <th>{{ procedimentoAplicado.valorLiquido }}</th>
@@ -114,6 +120,12 @@
                                     #recebido="ngModel" 
                                     >
                         </form>
+                        <button     class="btn btn-default"
+                                    data-toggle="tooltip" data-placement="top" 
+                                    title="Salvar a alteração"
+                                    (click)="atualizar(atendimento)">
+                                    <i class="fa fa-save"></i>
+                        </button>
                     </th>
                     <th>
                         <form #formDentistaDataRepasse="ngForm">
@@ -125,6 +137,12 @@
                                     #repassado="ngModel" 
                                     >
                         </form>
+                        <button     class="btn btn-default"
+                                    data-toggle="tooltip" data-placement="top" 
+                                    title="Salvar a alteração"
+                                    (click)="atualizar(atendimento)">
+                                    <i class="fa fa-save"></i>
+                        </button>
                     </th>
                     <th>{{ procedimentoAplicado.valorRepassado }}</th>
                     <th>{{ procedimentoAplicado.dataRepasse }}</th>
