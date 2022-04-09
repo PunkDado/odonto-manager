@@ -254,26 +254,29 @@ export class LancarPagamentoComponent implements OnInit {
     }
   }
 
-  atualizar(atendimento: Atendimento): void {
+  atualizarProcedimentoAplicado(procedimentoAplicado: ProcedimentoAplicado): void {
     if (this.formDentistaDataRepasse.form.valid) {
-      this.recalcularValorLiquido(atendimento);
-      this.atendimentoService.atualizar(atendimento).subscribe(
+      this.recalcular(procedimentoAplicado);
+      this.atendimentoService.editarProcedimentoAplicado(procedimentoAplicado).subscribe(
         () => {}
       );
     }
   }
 
-  recalcularValorLiquido(atendimento: Atendimento): void {
-    atendimento.procedimentosAplicados.forEach(
-      procedimentoAplicado => {
+  recalcular(procedimentoAplicado: ProcedimentoAplicado): void {
         if (procedimentoAplicado.repassado == false) {
           procedimentoAplicado.valorLiquido = procedimentoAplicado.valor! * (1 - 0.1133);
           procedimentoAplicado.valorRepassado = procedimentoAplicado.valorLiquido! * 0.5;
           if (procedimentoAplicado.valor != 0) procedimentoAplicado.recebido = true;
         }
-        
-      }
-    );
+  }
+
+  persistir(procedimentoAplicado: ProcedimentoAplicado): void {
+    if (this.formDentistaDataRepasse.form.valid) {
+      this.atendimentoService.editarProcedimentoAplicado(procedimentoAplicado).subscribe(
+        () => {}
+      );
+    }
   }
 
 
