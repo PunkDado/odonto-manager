@@ -12,7 +12,8 @@ const LS_CHAVE_2: string = 'procedimentosAplicados';
 })
 export class AtendimentoService {
 
-  BASE_URL = "http://localhost:8080/atendimentos/";
+  BASE_URL = "http://localhost:8080/";
+  
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -23,27 +24,31 @@ export class AtendimentoService {
   constructor(private httpClient: HttpClient) { }
 
   listarTodos(): Observable<Atendimento[]> {
-    return this.httpClient.get<Atendimento[]>(this.BASE_URL, this.httpOptions);
+    return this.httpClient.get<Atendimento[]>(this.BASE_URL + "atendimentos/", this.httpOptions);
   }
 
   inserir(atendimento: Atendimento): Observable<Atendimento> {
-    return this.httpClient.post<Atendimento>(this.BASE_URL, JSON.stringify(atendimento),this.httpOptions);
+    return this.httpClient.post<Atendimento>(this.BASE_URL + "atendimentos/", JSON.stringify(atendimento),this.httpOptions);
   }
 
   buscarPorId(id: number): Observable<Atendimento> {
-    return this.httpClient.get<Atendimento>(this.BASE_URL + id, this.httpOptions);
+    return this.httpClient.get<Atendimento>(this.BASE_URL + "atendimentos/" + id, this.httpOptions);
   }
 
   atualizar(atendimento: Atendimento): Observable<Atendimento> {
-    return this.httpClient.put<Atendimento>(this.BASE_URL + atendimento.id, JSON.stringify(atendimento), this.httpOptions);
+    return this.httpClient.put<Atendimento>(this.BASE_URL + "atendimentos/" + atendimento.id, JSON.stringify(atendimento), this.httpOptions);
   }
 
   remover(id: number): Observable<Atendimento | undefined> {
-    return this.httpClient.delete<Atendimento>(this.BASE_URL + id, this.httpOptions);
+    return this.httpClient.delete<Atendimento>(this.BASE_URL + "atendimentos/" + id, this.httpOptions);
   }
 
   inserirNovoProcedimentoAplicado(procedimentoAplicado: ProcedimentoAplicado): Observable<ProcedimentoAplicado> {
-    return this.httpClient.post<ProcedimentoAplicado>(this.BASE_URL, JSON.stringify(procedimentoAplicado),this.httpOptions);
+    return this.httpClient.post<ProcedimentoAplicado>(this.BASE_URL + "procedimentos-aplicados/", JSON.stringify(procedimentoAplicado),this.httpOptions);
+  }
+
+  editarProcedimentoAplicado(procedimentoAplicado: ProcedimentoAplicado): Observable<ProcedimentoAplicado> {
+    return this.httpClient.put<ProcedimentoAplicado>(this.BASE_URL + "procedimentos-aplicados/" + procedimentoAplicado.id, JSON.stringify(procedimentoAplicado), this.httpOptions);
   }
 
 }
