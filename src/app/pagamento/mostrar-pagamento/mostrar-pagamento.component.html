@@ -10,11 +10,28 @@
             </button>
         </div>
         <div class="col-4">
-            <button class="btn btn-danger"
-                (click)="novaDataRepasse()">
-                <i class="fa fa-add"></i>
-                NOVA DATA DE REPASSE
-            </button>
+            <div>
+                <button class="btn btn-danger"
+                    (click)="novaDataRepasse()">
+                    <i class="fa fa-add"></i>
+                    NOVA DATA DE REPASSE
+                </button>
+            </div>
+            <br/>
+            <div>
+                <form>
+                    <input type="date" 
+                        class="form-control"   
+                        id="novaDataDeRepasse" 
+                        name="novaDataDeRepasse" 
+                        bindValue="novaDataDeRepasse"
+                        [(ngModel)]="novaDataDeRepasse"
+                        data-toggle="tooltip" data-placement="top"
+                        title="Escolha aqui a nova data de repasse (default = hoje)"
+                        >
+                </form>
+                
+            </div>
         </div>
         <div class="col-4">
             <button class="btn btn-secondary"

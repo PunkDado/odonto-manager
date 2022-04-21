@@ -25,7 +25,7 @@ export class MostrarPagamentoComponent implements OnInit {
   dentista!: Dentista;
   atendimentos!: Atendimento[];
   datasRepasse!: string[];
-  
+  novaDataDeRepasse!: string;
   
   constructor(
     private atendimentoService: AtendimentoService,
@@ -214,7 +214,16 @@ export class MostrarPagamentoComponent implements OnInit {
     let yyyy = today.getFullYear();
     let date = yyyy + "-" + mm + "-" + dd;
 
-    if (confirm('Deseja definir a data de ' + dd + '/' + mm + '/' + yyyy + ' como data de repasse?')) {
+    if (!(this.novaDataDeRepasse == null || this.novaDataDeRepasse == "")) {
+      date = this.novaDataDeRepasse;
+    }
+    
+    let dateOrganized = 
+      date.slice(8, 10) + "/" +
+      date.slice(5, 7) + "/" +
+      date.slice(0, 4);
+
+    if (confirm('Deseja definir a data de ' + dateOrganized + ' como data de repasse?')) {
       if (this.datasRepasse.indexOf(date) == -1) {
         let repasse = new Repasse();
         repasse.dataRepasse = date;
