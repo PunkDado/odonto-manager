@@ -26,6 +26,7 @@ export class MostrarPagamentoComponent implements OnInit {
   atendimentos!: Atendimento[];
   datasRepasse!: string[];
   
+  
   constructor(
     private atendimentoService: AtendimentoService,
     private dentistaService: DentistaService,

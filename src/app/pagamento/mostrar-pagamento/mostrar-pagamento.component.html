@@ -105,6 +105,10 @@
                 <th scope="col">Data envio</th>
                 <th scope="col">Verificado</th>
                 <th scope="col">Procedimento</th>
+                <th scope="col">Glosado</th>
+                <th scope="col">Valor (R$)</th>
+                <th scope="col">Valor líquido</th>
+                <th scope="col">Valor repasse</th>
                 <th scope="col">Data repasse</th>
             </tr>
         </thead>
@@ -117,8 +121,16 @@
                     <th>{{ atendimento.numeroGTO }}</th>
                     <th>{{ atendimento.formaPagamento }}</th>
                     <th>{{ atendimento.dataEnvio }}</th>
-                    <th>{{ atendimento.verificado }}</th>
+                    <th><p *ngIf="atendimento.verificado==true"><i class="fa fa-check"></i></p></th>
                     <th>{{ procedimentoAplicado.procedimento }}</th>
+                    <th>
+                        <p *ngIf="procedimentoAplicado.glosado==true">
+                            <i class="fa fa-scissors"></i>
+                        </p>
+                    </th>
+                    <th>{{ procedimentoAplicado.valor }}</th>
+                    <th>{{ procedimentoAplicado.valorLiquido }}</th>
+                    <th>{{ procedimentoAplicado.valorRepassado }}</th>
                     <th>{{ procedimentoAplicado.dataRepasse }}</th>
                     <th>
                         <button     class="btn btn-default"
