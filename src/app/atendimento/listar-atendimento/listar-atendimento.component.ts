@@ -19,6 +19,8 @@ export class ListarAtendimentoComponent implements OnInit {
   pageSize: number = 10;
   page: number = 1;
   size: number = 10;
+  search: String = "";
+  atendimentosFiltrados: Atendimento[] = [];
 
   constructor(
     private atendimentoService: AtendimentoService, 
@@ -82,6 +84,14 @@ export class ListarAtendimentoComponent implements OnInit {
   abrirModalAtendimento(atendimento: Atendimento) {
     const modalRef = this.modalService.open(ModalAtendimentoComponent);
     modalRef.componentInstance.atendimento = atendimento;
+  }
+
+  filtrarAtendimentos(searchTerm: String): void {
+    this.atendimentosFiltrados = this.atendimentos.filter(
+      data => data.paciente === searchTerm
+    );
+    this.atendimentos = this.atendimentosFiltrados;
+    // Inserir código para filtrar atendimentos segundo a string "search"
   }
 
 }

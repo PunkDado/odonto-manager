@@ -12,8 +12,15 @@
     <div class="row">
         <div>
             <form>
-                <input type="text" placeholder="Buscar atendimentos">
+                <input type="search" id="search" name="search" placeholder="Buscar atendimento..." size="25" [(ngModel)]="search">
+                <button class="btn" (click)="filtrarAtendimentos(search)">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+                <button class="btn" (click)="listarTodos()">
+                    <i class="fa fa-x" aria-hidden="true"></i>
+                </button>
             </form>
+            {{ search }}
         </div>
     </div>
 </div>
