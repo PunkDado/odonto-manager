@@ -19,7 +19,8 @@ export class ListarAtendimentoComponent implements OnInit {
   pageSize: number = 10;
   page: number = 1;
   size: number = 10;
-  search: String = "";
+  search: string = "";
+  searchDate: string = "";
   atendimentosFiltrados: Atendimento[] = [];
 
   constructor(
@@ -86,9 +87,21 @@ export class ListarAtendimentoComponent implements OnInit {
     modalRef.componentInstance.atendimento = atendimento;
   }
 
-  filtrarAtendimentos(searchTerm: String): void {
+  filtrarAtendimentos(searchTerm: string): void {
     this.atendimentosFiltrados = this.atendimentos.filter(
-      data => data.paciente === searchTerm
+      data => 
+        data.paciente?.includes(searchTerm)
+        || data.dentista?.nomeDentista?.includes(searchTerm)
+        || data.numGto?.includes(searchTerm)
+    );
+    this.atendimentos = this.atendimentosFiltrados;
+    // Inserir código para filtrar atendimentos segundo a string "search"
+  }
+
+  filtrarAtendimentosPorData(searchTerm: string): void {
+    this.atendimentosFiltrados = this.atendimentos.filter(
+      data => 
+        data.dataAtendimento?.includes(searchTerm)
     );
     this.atendimentos = this.atendimentosFiltrados;
     // Inserir código para filtrar atendimentos segundo a string "search"

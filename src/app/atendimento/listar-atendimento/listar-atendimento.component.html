@@ -12,17 +12,33 @@
     <div class="row">
         <div>
             <form>
-                <input type="search" id="search" name="search" placeholder="Buscar atendimento..." size="25" [(ngModel)]="search">
+                <input type="search" id="search" name="search" placeholder="GTO, paciente ou dentista..." size="25" [(ngModel)]="search">
                 <button class="btn" (click)="filtrarAtendimentos(search)">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
                 <button class="btn" (click)="listarTodos()">
-                    <i class="fa fa-x" aria-hidden="true"></i>
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
                 </button>
             </form>
-            {{ search }}
+            
         </div>
     </div>
+
+    <div class="row">
+        <div>
+            <form>
+                <input type="date" id="searchDate" name="searchDate" size="25" [(ngModel)]="searchDate">
+                <button class="btn" (click)="filtrarAtendimentosPorData(searchDate)">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+                <button class="btn" (click)="listarTodos()">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                </button>
+            </form>
+            
+        </div>
+    </div>
+
 </div>
 
 <br/>
@@ -36,8 +52,11 @@
         <div class="col-3">
             <h6>Paciente</h6>
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <h6>Data</h6>
+        </div>
+        <div class="col-1">
+            <h6>Número GTO</h6>
         </div>
         
     </div>
@@ -52,8 +71,11 @@
         <div class="col-3 d-inline-block text-truncate">
             <h6><small>{{ atendimento.paciente }}</small></h6>
         </div>
-        <div class="col-3 d-inline-block text-truncate">
+        <div class="col-2 d-inline-block text-truncate">
             <h6><small>{{ atendimento.dataAtendimento }}</small></h6>
+        </div>
+        <div class="col-1 d-inline-block text-truncate">
+            <h6><small>{{ atendimento.numGto }}</small></h6>
         </div>
         <div class="col-1">
             <button type="button" class="btn btn-link btn-sm" (click)="abrirModalAtendimento(atendimento)">
@@ -66,9 +88,9 @@
             </a>
         </div>
         <div class="col-1">
-            <a href = "#" title="Remover" alt="Remover" class="btn btn-link btn-sm" (click)="remover($event, atendimento)">
-                <i class="fa fa-times" aria-hidden="true"></i> 
-            </a>
+                <button type="button" class="btn btn-link btn-sm" (click)="remover($event, atendimento)">
+                    <i class="fa fa-times" aria-hidden="true"></i> 
+                </button>
         </div>
     </div>
 </div>

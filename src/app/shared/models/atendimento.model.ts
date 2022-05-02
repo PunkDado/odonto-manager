@@ -9,7 +9,7 @@ export class Atendimento {
         public paciente?: string,
         public dataAtendimento?: string,
         public convenio?: string,
-        public numeroGTO?: string,
+        public numGto?: string,
         public encaminhadoPor?: string,
         public formaPagamento?: string,
         public dataEnvio?: string,
