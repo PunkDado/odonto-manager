@@ -90,8 +90,9 @@ export class ListarAtendimentoComponent implements OnInit {
   filtrarAtendimentos(searchTerm: string): void {
     this.atendimentosFiltrados = this.atendimentos.filter(
       data => 
-        data.paciente?.includes(searchTerm)
-        || data.dentista?.nomeDentista?.includes(searchTerm)
+        data.paciente?.toUpperCase().includes(searchTerm.toUpperCase())
+        || data.dentista?.nomeDentista?.toUpperCase().includes(searchTerm.toUpperCase())
+        || data.dentista?.sobrenomeDentista?.toUpperCase().includes(searchTerm.toUpperCase())
         || data.numGto?.includes(searchTerm)
     );
     this.atendimentos = this.atendimentosFiltrados;
