@@ -46,7 +46,7 @@
 
 <div class="container">
     <div class="row mb-2">
-        <div class="col-3">
+        <div class="col-2">
             <h6>Dentista</h6>
         </div>
         <div class="col-3">
@@ -56,7 +56,10 @@
             <h6>Data</h6>
         </div>
         <div class="col-1">
-            <h6>Número GTO</h6>
+            <h6>Núm. GTO</h6>
+        </div>
+        <div class="col-1">
+            <h6>Verificado</h6>
         </div>
         
     </div>
@@ -65,7 +68,7 @@
 <div class="container" *ngFor="let atendimento of atendimentos">
     
     <div class="row mb-2">
-        <div class="col-3 d-inline-block text-truncate">
+        <div class="col-2 d-inline-block text-truncate">
             <h6><small>{{ atendimento?.dentista?.nomeDentista }} {{ atendimento?.dentista?.sobrenomeDentista}}</small></h6>
         </div>
         <div class="col-3 d-inline-block text-truncate">
@@ -77,6 +80,11 @@
         <div class="col-1 d-inline-block text-truncate">
             <h6><small>{{ atendimento.numGto }}</small></h6>
         </div>
+        <div class="col-1 d-inline-block text-truncate">
+            <h6><small><p *ngIf="atendimento.atendimentoVerificado==true"><i class="fa fa-check"></i></p></small></h6>
+        </div>
+
+
         <div class="col-1">
             <button type="button" class="btn btn-link btn-sm" (click)="abrirModalAtendimento(atendimento)">
                 <i class="fa fa-eye" aria-hidden="true"></i>
@@ -95,55 +103,6 @@
     </div>
 </div>
 
-<p *ngIf="atendimentos.length===0" class="p-3"><i>Nenhum atendimento cadastrado</i></p>
-
-<!--
-<table class="table table-striped table-bordered table-hover">
-    <tbody>
-        <tr> 
-            
-            <th>Dentista</th>
-            <th>Paciente</th>
-            <th>Data do Atendimento</th>
-            <th>Convênio</th>
-            <th>Número da GTO</th>
-            <th>Encaminhado por</th>
-            <th>Forma de pagamento</th>
-            <th>Data de envio</th>
-            <th>Atendimento verificado</th>
-            <th class="text-center">
-                <a href="#" title="Novo" alt="Novo" class="btn btn-xs btn-success" [routerLink]="['/atendimentos/novo']">
-                    <i class="fa fa-plus" aria-hidden="true"></i> Novo
-                </a>
-            </th>
-        </tr>
-
-        <tr *ngFor="let atendimento of atendimentos">
-            <td> {{ atendimento?.dentista?.nomeDentista }} {{ atendimento?.dentista?.sobrenomeDentista}}</td>
-            <td> {{ atendimento.paciente }}</td>
-            <td> {{ atendimento.dataAtendimento! | mask: 'd0/M0/0000' }}</td> 
-            <td> {{ atendimento.dataAtendimento }}</td>
-            <td> {{ atendimento.convenio }}</td>
-            <td> {{ atendimento.numeroGTO }}</td>
-            <td> {{ atendimento.encaminhadoPor }}</td>
-            <td> {{ atendimento.formaPagamento }}</td>
-            <td> {{ atendimento.dataEnvio }}</td>
-            <td> {{ atendimento.verificado! ? "Sim" : "Não" }}</td>
-            <td class="text-center" style="width: 300px">
-                <button type="button" class="btn btn-xs btn-info" (click)="abrirModalAtendimento(atendimento)">
-                    <i class="fa fa-eye" aria-hidden="true"></i>Ver
-                </button>
-                <a href="#" title="Editar" alt="Editar" class="btn btn-xs btn-primary" [routerLink]="['/atendimentos/editar', atendimento.id]">
-                    <i class="fa fa-edit" aria-hidden="true"></i> Editar
-                </a>
-                <a href="#" title="Remover" alt="Remover" class="btn btn-xs btn-danger" (click)="remover($event, atendimento)">
-                    <i class="fa fa-times" aria-hidden="true"></i> Remover
-                </a>
-                
-            </td>
-        </tr>
-        
-    </tbody>
-</table>
-<p *ngIf="atendimentos.length===0">Nenhum atendimento cadastrado.</p>
---> 
+<div class="container">
+    <p *ngIf="atendimentos.length===0" class="p-3"><i>Nenhum atendimento</i></p>
+</div>

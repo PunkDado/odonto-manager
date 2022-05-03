@@ -13,7 +13,7 @@ export class Atendimento {
         public encaminhadoPor?: string,
         public formaPagamento?: string,
         public dataEnvio?: string,
-        public verificado?: boolean,
+        public atendimentoVerificado?: boolean,
         public procedimentosAplicados: ProcedimentoAplicado[] = []
     ) { }
 }

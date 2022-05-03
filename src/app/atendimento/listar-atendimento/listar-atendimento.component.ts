@@ -94,6 +94,7 @@ export class ListarAtendimentoComponent implements OnInit {
         || data.dentista?.nomeDentista?.toUpperCase().includes(searchTerm.toUpperCase())
         || data.dentista?.sobrenomeDentista?.toUpperCase().includes(searchTerm.toUpperCase())
         || data.numGto?.includes(searchTerm)
+        || data.convenio?.toUpperCase().includes(searchTerm.toUpperCase())
     );
     this.atendimentos = this.atendimentosFiltrados;
     // Inserir código para filtrar atendimentos segundo a string "search"
