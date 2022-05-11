@@ -9,6 +9,7 @@ import { DentistaModule } from './dentista/dentista.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PagamentoModule } from './pagamento/pagamento.module';
+import { PacienteModule } from './paciente/paciente.module';
 //import { AngularFontAwesomeModule } from 'angular-font-awesome';
 //import { ProcedimentoAplicadoModule } from './procedimento-aplicado/procedimento-aplicado.module';
 
@@ -25,7 +26,8 @@ import { PagamentoModule } from './pagamento/pagamento.module';
     HttpClientModule,
     FormsModule,
     RouterModule,
-    PagamentoModule
+    PagamentoModule,
+    PacienteModule
     //AngularFontAwesomeModule,
     //ProcedimentoAplicadoModule
   ],
