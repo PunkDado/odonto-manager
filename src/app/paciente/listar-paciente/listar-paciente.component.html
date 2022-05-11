@@ -1,1 +1,23 @@
 <p>listar-paciente works!</p>
+
+<div *ngFor="let paciente of pacientes">
+    {{ paciente.nomePaciente}} {{ paciente.sobrenomePaciente }}
+    <br/>
+    {{ paciente.cpfPaciente }}
+    <br/>
+    {{ paciente.dataNascimentoPaciente }}
+    <br/>
+    <p *ngFor="let telefoneContato of paciente.telefonesContato">
+        ({{ telefoneContato.ddd}}) {{ telefoneContato.numTelefone }} <i>atualizado em: </i>{{ telefoneContato.dataAtualizacao}}
+    </p>
+    <p *ngFor="let email of paciente.emails">
+        {{ email.enderecoEmail}} {{ email.dataAtualizacao }}
+    </p>
+    <p *ngFor="let dados of paciente.dadosConvenioPacientes">
+        {{ dados.numCarteirinha }} {{ dados.convenio!.nomeConvenio }} <i>atualizado em: </i>{{ dados.dataInformacao}}
+    </p>
+    <p *ngFor="let condicao of paciente.condicaoDentePacientes">
+        {{ condicao.dente}} {{ condicao.face }}
+    </p>
+</div>
+   
