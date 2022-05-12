@@ -83,7 +83,7 @@
                 <tr *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados">
                     <th>{{ atendimento.dentista!.nomeDentista }} {{ atendimento.dentista!.sobrenomeDentista }}</th>
                     <th>{{ atendimento.paciente }}</th>
-                    <th>{{ atendimento.dataAtendimento }}</th>
+                    <th>{{ atendimento.dataAtendimento | date: 'dd/MM/yyyy'}}</th>
                     <th>{{ atendimento.convenio }}</th>
                     <th>{{ atendimento.numGto }}</th>
                     <th>{{ atendimento.formaPagamento }}</th>
@@ -145,7 +145,7 @@
                         </button>
                     </th>
                     <th>{{ procedimentoAplicado.valorRepassado }}</th>
-                    <th>{{ procedimentoAplicado.dataRepasse }}</th>
+                    <th>{{ procedimentoAplicado.dataRepasse | date: 'dd/MM/yyyy'}}</th>
                     <th>
                         <button     class="btn btn-default"
                                     data-toggle="tooltip" data-placement="top" 
