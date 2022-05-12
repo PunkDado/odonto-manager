@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Paciente } from 'src/app/shared/models/paciente.model';
+import { ModalPacienteComponent } from '../modal-paciente/modal-paciente.component';
 import { PacienteService } from '../services/paciente.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class ListarPacienteComponent implements OnInit {
   pageSize: number = 10;
   page: number = 1;
   size: number = 10;
+  modalService: any;
 
   constructor(
     private pacienteService: PacienteService
@@ -35,6 +37,20 @@ export class ListarPacienteComponent implements OnInit {
       }
     });
 
+  }
+
+  remover($event: any, paciente: Paciente): void {
+    $event.preventDefault();
+    if (confirm('Deseja realmente remover o paciente "' + paciente.nomePaciente + ' ' + paciente.sobrenomePaciente + '"?')) {
+      this.pacienteService.remover(paciente.id!).subscribe(
+        () => this.listarTodos()
+      );
+    }
+  }
+
+  abrirModalPaciente(paciente: Paciente) {
+    const modalRef = this.modalService.open(ModalPacienteComponent);
+    modalRef.componentInstance.paciente = paciente;
   }
 
 }

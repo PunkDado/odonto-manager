@@ -1,11 +1,62 @@
-<p>listar-paciente works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <h2>PACIENTES</h2>
+        </div>
+        <div class="col-3">
+            <a href = "pacientes/novo">
+                <button type="button" class="btn btn-primary btn-floating rounded-circle">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
 
-<div *ngFor="let paciente of pacientes">
+<br/>
+<div class="container" *ngFor="let paciente of pacientes">
+    <div class="row">
+        <div class="col-9">
+            {{ paciente.nomePaciente }} {{ paciente.sobrenomePaciente }}
+        </div>
+        <div class="col-1">
+            <a href = "#" title="Editar" alt="Editar" (click)="abrirModalPaciente(paciente)">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="col-1">
+            <a href = "#" title="Editar" alt="Editar" [routerLink]="['/pacientes/editar', paciente.id]">
+                <i class="fa fa-edit" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="col-1">
+            <a href = "#" title="Remover" alt="Remover" (click)="remover($event, paciente)">
+                <i class="fa fa-times" aria-hidden="true"></i> 
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!--
+<div *ngFor="let paciente of pacientes; let i = index">
+    #{{ i + 1 }}
+    <br/>
     {{ paciente.nomePaciente}} {{ paciente.sobrenomePaciente }}
     <br/>
     {{ paciente.cpfPaciente }}
     <br/>
-    {{ paciente.dataNascimentoPaciente }}
+    {{ paciente.dataNascimentoPaciente | date: 'dd/MM/yyyy'}}<br/>
+    {{ paciente.dataNascimentoPaciente | date }}<br/>
+    {{ paciente.dataNascimentoPaciente | date: 'longDate'}}<br/>
+    {{ paciente.dataNascimentoPaciente | date: 'h:mm a z'}}
+    <br/>
     <br/>
     <p *ngFor="let telefoneContato of paciente.telefonesContato">
         ({{ telefoneContato.ddd}}) {{ telefoneContato.numTelefone }} <i>atualizado em: </i>{{ telefoneContato.dataAtualizacao}}
@@ -20,4 +71,5 @@
         {{ condicao.dente}} {{ condicao.face }}
     </p>
 </div>
+-->
    
