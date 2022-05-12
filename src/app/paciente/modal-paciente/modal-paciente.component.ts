@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Paciente } from 'src/app/shared/models/paciente.model';
 
 @Component({
   selector: 'app-modal-paciente',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalPacienteComponent implements OnInit {
 
-  constructor() { }
+  @Input() paciente!: Paciente;
+
+  constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
   }

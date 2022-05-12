@@ -1,1 +1,37 @@
-<p>modal-paciente works!</p>
+<div class="modal-header">
+    
+    <h2 class="modal-title" id="modalLabel">Paciente</h2>
+    <a type="button" aria-label="Fechar" (click)="activeModal.dismiss()">
+        <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i> </span>
+    </a>
+
+    
+</div>
+
+<div class="modal-body text-left">
+    <div>
+            <p> {{ paciente.nomePaciente }} {{ paciente.sobrenomePaciente }}</p>
+            <p> CPF: {{ paciente.cpfPaciente }}</p>
+            <!-- <p> {{ atendimento.dataAtendimento! | mask: 'd0/M0/0000' }}</p> -->
+            <p> Data de nascimento: {{ paciente.dataNascimentoPaciente | date: 'dd/MM/yyyy'}}</p>
+            
+    </div>
+    <div>
+        <h3>Informações de contato</h3>
+        <div class="border" *ngFor="let telefoneContato of paciente.telefonesContato; let i = index;">
+            <h4 class="bg-primary p-3 m-0 text-white"></h4>
+            <div class="border p-2 bg-light">
+                <p>#{{i+1}} ({{ telefoneContato.ddd }}) {{ telefoneContato.numTelefone}} </p>
+                
+            </div>
+        </div>
+    </div>
+    <p *ngIf="paciente.telefonesContato!.length == 0"><i>Nenhum telefone cadastrado</i></p>
+</div>
+
+<div class="modal-footer">
+    <a href="#" title="Editar" alt="Editar" class="btn btn-xs btn-primary" (click)="activeModal.close()" [routerLink]="['/pacientes/editar', paciente.id]">
+        <i class="fa fa-edit" aria-hidden="true"></i> Editar
+    </a>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Fechar</button>
+</div>
