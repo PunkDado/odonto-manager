@@ -1,6 +1,6 @@
 <div class="modal-header">
     
-    <h4 class="modal-title" id="modalLabel">Atendimento</h4>
+    <h2 class="modal-title" id="modalLabel">Atendimento</h2>
     <button type="button" class="close" aria-label="Fechar" (click)="activeModal.dismiss()">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -13,30 +13,33 @@
             <p> Dentista: {{ atendimento.dentista!.nomeDentista }} {{ atendimento.dentista!.sobrenomeDentista }}</p>
             <p> Paciente: {{ atendimento.paciente }}</p>
             <!-- <p> {{ atendimento.dataAtendimento! | mask: 'd0/M0/0000' }}</p> -->
-            <p> Data do atendimento: {{ atendimento.dataAtendimento }}</p>
+            <p> Data do atendimento: {{ atendimento.dataAtendimento | date: 'dd/MM/yyyy'}}</p>
             <p> Convênio: {{ atendimento.convenio }}</p>
             <p> Número da GTO: {{ atendimento.numGto }}</p>
             <p> Encaminhado por: {{ atendimento.encaminhadoPor }}</p>
             <p> Forma de pagamento: {{ atendimento.formaPagamento }}</p>
-            <p> Data de envio: {{ atendimento.dataEnvio }}</p>
+            <p> Data de envio: {{ atendimento.dataEnvio  | date: 'dd/MM/yyyy'}}</p>
             <p> Atendimento verificado: {{ atendimento.atendimentoVerificado! ? "Sim" : "Não" }}</p>
     </div>
     <div>
         <h3>Procedimentos</h3>
-        <div *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados">
-            <h4>Procedimento: {{ procedimentoAplicado.procedimento }}</h4>
-            <p>Dente: {{ procedimentoAplicado.dente }}</p>
-            <p>Valor bruto (R$): {{ procedimentoAplicado.valor }}</p>
-            <p>Valor líquido recebido (R$): {{ procedimentoAplicado.valorLiquido }}</p>
-            <p>Valor repassado (R$): {{ procedimentoAplicado.valorRepassado }}</p>
-            <p>Recebido: {{ procedimentoAplicado.recebido! ? "Sim" : "Não" }}</p>
-            <p>Glosado: {{ procedimentoAplicado.glosado! ? "Sim" : "Não" }}</p>
-            <p>Motivo da glosa: {{ procedimentoAplicado.motivoGlosa }}</p>
-            <p>Data de recebimento: {{ procedimentoAplicado.dataRecebimento }}</p>
-            <p>Repassado: {{ procedimentoAplicado.repassado! ? "Sim" : "Não" }}</p>
-            <p>Data de repasse: {{ procedimentoAplicado.dataRepasse }}</p>
+        <div class="border" *ngFor="let procedimentoAplicado of atendimento.procedimentosAplicados; let i = index;">
+            <h4 class="bg-primary p-3 m-0 text-white">#{{i+1}} {{ procedimentoAplicado.procedimento }}</h4>
+            <div class="border p-2 bg-light">
+                <p>Dente: {{ procedimentoAplicado.dente }}</p>
+                <p>Valor bruto (R$): {{ procedimentoAplicado.valor }}</p>
+                <p>Valor líquido recebido (R$): {{ procedimentoAplicado.valorLiquido }}</p>
+                <p>Valor repassado (R$): {{ procedimentoAplicado.valorRepassado }}</p>
+                <p>Recebido: {{ procedimentoAplicado.recebido! ? "Sim" : "Não" }}</p>
+                <p>Glosado: {{ procedimentoAplicado.glosado! ? "Sim" : "Não" }}</p>
+                <p>Motivo da glosa: {{ procedimentoAplicado.motivoGlosa }}</p>
+                <p>Data de recebimento: {{ procedimentoAplicado.dataRecebimento  | date: 'dd/MM/yyyy'}}</p>
+                <p>Repassado: {{ procedimentoAplicado.repassado! ? "Sim" : "Não" }}</p>
+                <p>Data de repasse: {{ procedimentoAplicado.dataRepasse  | date: 'dd/MM/yyyy'}}</p>
+            </div>
         </div>
     </div>
+    <p *ngIf="atendimento.procedimentosAplicados.length == 0"><i>Nenhum procedimento aplicado</i></p>
 </div>
 
 <div class="modal-footer">
