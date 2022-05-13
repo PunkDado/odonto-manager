@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Paciente } from 'src/app/shared/models/paciente.model';
 import { ModalPacienteComponent } from '../modal-paciente/modal-paciente.component';
 import { PacienteService } from '../services/paciente.service';
@@ -14,10 +15,10 @@ export class ListarPacienteComponent implements OnInit {
   pageSize: number = 10;
   page: number = 1;
   size: number = 10;
-  modalService: any;
 
   constructor(
-    private pacienteService: PacienteService
+    private pacienteService: PacienteService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {

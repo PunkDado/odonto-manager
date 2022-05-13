@@ -16,17 +16,51 @@
             <p> Data de nascimento: {{ paciente.dataNascimentoPaciente | date: 'dd/MM/yyyy'}}</p>
             
     </div>
-    <div>
-        <h3>Informações de contato</h3>
-        <div class="border" *ngFor="let telefoneContato of paciente.telefonesContato; let i = index;">
-            <h4 class="bg-primary p-3 m-0 text-white"></h4>
-            <div class="border p-2 bg-light">
-                <p>#{{i+1}} ({{ telefoneContato.ddd }}) {{ telefoneContato.numTelefone}} </p>
-                
+    <div class="border m-3">
+        <h3 class="p-3">Informações de contato</h3>
+        
+        <h4 class="border bg-primary p-3 m-0 text-white">Telefones de contato</h4>
+        <div class="p-2 bg-light" *ngFor="let telefoneContato of paciente.telefonesContato; let i = index;">
+            <div>
+                <p>({{ telefoneContato.ddd }}) {{ telefoneContato.numTelefone}} </p>
+                <p *ngIf="paciente.telefonesContato!.length == 0"><i>Nenhum telefone cadastrado</i></p>
             </div>
         </div>
+
+        <h4 class="border bg-primary p-3 m-0 text-white">Emails de contato</h4>
+        <div class="p-2 bg-light" *ngFor="let email of paciente.emails; let i = index;">
+            <div>
+                <p>{{ email.enderecoEmail }}</p>
+                <p *ngIf="paciente.telefonesContato!.length == 0"><i>Nenhum telefone cadastrado</i></p>
+            </div>
+        </div>
+
     </div>
-    <p *ngIf="paciente.telefonesContato!.length == 0"><i>Nenhum telefone cadastrado</i></p>
+
+    <div class="border m-3">
+        <h3 class="p-3">Informações odontológicas</h3>
+        
+        <h4 class="border bg-primary p-3 m-0 text-white">Dados do convênio</h4>
+        <div class="p-2 bg-light" *ngFor="let dadosConvenioPaciente of paciente.dadosConvenioPacientes; let i = index;">
+            <div>
+                <p>{{ dadosConvenioPaciente.convenio!.nomeConvenio }}: {{ dadosConvenioPaciente.numCarteirinha}} </p>
+                <p *ngIf="paciente.dadosConvenioPacientes!.length == 0"><i>Nenhum dado de convênio</i></p>
+            </div>
+        </div>
+
+        <h4 class="border bg-primary p-3 m-0 text-white">Condições odontolológicas</h4>
+        <div class="p-2 bg-light" *ngFor="let condicaoDentePaciente of paciente.condicaoDentePacientes; let i = index;">
+            <div>
+                <p>Dente: {{ condicaoDentePaciente.dente }}</p>
+                <p *ngIf="paciente.condicaoDentePacientes!.length == 0"><i>Nenhum telefone cadastrado</i></p>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+    
 </div>
 
 <div class="modal-footer">
