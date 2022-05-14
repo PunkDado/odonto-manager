@@ -1,1 +1,186 @@
-<p>inserir-paciente works!</p>
+<h1 class="p-3">Inserir paciente</h1>
+    <div class="well">
+        <form #formPaciente="ngForm" class="p-3">
+            <!--
+            <div class="form-group">
+                <label for="dentista">Dentista</label>
+                <ng-select name="dentista" [items]="dentistas" bindLabel="nomeDentista" [(ngModel)]="atendimento.dentista" placeholder="Selecione um dentista"> </ng-select>
+            </div>
+            
+            <div class="form-group">
+                <label for="dataAtendimento">Data do atendimento</label>
+                <input type="date" class="form-control" id="dataAtendimento" name="dataAtendimento" [(ngModel)]="atendimento.dataAtendimento" #dataAtendimento="ngModel" required>
+                <div class="alert alert-danger" *ngIf="dataAtendimento.errors && (dataAtendimento.dirty || dataAtendimento.touched)">
+                    <div [hidden]="!dataAtendimento.errors.required">Digite a data do atendimento</div>
+                </div>
+            </div>
+            -->
+            <div class="form-group">
+                <label for="nomePaciente">Nome do paciente: </label>
+                <input type="text" class="form-control" id="nomePaciente" name="nomePaciente" minlength="2" required [(ngModel)]="paciente.nomePaciente" #nomePaciente="ngModel">
+                <div *ngIf="nomePaciente.errors && (nomePaciente.dirty || nomePaciente.touched)" class="alert alert-danger">
+                    <div [hidden]="!nomePaciente.errors.required">Digite o nome do paciente</div>
+                    <div [hidden]="!nomePaciente.errors.minlength">O nome do paciente deve conter ao menos dois caracteres</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sobrenomePaciente">Sobrenome do paciente: </label>
+                <input type="text" class="form-control" id="sobrenomePaciente" name="sobrenomePaciente" minlength="2" required [(ngModel)]="paciente.sobrenomePaciente" #sobrenomePaciente="ngModel">
+                <div *ngIf="sobrenomePaciente.errors && (sobrenomePaciente.dirty || sobrenomePaciente.touched)" class="alert alert-danger">
+                    <div [hidden]="!sobrenomePaciente.errors.required">Digite o nome do paciente</div>
+                    <div [hidden]="!sobrenomePaciente.errors.minlength">O nome do paciente deve conter ao menos dois caracteres</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dataNascimentoPaciente">Data de nascimento</label>
+                <input type="date" class="form-control" id="dataNascimentoPaciente" name="dataNascimentoPaciente" [(ngModel)]="paciente.dataNascimentoPaciente" #dataNascimentoPaciente="ngModel" required>
+                <div class="alert alert-danger" *ngIf="dataNascimentoPaciente.errors && (dataNascimentoPaciente.dirty || dataNascimentoPaciente.touched)">
+                    <div [hidden]="!dataNascimentoPaciente.errors.required">Insira a data de nascimento</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cpfPaciente">CPF do paciente: </label>
+                <input type="text" class="form-control" id="cpfPaciente" name="cpfPaciente" [(ngModel)]="paciente.cpfPaciente" #cpfPaciente="ngModel">
+                <div *ngIf="cpfPaciente.errors && (cpfPaciente.dirty || cpfPaciente.touched)" class="alert alert-danger">
+                    <div [hidden]="!cpfPaciente.errors.required">Digite CPF do paciente</div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="nomeResponsavel">Nome do responsável: </label>
+                <input type="text" class="form-control" id="nomeResponsavel" name="nomeResponsavel" minlength="2" required [(ngModel)]="paciente.nomeResponsavel" #nomeResponsavel="ngModel">
+                <div *ngIf="nomeResponsavel.errors && (nomeResponsavel.dirty || nomeResponsavel.touched)" class="alert alert-danger">
+                    <div [hidden]="!nomeResponsavel.errors.required">Digite o nome do paciente</div>
+                    <div [hidden]="!nomeResponsavel.errors.minlength">O nome do paciente deve conter ao menos dois caracteres</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sobrenomeResponsavel">Sobrenome do responsável: </label>
+                <input type="text" class="form-control" id="sobrenomeResponsavel" name="sobrenomeResponsavel" minlength="2" required [(ngModel)]="paciente.sobrenomeResponsavel" #sobrenomeResponsavel="ngModel">
+                <div *ngIf="sobrenomeResponsavel.errors && (sobrenomeResponsavel.dirty || sobrenomeResponsavel.touched)" class="alert alert-danger">
+                    <div [hidden]="!sobrenomeResponsavel.errors.required">Digite o nome do paciente</div>
+                    <div [hidden]="!sobrenomeResponsavel.errors.minlength">O nome do paciente deve conter ao menos dois caracteres</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dataNascimentoResponsavel">Data de nascimento</label>
+                <input type="date" class="form-control" id="dataNascimentoResponsavel" name="dataNascimentoResponsavel" [(ngModel)]="paciente.dataNascimentoResponsavel" #dataNascimentoResponsavel="ngModel" required>
+                <div class="alert alert-danger" *ngIf="dataNascimentoResponsavel.errors && (dataNascimentoResponsavel.dirty || dataNascimentoResponsavel.touched)">
+                    <div [hidden]="!dataNascimentoResponsavel.errors.required">Insira a data de nascimento</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cpfResponsavel">CPF do responsável: </label>
+                <input type="text" class="form-control" id="cpfResponsavel" name="cpfResponsavel" [(ngModel)]="paciente.cpfResponsavel" #cpfResponsavel="ngModel">
+                <div *ngIf="cpfResponsavel.errors && (cpfResponsavel.dirty || cpfResponsavel.touched)" class="alert alert-danger">
+                    <div [hidden]="!cpfResponsavel.errors.required">Digite CPF do paciente</div>
+                </div>
+            </div>
+            
+        <br/>
+        <!-- Telefones -->
+        <div>
+            <div class="container p-3">
+                <div class="row">
+                    <div class="col-10">
+                        <h3>Telefones de contato</h3>
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-secondary" (click)="inserirTelefoneContato()">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        
+            <div *ngFor="let telefone of paciente.telefonesContato; let i = index">
+                
+                <form>
+
+                    <div class="row">
+                        <div class="col-1">
+                            <a type="button" (click)="removerTelefoneContato(i)">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="col-2">
+                            <label for="ddd">DDD</label>
+                            <input type="text" class="form-control" id="ddd" name="ddd" [(ngModel)]="telefone.ddd" #ddd="ngModel">
+                        </div>
+                        <div class="col-4">
+                            <label for="numTelefone">Número</label>
+                            <input type="text" class="form-control" id="numTelefone" name="numTelefone" [(ngModel)]="telefone.numTelefone" #numTelefone="ngModel">
+                        </div>
+                        <div class="col-2">
+                            <label for="tipoTelefone">Tipo</label>
+                            <input type="text" class="form-control" id="tipoTelefone" name="tipoTelefone" [(ngModel)]="telefone.tipoTelefone" #tipoTelefone="ngModel">
+                        </div>
+                        <div class="col-2">
+                            <label for="principal">Principal </label>
+                            <input type="checkbox" class="form-check-input" id="principal" name="principal" [(ngModel)]="telefone.principal" #principal="ngModel">
+                        </div>
+                        
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!-- Final de emails -->
+
+        <!-- Emails -->
+        <div>
+            <div class="container p-3">
+                <div class="row">
+                    <div class="col-10">
+                        <h3>Emails</h3>
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-secondary" (click)="inserirEmail()">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        
+            <div *ngFor="let email of paciente.emails; let i = index">
+                
+                <form>
+
+                    <div class="row">
+                        <div class="col-1">
+                            <a type="button" (click)="removerEmail(i)">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="col-8">
+                            <label for="enderecoEmail">Endereço de email</label>
+                            <input type="email" class="form-control" id="enderecoEmail" name="enderecoEmail" [(ngModel)]="email.enderecoEmail" #enderecoEmail="ngModel">
+
+                        </div>
+                        <div class="col-2">
+                            <label for="principal">Principal </label>
+                            <input type="checkbox" class="form-check-input" id="principal" name="principal" [(ngModel)]="email.principal" #principal="ngModel">
+                        </div>
+                        
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!-- Final de emails -->
+
+        <div>
+            <br/>
+            <button type="button" class="btn btn-primary" (click)="inserir()" [disabled]="!formPaciente.form.valid">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> Salvar
+            </button>
+            <a class="btn btn-secondary" [routerLink]="['/pacientes']">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+            </a>
+        </div>
+    
+            
+        </form>
+    </div>
+
+

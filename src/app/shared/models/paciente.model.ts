@@ -14,9 +14,9 @@ export class Paciente {
         public sobrenomeResponsavel?: string,
         public dataNascimentoResponsavel?: string,
         public cpfResponsavel?: string,
-        public telefonesContato?: TelefoneContato[],
-        public emails?: Email[],
-        public dadosConvenioPacientes?: DadosConvenioPaciente[],
-        public condicaoDentePacientes?: CondicaoDentePaciente[]
+        public telefonesContato: TelefoneContato[] = [],
+        public emails: Email[] = [],
+        public dadosConvenioPacientes: DadosConvenioPaciente[] = [],
+        public condicaoDentePacientes: CondicaoDentePaciente[] = []
     ) {}
 }

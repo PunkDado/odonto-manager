@@ -1,9 +1,6 @@
-import { Atendimento } from "./atendimento.model";
-
 export class ProcedimentoAplicado {
     constructor(
         public id?: number,
-        //public atendimento?: Atendimento,
         public procedimento?: string,
         public dente?: string,
         public valor?: number,
