@@ -11,7 +11,22 @@
             </a>
         </div>
     </div>
+
+    <div>
+        <form>
+            <input type="search" id="search" name="search" placeholder="Buscar paciente..." size="32" [(ngModel)]="searchTerm">
+            <button class="btn">
+                <i class="fa fa-search" aria-hidden="true" (click)="filtrarPacientes(searchTerm)"></i>
+            </button>
+            <button class="btn" (click)="listarTodos()">
+                <i class="fa fa-refresh" aria-hidden="true"></i>
+            </button>
+        </form>
+    </div>
+
 </div>
+
+
 
 <br/>
 <div class="container" *ngFor="let paciente of pacientes">

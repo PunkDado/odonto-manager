@@ -1,3 +1,6 @@
+<div style="max-width: 400px">
+
+
 <div class="modal-header">
     
     <h2 class="modal-title" id="modalLabel">Paciente</h2>
@@ -43,7 +46,9 @@
         <h4 class="border bg-primary p-3 m-0 text-white">Dados do convênio</h4>
         <div class="p-2 bg-light" *ngFor="let dadosConvenioPaciente of paciente.dadosConvenioPacientes; let i = index;">
             <div>
-                <p>{{ dadosConvenioPaciente.convenio!.nomeConvenio }}: {{ dadosConvenioPaciente.numCarteirinha}} </p>
+                <p>{{ dadosConvenioPaciente.convenio!.nomeConvenio }}: {{ dadosConvenioPaciente.numCarteirinha}}
+                    <i class="small">(atualizado em {{ dadosConvenioPaciente.dataInformacao | date: 'dd/MM/yyyy'}})</i>    
+                </p>
                 <p *ngIf="paciente.dadosConvenioPacientes!.length == 0"><i>Nenhum dado de convênio</i></p>
             </div>
         </div>
@@ -51,7 +56,8 @@
         <h4 class="border bg-primary p-3 m-0 text-white">Condições odontolológicas</h4>
         <div class="p-2 bg-light" *ngFor="let condicaoDentePaciente of paciente.condicaoDentePacientes; let i = index;">
             <div>
-                <p>Dente: {{ condicaoDentePaciente.dente }}</p>
+                <p>Dente {{ condicaoDentePaciente.dente }}-{{ condicaoDentePaciente.face }}: {{ condicaoDentePaciente.condicao }} 
+                    <i class="small">({{ condicaoDentePaciente.dataInformacao | date: 'dd/MM/yyyy'}})</i></p>
                 <p *ngIf="paciente.condicaoDentePacientes!.length == 0"><i>Nenhum telefone cadastrado</i></p>
             </div>
         </div>
@@ -68,4 +74,6 @@
         <i class="fa fa-edit" aria-hidden="true"></i> Editar
     </a>
     <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Fechar</button>
+</div>
+
 </div>

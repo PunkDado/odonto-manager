@@ -15,6 +15,8 @@ export class ListarPacienteComponent implements OnInit {
   pageSize: number = 10;
   page: number = 1;
   size: number = 10;
+  searchTerm!: string;
+  pacientesFiltrados!: Paciente[];
 
   constructor(
     private pacienteService: PacienteService,
@@ -52,6 +54,16 @@ export class ListarPacienteComponent implements OnInit {
   abrirModalPaciente(paciente: Paciente) {
     const modalRef = this.modalService.open(ModalPacienteComponent);
     modalRef.componentInstance.paciente = paciente;
+  }
+
+  filtrarPacientes(searchTerm: string): void {
+    this.pacientesFiltrados = this.pacientes.filter(
+      data => 
+        data.nomePaciente?.toUpperCase().includes(searchTerm.toUpperCase())
+        || data.sobrenomePaciente?.toUpperCase().includes(searchTerm.toUpperCase())
+    );
+    this.pacientes = this.pacientesFiltrados;
+    // Inserir código para filtrar atendimentos segundo a string "search"
   }
 
 }
