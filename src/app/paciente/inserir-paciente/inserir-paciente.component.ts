@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ConvenioService } from 'src/app/convenio/services/convenio.service';
+import { CondicaoDentePaciente } from 'src/app/shared/models/condicao-dente-paciente.model';
+import { Convenio } from 'src/app/shared/models/convenio.model';
+import { DadosConvenioPaciente } from 'src/app/shared/models/dados-convenio-paciente.model';
 import { Email } from 'src/app/shared/models/email.model';
 import { Paciente } from 'src/app/shared/models/paciente.model';
 import { TelefoneContato } from 'src/app/shared/models/telefone-contato.model';
@@ -16,14 +20,26 @@ export class InserirPacienteComponent implements OnInit {
   @ViewChild('formPaciente') formPaciente!: NgForm;
 
   paciente!: Paciente;
+  convenios!: Convenio[];
 
   constructor(
     private pacienteService: PacienteService,
+    private convenioService: ConvenioService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.paciente = new Paciente();
+    this.convenioService.listarTodos().subscribe(
+      (dados: Convenio[]) => {
+        if(dados == null) {
+          this.convenios = [];
+        }
+        else {
+          this.convenios = dados;
+        }
+      }
+    );
   }
 
   inserir(): void {
@@ -53,6 +69,26 @@ export class InserirPacienteComponent implements OnInit {
 
   removerTelefoneContato(i: number): void {
     this.paciente.telefonesContato!.splice(i, 1);
+  }
+
+  inserirDadosConvenioPaciente(): void {
+    let dadosConvenioPaciente = new DadosConvenioPaciente();
+    dadosConvenioPaciente.dataInformacao = hoje();
+    this.paciente.dadosConvenioPacientes!.push(dadosConvenioPaciente);
+  }
+
+  removerDadosConvenioPaciente(i: number): void {
+    this.paciente.dadosConvenioPacientes!.splice(i, 1);
+  }
+
+  inserirCondicaoDentePaciente(): void {
+    let condicaoDentePaciente = new CondicaoDentePaciente();
+    condicaoDentePaciente.dataInformacao = hoje();
+    this.paciente.condicaoDentePacientes!.push(condicaoDentePaciente);
+  }
+
+  removerCondicaoDentePaciente(i: number): void {
+    this.paciente.condicaoDentePacientes!.splice(i, 1);
   }
 
 }

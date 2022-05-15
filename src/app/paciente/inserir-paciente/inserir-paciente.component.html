@@ -169,6 +169,93 @@
         </div>
         <!-- Final de emails -->
 
+        <!-- DadosConvenioPaciente -->
+        <div>
+            <div class="container p-3">
+                <div class="row">
+                    <div class="col-10">
+                        <h3>Dados do convênio</h3>
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-secondary" (click)="inserirDadosConvenioPaciente()">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        
+            <div *ngFor="let dados of paciente.dadosConvenioPacientes; let i = index">
+                
+                <form>
+
+                    <div class="row">
+                        <div class="col-1">
+                            <a type="button" (click)="removerDadosConvenioPaciente(i)">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="convenio">Convênio</label>
+                            <ng-select name="convenio" [items]="convenios" bindLabel="nomeConvenio" [(ngModel)]="dados.convenio" placeholder="Selecione um convênio"> </ng-select>
+                        </div>
+                        <div class="col-6">
+                            <label for="numCarteirinha">Número da carteirinha</label>
+                            <input type="text" class="form-control" id="numCarteirinha" name="numCarteirinha" [(ngModel)]="dados.numCarteirinha" #numCarteirinha="ngModel">
+
+                        </div>
+                        
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!-- Final de DadosConvenioPaciente -->
+
+        <!-- CondicaoDentePaciente -->
+        <div>
+            <div class="container p-3">
+                <div class="row">
+                    <div class="col-10">
+                        <h3>Condição dos dentes do paciente</h3>
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-secondary" (click)="inserirCondicaoDentePaciente()">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        
+            <div *ngFor="let condicao of paciente.condicaoDentePacientes; let i = index">
+                
+                <form>
+
+                    <div class="row">
+                        <div class="col-1">
+                            <a type="button" (click)="removerCondicaoDentePaciente(i)">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="col-3">
+                            <label for="dente">Dente</label>
+                            <input type="text" class="form-control" id="dente" name="dente" [(ngModel)]="condicao.dente" #dente="ngModel">
+                        </div>
+                        <div class="col-3">
+                            <label for="face">Face</label>
+                            <input type="text" class="form-control" id="face" name="face" [(ngModel)]="condicao.face" #face="ngModel">
+                        </div>
+                        <div class="col-5">
+                            <label for="condicao">Condição</label>
+                            <input type="text" class="form-control" id="condicao" name="condicao" [(ngModel)]="condicao.condicao" #condicao="ngModel">
+                        </div>
+                        
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!-- Final de CondicaoDentePaciente -->
+
         <div>
             <br/>
             <button type="button" class="btn btn-primary" (click)="inserir()" [disabled]="!formPaciente.form.valid">
