@@ -17,7 +17,7 @@
             -->
             <div class="form-group">
                 <label for="nomePaciente">Nome do paciente: </label>
-                <input type="text" class="form-control" id="nomePaciente" name="nomePaciente" minlength="2" required [(ngModel)]="paciente.nomePaciente" #nomePaciente="ngModel">
+                <input type="text" class="form-control" id="nomePaciente" name="nomePaciente" minlength="2" required [(ngModel)]="paciente.nomePaciente" #nomePaciente="ngModel" required>
                 <div *ngIf="nomePaciente.errors && (nomePaciente.dirty || nomePaciente.touched)" class="alert alert-danger">
                     <div [hidden]="!nomePaciente.errors.required">Digite o nome do paciente</div>
                     <div [hidden]="!nomePaciente.errors.minlength">O nome do paciente deve conter ao menos dois caracteres</div>
@@ -27,13 +27,13 @@
                 <label for="sobrenomePaciente">Sobrenome do paciente: </label>
                 <input type="text" class="form-control" id="sobrenomePaciente" name="sobrenomePaciente" minlength="2" required [(ngModel)]="paciente.sobrenomePaciente" #sobrenomePaciente="ngModel">
                 <div *ngIf="sobrenomePaciente.errors && (sobrenomePaciente.dirty || sobrenomePaciente.touched)" class="alert alert-danger">
-                    <div [hidden]="!sobrenomePaciente.errors.required">Digite o nome do paciente</div>
-                    <div [hidden]="!sobrenomePaciente.errors.minlength">O nome do paciente deve conter ao menos dois caracteres</div>
+                    <div [hidden]="!sobrenomePaciente.errors.required">Digite o sobrenome do paciente</div>
+                    <div [hidden]="!sobrenomePaciente.errors.minlength">O sobrenome do paciente deve conter ao menos dois caracteres</div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="dataNascimentoPaciente">Data de nascimento</label>
-                <input type="date" class="form-control" id="dataNascimentoPaciente" name="dataNascimentoPaciente" [(ngModel)]="paciente.dataNascimentoPaciente" #dataNascimentoPaciente="ngModel" required>
+                <input type="date" class="form-control" id="dataNascimentoPaciente" name="dataNascimentoPaciente" [(ngModel)]="paciente.dataNascimentoPaciente" #dataNascimentoPaciente="ngModel">
                 <div class="alert alert-danger" *ngIf="dataNascimentoPaciente.errors && (dataNascimentoPaciente.dirty || dataNascimentoPaciente.touched)">
                     <div [hidden]="!dataNascimentoPaciente.errors.required">Insira a data de nascimento</div>
                 </div>
@@ -48,25 +48,25 @@
             
             <div class="form-group">
                 <label for="nomeResponsavel">Nome do responsável: </label>
-                <input type="text" class="form-control" id="nomeResponsavel" name="nomeResponsavel" minlength="2" required [(ngModel)]="paciente.nomeResponsavel" #nomeResponsavel="ngModel">
-                <div *ngIf="nomeResponsavel.errors && (nomeResponsavel.dirty || nomeResponsavel.touched)" class="alert alert-danger">
-                    <div [hidden]="!nomeResponsavel.errors.required">Digite o nome do paciente</div>
+                <input type="text" class="form-control" id="nomeResponsavel" name="nomeResponsavel" minlength="2" [(ngModel)]="paciente.nomeResponsavel" #nomeResponsavel="ngModel">
+                <!--<div *ngIf="nomeResponsavel.errors && (nomeResponsavel.dirty || nomeResponsavel.touched)" class="alert alert-danger">
+                    <div [hidden]="!nomeResponsavel.errors.required">Digite o nome do responsável</div>
                     <div [hidden]="!nomeResponsavel.errors.minlength">O nome do paciente deve conter ao menos dois caracteres</div>
-                </div>
+                </div>-->
             </div>
             <div class="form-group">
                 <label for="sobrenomeResponsavel">Sobrenome do responsável: </label>
-                <input type="text" class="form-control" id="sobrenomeResponsavel" name="sobrenomeResponsavel" minlength="2" required [(ngModel)]="paciente.sobrenomeResponsavel" #sobrenomeResponsavel="ngModel">
-                <div *ngIf="sobrenomeResponsavel.errors && (sobrenomeResponsavel.dirty || sobrenomeResponsavel.touched)" class="alert alert-danger">
-                    <div [hidden]="!sobrenomeResponsavel.errors.required">Digite o nome do paciente</div>
+                <input type="text" class="form-control" id="sobrenomeResponsavel" name="sobrenomeResponsavel" minlength="2" [(ngModel)]="paciente.sobrenomeResponsavel" #sobrenomeResponsavel="ngModel">
+                <!--<div *ngIf="sobrenomeResponsavel.errors && (sobrenomeResponsavel.dirty || sobrenomeResponsavel.touched)" class="alert alert-danger">
+                    <div [hidden]="!sobrenomeResponsavel.errors.required">Digite o sobrenome do responsável</div>
                     <div [hidden]="!sobrenomeResponsavel.errors.minlength">O nome do paciente deve conter ao menos dois caracteres</div>
-                </div>
+                </div>-->
             </div>
             <div class="form-group">
                 <label for="dataNascimentoResponsavel">Data de nascimento</label>
-                <input type="date" class="form-control" id="dataNascimentoResponsavel" name="dataNascimentoResponsavel" [(ngModel)]="paciente.dataNascimentoResponsavel" #dataNascimentoResponsavel="ngModel" required>
+                <input type="date" class="form-control" id="dataNascimentoResponsavel" name="dataNascimentoResponsavel" [(ngModel)]="paciente.dataNascimentoResponsavel" #dataNascimentoResponsavel="ngModel">
                 <div class="alert alert-danger" *ngIf="dataNascimentoResponsavel.errors && (dataNascimentoResponsavel.dirty || dataNascimentoResponsavel.touched)">
-                    <div [hidden]="!dataNascimentoResponsavel.errors.required">Insira a data de nascimento</div>
+                    <div [hidden]="!dataNascimentoResponsavel.errors.required">Insira a data de nascimento do responsável</div>
                 </div>
             </div>
             <div class="form-group">
@@ -111,9 +111,14 @@
                             <label for="numTelefone">Número</label>
                             <input type="text" class="form-control" id="numTelefone" name="numTelefone" [(ngModel)]="telefone.numTelefone" #numTelefone="ngModel">
                         </div>
-                        <div class="col-2">
+                        <!--<div class="col-2">
                             <label for="tipoTelefone">Tipo</label>
                             <input type="text" class="form-control" id="tipoTelefone" name="tipoTelefone" [(ngModel)]="telefone.tipoTelefone" #tipoTelefone="ngModel">
+                        </div>-->
+                        
+                        <div class="col-3">
+                            <label for="tipoTelefone">Tipo</label>
+                            <ng-select name="tipoTelefone" [items]="tiposTelefone" bindLabel="tipoTelefone" [(ngModel)]="telefone.tipoTelefone" placeholder="Selecione o tipo do telefone"> </ng-select>
                         </div>
                         <div class="col-2">
                             <label for="principal">Principal </label>
@@ -238,15 +243,18 @@
                         </div>
                         <div class="col-3">
                             <label for="dente">Dente</label>
-                            <input type="text" class="form-control" id="dente" name="dente" [(ngModel)]="condicao.dente" #dente="ngModel">
+                            <!--<input type="text" class="form-control" id="dente" name="dente" [(ngModel)]="condicao.dente" #dente="ngModel">-->
+                            <ng-select name="dente" [items]="dentes" bindLabel="dente" [(ngModel)]="condicao.dente" placeholder="Selecione o dente"> </ng-select>
                         </div>
                         <div class="col-3">
                             <label for="face">Face</label>
-                            <input type="text" class="form-control" id="face" name="face" [(ngModel)]="condicao.face" #face="ngModel">
+                            <!--<input type="text" class="form-control" id="face" name="face" [(ngModel)]="condicao.face" #face="ngModel">-->
+                            <ng-select name="face" [items]="faces" bindLabel="face" [(ngModel)]="condicao.face" placeholder="Selecione a face"> </ng-select>
                         </div>
                         <div class="col-5">
                             <label for="condicao">Condição</label>
-                            <input type="text" class="form-control" id="condicao" name="condicao" [(ngModel)]="condicao.condicao" #condicao="ngModel">
+                            <!--<input type="text" class="form-control" id="condicao" name="condicao" [(ngModel)]="condicao.condicao" #condicao="ngModel">-->
+                            <ng-select name="condicao" [items]="condicoes" bindLabel="condicao" [(ngModel)]="condicao.condicao" placeholder="Selecione a condição do dente"> </ng-select>
                         </div>
                         
                     </div>

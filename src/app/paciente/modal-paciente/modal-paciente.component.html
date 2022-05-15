@@ -69,7 +69,7 @@
                     </p>
                 </div>
             </div>
-        <p class="p-3" *ngIf="paciente.dadosConvenioPacientes!.length == 0"><i>Nenhum dado de convênio</i></p>
+        <p class="p-4" *ngIf="paciente.dadosConvenioPacientes!.length == 0"><i>Nenhum dado de convênio</i></p>
         </div>
         
 
@@ -78,10 +78,11 @@
             <div class="p-3" *ngFor="let condicaoDentePaciente of paciente.condicaoDentePacientes; let i = index;">
                 <div>
                     <p>Dente {{ condicaoDentePaciente.dente }}-{{ condicaoDentePaciente.face }}: {{ condicaoDentePaciente.condicao }} 
-                        <i class="small">({{ condicaoDentePaciente.dataInformacao | date: 'dd/MM/yyyy'}})</i></p>
+                        <i class="small">({{ condicaoDentePaciente.dataInformacao | date: 'dd/MM/yyyy'}})</i>
+                    </p>
                 </div>
             </div>
-            <p class="p-3" *ngIf="paciente.condicaoDentePacientes!.length == 0"><i>Nenhuma condição diagnosticada</i></p>
+        <p class="p-4" *ngIf="paciente.condicaoDentePacientes!.length == 0"><i>Nenhuma condição diagnosticada</i></p>
         </div>
         
         

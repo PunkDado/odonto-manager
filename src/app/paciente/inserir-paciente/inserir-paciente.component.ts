@@ -21,6 +21,10 @@ export class InserirPacienteComponent implements OnInit {
 
   paciente!: Paciente;
   convenios!: Convenio[];
+  dentes: string[] = ["11", "21", "31"];
+  faces: string[] = ["Vestibular", "Frontal"];
+  condicoes: string[] = ["Cárie encontrada", "Cárie restaurada"];
+  tiposTelefone: string[] = ["Celular", "Residencial", "Comercial"];
 
   constructor(
     private pacienteService: PacienteService,
