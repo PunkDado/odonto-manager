@@ -12,55 +12,78 @@
 </div>
 
 <div class="modal-body text-left">
-    <div>
-            <p> {{ paciente.nomePaciente }} {{ paciente.sobrenomePaciente }}</p>
+    
+    <h3> {{ paciente.nomePaciente }} {{ paciente.sobrenomePaciente }}</h3>
+    
+    <div class="m-3">
+        <div class="p-3">
             <p> CPF: {{ paciente.cpfPaciente }}</p>
-            <!-- <p> {{ atendimento.dataAtendimento! | mask: 'd0/M0/0000' }}</p> -->
             <p> Data de nascimento: {{ paciente.dataNascimentoPaciente | date: 'dd/MM/yyyy'}}</p>
-            
+        </div>
     </div>
+    
     <div class="border m-3">
-        <h3 class="p-3">Informações de contato</h3>
+        <h3 class="bg-primary text-white p-3 m-0">Responsável</h3>
+        <div class="p-3">
+            <p>Nome: {{ paciente.nomeResponsavel }} {{ paciente.sobrenomeResponsavel }}</p>
+            <p> CPF: {{ paciente.cpfResponsavel }}</p>
+            <p> Data de nascimento: {{ paciente.dataNascimentoResponsavel | date: 'dd/MM/yyyy'}}</p>
+        </div>
+    </div>
+    
+    <div class="border m-3">
+        <h3 class="border bg-primary p-3 m-0 text-white">Informações de contato</h3>
         
-        <h4 class="border bg-primary p-3 m-0 text-white">Telefones de contato</h4>
-        <div class="p-2 bg-light" *ngFor="let telefoneContato of paciente.telefonesContato; let i = index;">
+        <div class="border p-3 m-0 bg-light">
+            <h4 class="p-0 m-0">Telefones de contato</h4>
+            <div class="p-0" *ngFor="let telefoneContato of paciente.telefonesContato; let i = index;">
             <div>
                 <p>({{ telefoneContato.ddd }}) {{ telefoneContato.numTelefone }} <i class="small">({{ telefoneContato.dataAtualizacao | date: 'dd/MM/yyyy'}})</i></p>
             </div>
         </div>
         <p class="p-3" *ngIf="paciente.telefonesContato!.length == 0"><i>Nenhum telefone cadastrado</i></p>
-
-        <h4 class="border bg-primary p-3 m-0 text-white">Emails de contato</h4>
-        <div class="p-2 bg-light" *ngFor="let email of paciente.emails; let i = index;">
+        </div>
+        
+        <div class="border p-3 m-0 bg-light">
+            <h4 class="p-0 m-0">Emails de contato</h4>
+            <div class="p-0" *ngFor="let email of paciente.emails; let i = index;">
             <div>
                 <p>{{ email.enderecoEmail }} <i class="small">({{ email.dataAtualizacao | date: 'dd/MM/yyyy'}})</i></p>
             </div>
         </div>
         <p class="p-3" *ngIf="paciente.emails!.length == 0"><i>Nenhum email cadastrado</i></p>
+        </div>
+        
 
     </div>
 
     <div class="border m-3">
-        <h3 class="p-3">Informações odontológicas</h3>
+        <h3 class="border bg-primary p-3 m-0 text-white">Informações odontológicas</h3>
         
-        <h4 class="border bg-primary p-3 m-0 text-white">Dados do convênio</h4>
-        <div class="p-2 bg-light" *ngFor="let dadosConvenioPaciente of paciente.dadosConvenioPacientes; let i = index;">
-            <div>
-                <p>{{ dadosConvenioPaciente.convenio!.nomeConvenio }}: {{ dadosConvenioPaciente.numCarteirinha}}
-                    <i class="small">(atualizado em {{ dadosConvenioPaciente.dataInformacao | date: 'dd/MM/yyyy'}})</i>    
-                </p>
+        <div class="border bg-light">
+            <h4 class="p-3 m-0">Dados do convênio</h4>
+            <div class="p-3" *ngFor="let dadosConvenioPaciente of paciente.dadosConvenioPacientes; let i = index;">
+                <div>
+                    <p>{{ dadosConvenioPaciente.convenio!.nomeConvenio }}: {{ dadosConvenioPaciente.numCarteirinha}}
+                        <i class="small">(atualizado em {{ dadosConvenioPaciente.dataInformacao | date: 'dd/MM/yyyy'}})</i>    
+                    </p>
+                </div>
             </div>
-        </div>
         <p class="p-3" *ngIf="paciente.dadosConvenioPacientes!.length == 0"><i>Nenhum dado de convênio</i></p>
-
-        <h4 class="border bg-primary p-3 m-0 text-white">Condições odontolológicas</h4>
-        <div class="p-2 bg-light" *ngFor="let condicaoDentePaciente of paciente.condicaoDentePacientes; let i = index;">
-            <div>
-                <p>Dente {{ condicaoDentePaciente.dente }}-{{ condicaoDentePaciente.face }}: {{ condicaoDentePaciente.condicao }} 
-                    <i class="small">({{ condicaoDentePaciente.dataInformacao | date: 'dd/MM/yyyy'}})</i></p>
-            </div>
         </div>
-        <p class="p-3" *ngIf="paciente.condicaoDentePacientes!.length == 0"><i>Nenhuma condição diagnosticada</i></p>
+        
+
+        <div class="border bg-light">
+            <h4 class="p-3 m-0">Condições odontolológicas</h4>
+            <div class="p-3" *ngFor="let condicaoDentePaciente of paciente.condicaoDentePacientes; let i = index;">
+                <div>
+                    <p>Dente {{ condicaoDentePaciente.dente }}-{{ condicaoDentePaciente.face }}: {{ condicaoDentePaciente.condicao }} 
+                        <i class="small">({{ condicaoDentePaciente.dataInformacao | date: 'dd/MM/yyyy'}})</i></p>
+                </div>
+            </div>
+            <p class="p-3" *ngIf="paciente.condicaoDentePacientes!.length == 0"><i>Nenhuma condição diagnosticada</i></p>
+        </div>
+        
         
     </div>
 
