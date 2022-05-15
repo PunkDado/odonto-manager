@@ -58,6 +58,7 @@ export class InserirPacienteComponent implements OnInit {
   inserirEmail(): void {
     let email = new Email();
     email.dataAtualizacao = hoje();
+    if (this.paciente.emails.length == 0) email.principal = true;
     this.paciente.emails!.push(email);
   }
 
@@ -68,6 +69,7 @@ export class InserirPacienteComponent implements OnInit {
   inserirTelefoneContato(): void {
     let telefoneContato = new TelefoneContato();
     telefoneContato.dataAtualizacao = hoje();
+    if (this.paciente.telefonesContato.length == 0) telefoneContato.principal = true;
     this.paciente.telefonesContato!.push(telefoneContato);
   }
 

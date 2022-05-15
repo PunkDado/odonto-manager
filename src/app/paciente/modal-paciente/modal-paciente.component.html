@@ -38,7 +38,7 @@
             <h4 class="p-0 m-0">Telefones de contato</h4>
             <div class="p-0" *ngFor="let telefoneContato of paciente.telefonesContato; let i = index;">
             <div>
-                <p>({{ telefoneContato.ddd }}) {{ telefoneContato.numTelefone }} <i class="small">({{ telefoneContato.dataAtualizacao | date: 'dd/MM/yyyy'}})</i></p>
+                <p>{{ telefoneContato.tipoTelefone }}: ({{ telefoneContato.ddd }}) {{ telefoneContato.numTelefone }} <i class="small">({{ telefoneContato.dataAtualizacao | date: 'dd/MM/yyyy'}})</i></p>
             </div>
         </div>
         <p class="p-3" *ngIf="paciente.telefonesContato!.length == 0"><i>Nenhum telefone cadastrado</i></p>
