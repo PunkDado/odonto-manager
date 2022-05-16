@@ -11,7 +11,7 @@
 <div class="modal-body text-left">
     <div>
             <p> Dentista: {{ atendimento.dentista!.nomeDentista }} {{ atendimento.dentista!.sobrenomeDentista }}</p>
-            <p> Paciente: {{ atendimento.paciente }}</p>
+            <p> Paciente: {{ atendimento.entPaciente!.nomePaciente }} {{ atendimento.entPaciente!.sobrenomePaciente }}</p>
             <!-- <p> {{ atendimento.dataAtendimento! | mask: 'd0/M0/0000' }}</p> -->
             <p> Data do atendimento: {{ atendimento.dataAtendimento | date: 'dd/MM/yyyy'}}</p>
             <p> Convênio: {{ atendimento.convenio }}</p>

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Atendimento } from 'src/app/shared/models/atendimento.model';
+import { Paciente } from 'src/app/shared/models/paciente.model';
 import { ProcedimentoAplicado } from 'src/app/shared/models/procedimento-aplicado.model';
 
 const LS_CHAVE: string = 'atendimentos';
@@ -49,6 +50,10 @@ export class AtendimentoService {
 
   editarProcedimentoAplicado(procedimentoAplicado: ProcedimentoAplicado): Observable<ProcedimentoAplicado> {
     return this.httpClient.put<ProcedimentoAplicado>(this.BASE_URL + "procedimentos-aplicados/" + procedimentoAplicado.id, JSON.stringify(procedimentoAplicado), this.httpOptions);
+  }
+
+  listarAtendimentosPorPaciente(paciente: Paciente): Observable<Atendimento[]> {
+    return this.httpClient.get<Atendimento[]>(this.BASE_URL + "atendimentos/paciente/" + paciente.id, this.httpOptions);
   }
 
 }

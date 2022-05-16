@@ -1,4 +1,5 @@
 import { Dentista } from "./dentista.model";
+import { Paciente } from "./paciente.model";
 import { ProcedimentoAplicado } from "./procedimento-aplicado.model";
 
 
@@ -7,6 +8,7 @@ export class Atendimento {
         public id?: number,
         public dentista?: Dentista,
         public paciente?: string,
+        public entPaciente?: Paciente,
         public dataAtendimento?: string,
         public convenio?: string,
         public numGto?: string,

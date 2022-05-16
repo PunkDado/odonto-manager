@@ -2,8 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DentistaService } from 'src/app/dentista/services/dentista.service';
+import { PacienteService } from 'src/app/paciente/services/paciente.service';
 import { Atendimento } from 'src/app/shared/models/atendimento.model';
 import { Dentista } from 'src/app/shared/models/dentista.model';
+import { Paciente } from 'src/app/shared/models/paciente.model';
 import { ProcedimentoAplicado } from '../../shared/models/procedimento-aplicado.model';
 import { AtendimentoService } from '../services/atendimento.service';
 
@@ -18,11 +20,12 @@ export class InserirAtendimentoComponent implements OnInit {
 
   atendimento!: Atendimento;
   dentistas!: Dentista[];
+  pacientes!: Paciente[];
 
   constructor(
     private atendimentoService: AtendimentoService,
     private dentistaService: DentistaService,
-    //private route: ActivatedRoute,
+    private pacienteService: PacienteService,
     private router: Router
   ) { }
 
@@ -35,6 +38,16 @@ export class InserirAtendimentoComponent implements OnInit {
         }
         else {
           this.dentistas = dados;
+        }
+      }
+    );
+    this.pacienteService.listarTodos().subscribe(
+      (dados: Paciente[]) => {
+        if(dados == null) {
+          this.pacientes = [];
+        }
+        else {
+          this.pacientes = dados;
         }
       }
     );

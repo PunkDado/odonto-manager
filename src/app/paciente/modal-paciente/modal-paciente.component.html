@@ -88,7 +88,30 @@
         
     </div>
 
-
+    <div class="border m-3">
+        <div class="row border bg-primary p-3 m-0 text-white">
+            <div class="col-9">
+                <h3>Atendimentos realizados</h3>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-light" (click)="activeModal.close()" [routerLink]="['/atendimentos/novo']">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div class="p-3" *ngFor="let atendimento of atendimentos">
+            <div>
+                <a (click)="activeModal.close()" [routerLink]="['/atendimentos/editar', atendimento.id]">
+                    Data: {{ atendimento.dataAtendimento | date: 'dd/MM/yyyy' }}
+                </a>
+            </div>
+            <div class="small" *ngFor="let procedimento of atendimento.procedimentosAplicados">
+                <div>
+                    {{ procedimento.procedimento }}
+                </div>
+            </div>
+        </div>
+    </div>
 
     
 </div>
