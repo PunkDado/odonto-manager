@@ -12,7 +12,7 @@ import { DentistaService } from '../services/dentista.service';
 export class EditarDentistaComponent implements OnInit {
 
   @ViewChild('formDentista') formDentista!: NgForm;
-  dentista: Dentista = {};
+  dentista!: Dentista;
 
   constructor(
     private dentistaService: DentistaService,

@@ -6,6 +6,7 @@ import { InserirDentistaComponent } from './inserir-dentista/inserir-dentista.co
 import { EditarDentistaComponent } from './editar-dentista/editar-dentista.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -18,7 +19,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    NgSelectModule
   ],
   providers: [
     DentistaService,
