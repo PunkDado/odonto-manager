@@ -1,75 +1,323 @@
-<h1>Editar dentista</h1>
-    <div class="well">
-        
-        <form #formDentista="ngForm">
-            <div class="form-group">
-                <label for="nomeDentista">Nome: </label>
-                <input type="text" class="form-control" id="nomeDentista" name="nomeDentista" minlength="2" required [(ngModel)]="dentista.nomeDentista" #nomeDentista="ngModel">
-                <div *ngIf="nomeDentista.errors && (nomeDentista.dirty || nomeDentista.touched)" class="alert alert-danger">
-                    <div [hidden]="!nomeDentista.errors.required">Digite o nome do dentista</div>
-                    <div [hidden]="!nomeDentista.errors.minlength">O nome do dentista deve conter ao menos dois caracteres</div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="sobrenomeDentista">Sobrenome: </label>
-                <input type="text" class="form-control" id="sobrenomeDentista" name="sobrenomeDentista" minlength="2" required [(ngModel)]="dentista.sobrenomeDentista" #sobrenomeDentista="ngModel">
-                <div *ngIf="sobrenomeDentista.errors && (sobrenomeDentista.dirty || sobrenomeDentista.touched)" class="alert alert-danger">
-                    <div [hidden]="!sobrenomeDentista.errors.required">Digite o sobrenome do dentista</div>
-                    <div [hidden]="!sobrenomeDentista.errors.minlength">O sobrenome do dentista deve conter ao menos dois caracteres</div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="numCro">Número do CRO: </label>
-                <input type="text" class="form-control" id="numCro" name="numCro" minlength="2" required [(ngModel)]="dentista.numCro" #numCro="ngModel">
-                <div *ngIf="numCro.errors && (numCro.dirty || numCro.touched)" class="alert alert-danger">
-                    <div [hidden]="!numCro.errors.required">Digite o número do CRO</div>
-                    <div [hidden]="!numCro.errors.minlength">O número do CRO deve conter ao menos dois caracteres</div>
-                </div>
-            </div>
+<div class="p-3">
+    <h1>Editar dentista</h1>
+        <div class="well">
             
-            <!--
-            <div class="form-group">
-                <label for="idade">Idade: </label>
-                <input type="text" class="form-control" id="idade" name="idade" required [(ngModel)]="pessoa.idade" #idade="ngModel" numerico minimoValidador valorMinimo="0" required>
-                <div class="alert alert-danger" *ngIf="idade.errors && (idade.dirty || idade.touched)">
-                    <div [hidden]="!idade.errors.required">Digite a idade da pessoa</div>
-                    <div [hidden]="!idade.errors.minimo">Idade deve ser maior ou igual a {{ idade.errors.requiredValue }}</div>
+            <form #formDentista="ngForm">
+                <div class="form-group">
+                    <label for="nomeDentista">Nome: </label>
+                    <input type="text" class="form-control" id="nomeDentista" name="nomeDentista" minlength="2" required [(ngModel)]="dentista.nomeDentista" #nomeDentista="ngModel">
+                    <div *ngIf="nomeDentista.errors && (nomeDentista.dirty || nomeDentista.touched)" class="alert alert-danger">
+                        <div [hidden]="!nomeDentista.errors.required">Digite o nome do dentista</div>
+                        <div [hidden]="!nomeDentista.errors.minlength">O nome do dentista deve conter ao menos dois caracteres</div>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="dataNascimento">Data de nascimento</label>
-                <input type="text" class="form-control" id="dataNascimento" name="dataNascimento" required [(ngModel)]="pessoa.dataNascimento" #dataNascimento="ngModel" required>
-                <div class="alert alert-danger" *ngIf="dataNascimento.errors && (dataNascimento.dirty || dataNascimento.touched)">
-                    <div [hidden]="!dataNascimento.errors.required">Digite a idade da pessoa</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="motorista">Habilitação:</label> <br/>
-                <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="Não">Não <br/>
-                <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="A">A <br/>
-                <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="B">B <br/>
-                <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="AB">AB <br/>
-                <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="BA">BA <br/>
-            </div>
-            <div class="form-group">
-                <label for="fumante">Fumante:</label>
-                <input type="checkbox" class="form-check-input" id="fumante" name="fumante" [(ngModel)]="pessoa.fumante" #fumante="ngModel">
-            </div>
-        -->
-
-            <div>
-                <button type="button" class="btn btn-primary" (click)="atualizar()" [disabled]="!formDentista.form.valid">
-                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Salvar
-                </button>
-                <a class="btn btn-secondary" [routerLink]="['/dentistas']">
-                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
-                </a>
-            </div>
-
-            
-        </form>
-    </div>
     
-
+                <div class="form-group">
+                    <label for="sobrenomeDentista">Sobrenome: </label>
+                    <input type="text" class="form-control" id="sobrenomeDentista" name="sobrenomeDentista" minlength="2" required [(ngModel)]="dentista.sobrenomeDentista" #sobrenomeDentista="ngModel">
+                    <div *ngIf="sobrenomeDentista.errors && (sobrenomeDentista.dirty || sobrenomeDentista.touched)" class="alert alert-danger">
+                        <div [hidden]="!sobrenomeDentista.errors.required">Digite o sobrenome do dentista</div>
+                        <div [hidden]="!sobrenomeDentista.errors.minlength">O sobrenome do dentista deve conter ao menos dois caracteres</div>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="numCro">Número do CRO: </label>
+                    <input type="text" class="form-control" id="numCro" name="numCro" minlength="2" required [(ngModel)]="dentista.numCro" #numCro="ngModel">
+                    <div *ngIf="numCro.errors && (numCro.dirty || numCro.touched)" class="alert alert-danger">
+                        <div [hidden]="!numCro.errors.required">Digite o número do CRO</div>
+                        <div [hidden]="!numCro.errors.minlength">O número do CRO deve conter ao menos dois caracteres</div>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="numCro">Data de nascimento: </label>
+                    <input type="date" class="form-control" id="dataNascimentoDentista" name="dataNascimentoDentista" [(ngModel)]="dentista.dataNascimentoDentista" #dataNascimentoDentista="ngModel">
+                </div>
+    
+                <div class="form-group">
+                    <label for="sexoDentista">Sexo: </label>
+                    <ng-select name="sexoDentista" [items]="generos" bindLabel="sexoDentista" [(ngModel)]="dentista.sexoDentista" placeholder="Selecione um gênero"> </ng-select>
+                </div>
+    
+                <!-- Telefones -->
+            <div>
+                <div class="container p-3">
+                    <div class="row">
+                        <div class="col-10">
+                            <h3>Telefones de contato</h3>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-secondary" (click)="inserirTelefoneContato()">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div *ngFor="let telefone of dentista.telefonesContato; let i = index">
+                    
+                    <form>
+    
+                        <div class="row">
+                            <div class="col-1">
+                                <a type="button" (click)="removerTelefoneContato(i)">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div class="col-2">
+                                <label for="ddd">DDD</label>
+                                <input type="text" class="form-control" id="ddd" name="ddd" [(ngModel)]="telefone.ddd" #ddd="ngModel">
+                            </div>
+                            <div class="col-4">
+                                <label for="numTelefone">Número</label>
+                                <input type="text" class="form-control" id="numTelefone" name="numTelefone" [(ngModel)]="telefone.numTelefone" #numTelefone="ngModel">
+                            </div>
+                            <!--<div class="col-2">
+                                <label for="tipoTelefone">Tipo</label>
+                                <input type="text" class="form-control" id="tipoTelefone" name="tipoTelefone" [(ngModel)]="telefone.tipoTelefone" #tipoTelefone="ngModel">
+                            </div>-->
+                            
+                            <div class="col-3">
+                                <label for="tipoTelefone">Tipo</label>
+                                <ng-select name="tipoTelefone" [items]="tiposTelefone" bindLabel="tipoTelefone" [(ngModel)]="telefone.tipoTelefone" placeholder="Selecione o tipo do telefone"> </ng-select>
+                            </div>
+                            <div class="col-2">
+                                <label for="principal">Principal </label>
+                                <input type="checkbox" class="form-check-input" id="principal" name="principal" [(ngModel)]="telefone.principal" #principal="ngModel">
+                            </div>
+                            
+                        </div>
+    
+                    </form>
+                </div>
+            </div>
+            <!-- Final de telefones -->
+    
+            <!-- Emails -->
+            <div>
+                <div class="container p-3">
+                    <div class="row">
+                        <div class="col-10">
+                            <h3>Emails</h3>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-secondary" (click)="inserirEmail()">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div *ngFor="let email of dentista.emails; let i = index">
+                    
+                    <form>
+    
+                        <div class="row">
+                            <div class="col-1">
+                                <a type="button" (click)="removerEmail(i)">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div class="col-8">
+                                <label for="enderecoEmail">Endereço de email</label>
+                                <input type="email" class="form-control" id="enderecoEmail" name="enderecoEmail" [(ngModel)]="email.enderecoEmail" #enderecoEmail="ngModel">
+    
+                            </div>
+                            <div class="col-2">
+                                <label for="principal">Principal </label>
+                                <input type="checkbox" class="form-check-input" id="principal" name="principal" [(ngModel)]="email.principal" #principal="ngModel">
+                            </div>
+                            
+                        </div>
+    
+                    </form>
+                </div>
+            </div>
+            <!-- Final de emails -->
+    
+            <!-- Contas bancarias dentista -->
+            <div>
+                <div class="container p-3">
+                    <div class="row">
+                        <div class="col-10">
+                            <h3>Contas bancárias</h3>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-secondary" (click)="inserirContaBancariaDentista()">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div *ngFor="let conta of dentista.contasBancariasDentista; let i = index">
+                    
+                    <form>
+    
+                        <div class="row">
+                            <div class="col-1">
+                                <a type="button" (click)="removerContaBancariaDentista(i)">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div class="col-3">
+                                <label for="enderecoEmail">Banco</label>
+                                <!--<input type="text" class="form-control" id="banco" name="banco" [(ngModel)]="conta.banco" #banco="ngModel">-->
+                                <ng-select name="banco" [items]="bancos" bindLabel="banco" [(ngModel)]="conta.banco" placeholder="Selecione o banco"> </ng-select>
+                            </div>
+                            <div class="col-3">
+                                <label for="enderecoEmail">Agência</label>
+                                <input type="text" class="form-control" id="agencia" name="agencia" [(ngModel)]="conta.agencia" #agencia="ngModel">
+                            </div>
+                            <div class="col-3">
+                                <label for="enderecoEmail">Conta</label>
+                                <input type="text" class="form-control" id="conta" name="conta" [(ngModel)]="conta.conta" #conta="ngModel">
+                            </div>
+                            <div class="col-2">
+                                <label for="principal">Principal </label>
+                                <input type="checkbox" class="form-check-input" id="principal" name="principal" [(ngModel)]="conta.principal" #principal="ngModel">
+                            </div>
+                            
+                        </div>
+    
+                    </form>
+                </div>
+            </div>
+            <!-- Final de Contas bancarias dentista -->
+    
+            <!-- Dentista procedimento -->
+            <div>
+                <div class="container p-3">
+                    <div class="row">
+                        <div class="col-10">
+                            <h3>Comissionamento por procedimentos</h3>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-secondary" (click)="inserirDentistaProcedimento()">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div *ngFor="let dentistaProcedimento of dentista.dentistaProcedimentos; let i = index">
+                    
+                    <form>
+    
+                        <div class="row">
+                            
+                            <div class="col-1">
+                                <a type="button" (click)="removerDentistaProcedimento(i)">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div class="col-3">
+                                <label for="procedimento">Procedimento</label>
+                                <ng-select name="procedimento" [items]="procedimentos" bindLabel="descProcedimento" [(ngModel)]="dentistaProcedimento.procedimento" placeholder="Selecione o procedimento"> </ng-select>
+                            </div>
+                            <div class="col-3">
+                                <label for="taxaRepasse">Taxa de repasse</label>
+                                <input type="text" class="form-control" id="taxaRepasse" name="taxaRepasse" [(ngModel)]="dentistaProcedimento.taxaRepasse" #taxaRepasse="ngModel">
+                            </div>
+                            <div class="col-3">
+                                <label for="valorFixo">Valor fixo</label>
+                                <input type="text" class="form-control" id="valorFixo" name="valorFixo" [(ngModel)]="dentistaProcedimento.valorFixo" #valorFixo="ngModel">
+                            </div>
+                            
+                        </div>
+    
+                    </form>
+                </div>
+            </div>
+            <!-- Final de dentista procedimento -->
+    
+            <!-- Dentista tipo procedimento -->
+            <div>
+                <div class="container p-3">
+                    <div class="row">
+                        <div class="col-10">
+                            <h3>Comissionamento por tipo de procedimento</h3>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-secondary" (click)="inserirDentistaTipoProcedimento()">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div *ngFor="let dentistaTipoProcedimento of dentista.dentistaTiposProcedimentos; let i = index">
+                    
+                    <form>
+    
+                        <div class="row">
+                            <div class="col-1">
+                                <a type="button" (click)="removerDentistaTipoProcedimento(i)">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div class="col-3">
+                                <label for="tipoProcedimento">Procedimento</label>
+                                <ng-select name="tipoProcedimento" [items]="tiposProcedimento" bindLabel="descTipoProcedimento" [(ngModel)]="dentistaTipoProcedimento.tipoProcedimento" placeholder="Selecione o tipo de procedimento"> </ng-select>
+                            </div>
+                            <div class="col-3">
+                                <label for="taxaRepasse">Taxa de repasse</label>
+                                <input type="text" class="form-control" id="taxaRepasse" name="taxaRepasse" [(ngModel)]="dentistaTipoProcedimento.taxaRepasse" #taxaRepasse="ngModel">
+                            </div>
+                            <div class="col-3">
+                                <label for="valorFixo">Valor fixo</label>
+                                <input type="text" class="form-control" id="valorFixo" name="valorFixo" [(ngModel)]="dentistaTipoProcedimento.valorFixo" #valorFixo="ngModel">
+                            </div>
+                            
+                        </div>
+    
+                    </form>
+                </div>
+            </div>
+            <!-- Final de dentista tipo procedimento -->
+                
+                <!--
+                <div class="form-group">
+                    <label for="idade">Idade: </label>
+                    <input type="text" class="form-control" id="idade" name="idade" required [(ngModel)]="pessoa.idade" #idade="ngModel" numerico minimoValidador valorMinimo="0" required>
+                    <div class="alert alert-danger" *ngIf="idade.errors && (idade.dirty || idade.touched)">
+                        <div [hidden]="!idade.errors.required">Digite a idade da pessoa</div>
+                        <div [hidden]="!idade.errors.minimo">Idade deve ser maior ou igual a {{ idade.errors.requiredValue }}</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dataNascimento">Data de nascimento</label>
+                    <input type="text" class="form-control" id="dataNascimento" name="dataNascimento" required [(ngModel)]="pessoa.dataNascimento" #dataNascimento="ngModel" required>
+                    <div class="alert alert-danger" *ngIf="dataNascimento.errors && (dataNascimento.dirty || dataNascimento.touched)">
+                        <div [hidden]="!dataNascimento.errors.required">Digite a idade da pessoa</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="motorista">Habilitação:</label> <br/>
+                    <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="Não">Não <br/>
+                    <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="A">A <br/>
+                    <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="B">B <br/>
+                    <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="AB">AB <br/>
+                    <input type="radio" class="form-check-input" id="motorista" name="motorista" [(ngModel)]="pessoa.motorista" #motorista="ngModel" value="BA">BA <br/>
+                </div>
+                <div class="form-group">
+                    <label for="fumante">Fumante:</label>
+                    <input type="checkbox" class="form-check-input" id="fumante" name="fumante" [(ngModel)]="pessoa.fumante" #fumante="ngModel">
+                </div>
+            -->
+    
+                <div>
+                    <button type="button" class="btn btn-primary" (click)="atualizar()" [disabled]="!formDentista.form.valid">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i> Salvar
+                    </button>
+                    <a class="btn btn-secondary" [routerLink]="['/dentistas']">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+                    </a>
+                </div>
+    
+                
+            </form>
+        </div>
+    </div>
+       

@@ -13,6 +13,18 @@
     </div>
 </div>
 
+<div class="container">
+    <form>
+        <input type="search" id="search" name="search" placeholder="Buscar dentista..." size="32" [(ngModel)]="searchTerm">
+        <button class="btn">
+            <i class="fa fa-search" aria-hidden="true" (click)="filtrarDentistas(searchTerm)"></i>
+        </button>
+        <button class="btn" (click)="listarDentistas()">
+            <i class="fa fa-refresh" aria-hidden="true"></i>
+        </button>
+    </form>
+</div>
+
 <br/>
 <div class="container" *ngFor="let dentista of dentistas">
     <div class="row">

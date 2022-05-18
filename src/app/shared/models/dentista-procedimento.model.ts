@@ -5,6 +5,7 @@ export class DentistaProcedimento {
         public id?: number,
         public taxaRepasse?: number,
         public valorFixo?: number,
+        public dataAtualizacao?: string,
         public procedimento?: Procedimento
     ) {}
 }

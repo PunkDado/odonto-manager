@@ -11,6 +11,8 @@ import { DentistaService } from '../services/dentista.service';
 export class ListarDentistaComponent implements OnInit {
 
   dentistas: Dentista[] = [];
+  searchTerm!: string;
+  dentistasFiltrados!: Dentista[];
 
   constructor(private dentistaService: DentistaService,
               private router: Router,
@@ -44,6 +46,18 @@ export class ListarDentistaComponent implements OnInit {
       );
     }
   }
+
+  filtrarDentistas(searchTerm: string): void {
+    this.dentistasFiltrados = this.dentistas.filter(
+      data => 
+        data.nomeDentista?.toUpperCase().includes(searchTerm.toUpperCase())
+        || data.sobrenomeDentista?.toUpperCase().includes(searchTerm.toUpperCase())
+        || data.numCro?.toUpperCase().includes(searchTerm.toUpperCase())
+    );
+    this.dentistas = this.dentistasFiltrados;
+    // Inserir código para filtrar atendimentos segundo a string "search"
+  }
+
 
 }
 

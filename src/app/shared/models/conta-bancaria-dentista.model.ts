@@ -4,5 +4,7 @@ export class ContaBancariaDentista {
         public banco?: string,
         public agencia?: string,
         public conta?: string,
+        public dataAtualizacao?: string,
+        public principal?: boolean
     ) {}
 }

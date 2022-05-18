@@ -25,6 +25,7 @@ export class InserirPacienteComponent implements OnInit {
   faces: string[] = ["Vestibular", "Frontal"];
   condicoes: string[] = ["Cárie encontrada", "Cárie restaurada"];
   tiposTelefone: string[] = ["Celular", "Residencial", "Comercial"];
+  
 
   constructor(
     private pacienteService: PacienteService,

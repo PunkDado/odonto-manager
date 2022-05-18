@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PagamentoModule } from './pagamento/pagamento.module';
 import { PacienteModule } from './paciente/paciente.module';
+import { ProcedimentoModule } from './procedimento/procedimento.module';
+import { TipoProcedimentoModule } from './tipo-procedimento/tipo-procedimento.module';
 //import { AngularFontAwesomeModule } from 'angular-font-awesome';
 //import { ProcedimentoAplicadoModule } from './procedimento-aplicado/procedimento-aplicado.module';
 
@@ -27,7 +29,9 @@ import { PacienteModule } from './paciente/paciente.module';
     FormsModule,
     RouterModule,
     PagamentoModule,
-    PacienteModule
+    PacienteModule,
+    ProcedimentoModule,
+    TipoProcedimentoModule
     //AngularFontAwesomeModule,
     //ProcedimentoAplicadoModule
   ],
