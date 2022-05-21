@@ -12,6 +12,7 @@ import { PagamentoModule } from './pagamento/pagamento.module';
 import { PacienteModule } from './paciente/paciente.module';
 import { ProcedimentoModule } from './procedimento/procedimento.module';
 import { TipoProcedimentoModule } from './tipo-procedimento/tipo-procedimento.module';
+import { AgendaModule } from './agenda/agenda.module';
 //import { AngularFontAwesomeModule } from 'angular-font-awesome';
 //import { ProcedimentoAplicadoModule } from './procedimento-aplicado/procedimento-aplicado.module';
 
@@ -31,9 +32,8 @@ import { TipoProcedimentoModule } from './tipo-procedimento/tipo-procedimento.mo
     PagamentoModule,
     PacienteModule,
     ProcedimentoModule,
-    TipoProcedimentoModule
-    //AngularFontAwesomeModule,
-    //ProcedimentoAplicadoModule
+    TipoProcedimentoModule,
+    AgendaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

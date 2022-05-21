@@ -1,6 +1,8 @@
-<h1>Inserir atendimento</h1>
-    <div class="well">
-        <form #formAtendimento="ngForm" class="p-3">
+
+   <h1 class="p-3">Inserir atendimento</h1>
+   <div class="well p-3">
+        
+        <form #formAtendimento="ngForm" >
             <div class="form-group">
 
                 <label for="dentista">Dentista</label>
@@ -23,7 +25,7 @@
                     <div [hidden]="!dataAtendimento.errors.required">Digite a data do atendimento</div>
                 </div>
             </div>
-            000.0
+            
             <!--<div class="form-group">
                 <label for="paciente">Paciente: </label>
                 <input type="text" class="form-control" id="paciente" name="paciente" minlength="2" required [(ngModel)]="atendimento.paciente" #paciente="ngModel">

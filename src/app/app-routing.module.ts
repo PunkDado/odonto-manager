@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MostrarAgendaComponent } from './agenda/mostrar-agenda/mostrar-agenda.component';
 import { EditarAtendimentoComponent } from './atendimento/editar-atendimento/editar-atendimento.component';
 import { InserirAtendimentoComponent } from './atendimento/inserir-atendimento/inserir-atendimento.component';
 import { ListarAtendimentoComponent } from './atendimento/listar-atendimento/listar-atendimento.component';
@@ -35,12 +36,9 @@ const routes: Routes = [
   { path: 'pacientes/listar', component: ListarPacienteComponent},
   { path: 'pacientes/novo', component: InserirPacienteComponent},
   { path: 'pacientes/editar/:id', component: EditarPacienteComponent},
+
+  { path: 'agenda', component: MostrarAgendaComponent },
   
-  //{ path: 'procedimentos-aplicados', redirectTo: 'procedimentos-aplicados/listar'},
-  //{ path: 'procedimentos-aplicados/listar', component: ListarProcedimentoAplicadoComponent},
-  //{ path: 'procedimentos-aplicados/novo', component: InserirProcedimentoAplicadoComponent},
-  //{ path: 'procedimentos-aplicados/novo/:id', component: InserirProcedimentoAplicadoPorAtendimentoComponent},
-  //{ path: 'procedimentos-aplicados/editar/:id', component: EditarProcedimentoAplicadoComponent},
   
 ];
 

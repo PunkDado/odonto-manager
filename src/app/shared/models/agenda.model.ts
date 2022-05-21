@@ -1,3 +1,5 @@
+import { Dentista } from "./dentista.model";
+
 export class Agenda {
     constructor(
         public id?: number,
@@ -8,6 +10,8 @@ export class Agenda {
         public horarioUtilizado?: boolean,
         public ausenciaPaciente?: boolean,
         public reagendamentoDentista?: boolean,
-        public horarioPerdido?: boolean
-    )
+        public horarioPerdido?: boolean,
+        public dentista?: Dentista,
+        public paciente?: Paciente
+    ) {}
 }
