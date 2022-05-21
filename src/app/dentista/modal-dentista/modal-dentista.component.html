@@ -1,0 +1,99 @@
+<div class="modal-header" style="max-width: 400px">
+    
+    <h2 class="modal-title" id="modalLabel">Dentista</h2>
+    <a type="button" aria-label="Fechar" (click)="activeModal.dismiss()">
+        <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i> </span>
+    </a>
+
+    
+</div>
+
+<div class="modal-body text-left" style="max-width: 400px">
+
+    <h3> {{ dentista.nomeDentista }} {{ dentista.sobrenomeDentista }}</h3>
+    
+    <div class="m-3">
+        <div class="p-3">
+            <p> CPF: {{ dentista.cpfDentista }}</p>
+            <p> Data de nascimento: {{ dentista.dataNascimentoDentista | date: 'dd/MM/yyyy'}}</p>
+        </div>
+    </div>
+    
+    <div class="border m-3">
+
+        <h3 class="border bg-primary p-3 m-0 text-white">Informações de contato</h3>
+        
+        <div class="border p-3 m-0 bg-light">
+            <h4 class="p-0 m-0">Telefones de contato</h4>
+            <div class="p-0" *ngFor="let telefoneContato of dentista.telefonesContato; let i = index;">
+            <div>
+                <p>{{ telefoneContato.tipoTelefone }}: ({{ telefoneContato.ddd }}) {{ telefoneContato.numTelefone }} <i class="small">({{ telefoneContato.dataAtualizacao | date: 'dd/MM/yyyy'}})</i></p>
+            </div>
+        </div>
+        <p class="p-3" *ngIf="dentista.telefonesContato!.length == 0"><i>Nenhum telefone cadastrado</i></p>
+        </div>
+        
+        <div class="border p-3 m-0 bg-light">
+            <h4 class="p-0 m-0">Emails de contato</h4>
+            <div class="p-0" *ngFor="let email of dentista.emails; let i = index;">
+            <div>
+                <p>{{ email.enderecoEmail }} <i class="small">({{ email.dataAtualizacao | date: 'dd/MM/yyyy'}})</i></p>
+            </div>
+        </div>
+        <p class="p-3" *ngIf="dentista.emails!.length == 0"><i>Nenhum email cadastrado</i></p>
+        </div>
+
+    </div>
+
+    <div class="border m-3">
+        
+        <h3 class="border bg-primary p-3 m-0 text-white">Dados bancários</h3>
+        
+        <div class="border p-3 m-0 bg-light">
+            
+            <div class="p-0" *ngFor="let conta of dentista.contasBancariasDentista; let i = index;">
+            <div>
+                <p>{{ conta.banco }}: {{ conta.agencia }} - {{ conta.conta }} <i class="small">({{ conta.dataAtualizacao | date: 'dd/MM/yyyy'}})</i></p>
+            </div>
+        </div>
+        <p class="p-3" *ngIf="dentista.telefonesContato!.length == 0"><i>Nenhum telefone cadastrado</i></p>
+        </div>
+        
+
+    </div>
+
+    <div class="border m-3">
+
+        <h3 class="border bg-primary p-3 m-0 text-white">Informações de comissionamento</h3>
+        
+        <div class="border p-3 m-0 bg-light">
+            <h4 class="p-0 m-0">Comissionamento por procedimentos</h4>
+            <div class="p-0" *ngFor="let dentistaProcedimento of dentista.dentistaProcedimentos; let i = index;">
+            <div>
+                <p>{{ dentistaProcedimento!.procedimento!.descProcedimento }}: fixo {{ dentistaProcedimento.valorFixo }} % {{ dentistaProcedimento.taxaRepasse }} <i class="small">({{ dentistaProcedimento.dataAtualizacao | date: 'dd/MM/yyyy'}})</i></p>
+            </div>
+        </div>
+        <p class="p-3" *ngIf="dentista.dentistaProcedimentos!.length == 0"><i>Nenhum comissionamento por procedimento cadastrado</i></p>
+        </div>
+        
+        <div class="border p-3 m-0 bg-light">
+            <h4 class="p-0 m-0">Comissionamento por tipo de procedimento</h4>
+            <div class="p-0" *ngFor="let dentistaTipoProcedimento of dentista.dentistaTiposProcedimentos; let i = index;">
+                <div>
+                    <p>{{ dentistaTipoProcedimento!.tipoProcedimento!.descTipoProcedimento }}: fixo {{ dentistaTipoProcedimento.valorFixo }} % {{ dentistaTipoProcedimento.taxaRepasse }} <i class="small">({{ dentistaTipoProcedimento.dataAtualizacao | date: 'dd/MM/yyyy'}})</i></p>
+                </div>
+        </div>
+        <p class="p-3" *ngIf="dentista.dentistaTiposProcedimentos!.length == 0"><i>Nenhum comissionamento por tipo de procedimento cadastrado</i></p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="modal-footer" style="max-width: 400px">
+    <a href="#" title="Editar" alt="Editar" class="btn btn-xs btn-primary" (click)="activeModal.close()" [routerLink]="['/dentistas/editar', dentista.id]">
+        <i class="fa fa-edit" aria-hidden="true"></i> Editar
+    </a>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Fechar</button>
+</div>

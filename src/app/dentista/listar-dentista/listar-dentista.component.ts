@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Dentista } from 'src/app/shared/models/dentista.model';
+import { ModalDentistaComponent } from '../modal-dentista/modal-dentista.component';
 import { DentistaService } from '../services/dentista.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-listar-dentista',
@@ -16,7 +18,8 @@ export class ListarDentistaComponent implements OnInit {
 
   constructor(private dentistaService: DentistaService,
               private router: Router,
-              private route: ActivatedRoute
+              private route: ActivatedRoute,
+              private modalService: NgbModal
     ) { }
 
   ngOnInit(): void {
@@ -56,6 +59,11 @@ export class ListarDentistaComponent implements OnInit {
     );
     this.dentistas = this.dentistasFiltrados;
     // Inserir código para filtrar atendimentos segundo a string "search"
+  }
+
+  abrirModalDentista(dentista: Dentista) {
+    const modalRef = this.modalService.open(ModalDentistaComponent);
+    modalRef.componentInstance.dentista = dentista;
   }
 
 

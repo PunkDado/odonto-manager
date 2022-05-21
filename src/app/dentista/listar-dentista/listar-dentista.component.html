@@ -32,9 +32,9 @@
             {{ dentista.nomeDentista }} {{ dentista.sobrenomeDentista }}
         </div>
         <div class="col-1">
-            <a href = "#" title="Editar" alt="Editar" [routerLink]="['/dentistas/editar', dentista.id]">
+            <button type="button" class="btn btn-link btn-sm" (click)="abrirModalDentista(dentista)">
                 <i class="fa fa-eye" aria-hidden="true"></i>
-            </a>
+            </button>
         </div>
         <div class="col-1">
             <a href = "#" title="Editar" alt="Editar" [routerLink]="['/dentistas/editar', dentista.id]">

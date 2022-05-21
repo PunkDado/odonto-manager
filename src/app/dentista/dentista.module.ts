@@ -7,6 +7,7 @@ import { EditarDentistaComponent } from './editar-dentista/editar-dentista.compo
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ModalDentistaComponent } from './modal-dentista/modal-dentista.component';
 
 
 
@@ -14,7 +15,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
   declarations: [
     ListarDentistaComponent,
     InserirDentistaComponent,
-    EditarDentistaComponent
+    EditarDentistaComponent,
+    ModalDentistaComponent
   ],
   imports: [
     CommonModule,

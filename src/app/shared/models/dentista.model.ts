@@ -11,6 +11,7 @@ export class Dentista {
         public nomeDentista?: string,
         public sobrenomeDentista?: string,
         public numCro?: string,
+        public cpfDentista?: string,
         public dataNascimentoDentista?: string,
         public sexoDentista?: string,
         public contasBancariasDentista: ContaBancariaDentista[] = [],
