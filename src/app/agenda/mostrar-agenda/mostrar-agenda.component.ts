@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Agenda } from 'src/app/shared/models/agenda.model';
+import { AgendaService } from '../services/agenda.service';
 
 @Component({
   selector: 'app-mostrar-agenda',
@@ -13,9 +15,29 @@ export class MostrarAgendaComponent implements OnInit {
   semana4: string[] = ["22", "23", "24", "25", "26", "27", "28"];
   semana5: string[] = ["29", "30", "31", "", "", "", ""];
 
-  constructor() { }
+  agendamentos!: Agenda[];
+
+  constructor(
+    private agendaService: AgendaService
+  ) { }
 
   ngOnInit(): void {
+    this.listarTodos();
+  }
+
+  listarTodos(): void {
+
+    this.agendaService.listarTodos().subscribe((dados) => {
+      if (dados == null) {
+        this.agendamentos = [];
+        
+      }
+      else {
+        this.agendamentos = dados;
+        
+      }
+    });
+
   }
 
 }

@@ -59,7 +59,7 @@
                     <a class="btn" data-toggle="tooltip" data-placement="top" 
                         title="Clique para selecionar data de repasse e dentista" 
                         (click)="setDentistaDataRepasse(dentista, datasRepasse[i])">
-                        {{ linhaDeRepasse }}
+                        {{ linhaDeRepasse | currency: " "}}
                     </a>
                 </th>
             </tr>
@@ -145,9 +145,9 @@
                             <i class="fa fa-scissors"></i>
                         </p>
                     </th>
-                    <th>{{ procedimentoAplicado.valor }}</th>
-                    <th>{{ procedimentoAplicado.valorLiquido }}</th>
-                    <th>{{ procedimentoAplicado.valorRepassado }}</th>
+                    <th>{{ procedimentoAplicado.valor | currency: " "}}</th>
+                    <th>{{ procedimentoAplicado.valorLiquido  | currency: " "}}</th>
+                    <th>{{ procedimentoAplicado.valorRepassado  | currency: " "}}</th>
                     <th>{{ procedimentoAplicado.dataRepasse | date: 'dd/MM/yyyy' }}</th>
                     <th>
                         <button     class="btn btn-default"
