@@ -1,53 +1,76 @@
-<div class="container p-3">
-    <h3>Agenda</h3>
+<div class="container">
+    <h2 align="center" style="color: darkblue;">
+        Janeiro 2021
+    </h2>
+    <table border="solid" bgcolor="lightgrey" align="center" cellspacing="21" cellpadding="5">
+          
+        <caption align="top">
 
-    <div style="width: 170%">
-        <div class="row">
-            <div class="col-1 border">S</div>
-            <div class="col-1 border">T</div>
-            <div class="col-1 border">Q</div>
-            <div class="col-1 border">Q</div>
-            <div class="col-1 border">S</div>
-            <div class="col-1 border">S</div>
-            <div class="col-1 border">D</div>
-        </div>
-        <div class="row">
-            <a href="#" class="col-1 border">1</a>
-            <div class="col-1 border" style="height: 100px">2</div>
-            <div class="col-1 border" style="height: 100px">3</div>
-            <div class="col-1 border" style="height: 100px">4</div>
-            <div class="col-1 border" style="height: 100px">5</div>
-            <div class="col-1 border" style="height: 100px">6</div>
-            <div class="col-1 border" style="height: 100px">7</div>
-        </div>
-        <div class="row">
-            <div class="col-1 border" style="height: 100px">1</div>
-            <div class="col-1 border" style="height: 100px">2</div>
-            <div class="col-1 border" style="height: 100px">3</div>
-            <div class="col-1 border" style="height: 100px">4</div>
-            <div class="col-1 border" style="height: 100px">5</div>
-            <div class="col-1 border" style="height: 100px">6</div>
-            <div class="col-1 border" style="height: 100px">7</div>
-        </div>
-        <div class="row">
-            <div class="col-1 border" style="height: 100px">1</div>
-            <div class="col-1 border" style="height: 100px">2</div>
-            <div class="col-1 border" style="height: 100px">3</div>
-            <div class="col-1 border" style="height: 100px">4</div>
-            <div class="col-1 border" style="height: 100px">5</div>
-            <div class="col-1 border" style="height: 100px">6</div>
-            <div class="col-1 border" style="height: 100px">7</div>
-        </div>
-        <div class="row">
-            <div class="col-1 border" style="height: 100px">1</div>
-            <div class="col-1 border" style="height: 100px">2</div>
-            <div class="col-1 border" style="height: 100px">3</div>
-            <div class="col-1 border" style="height: 100px">4</div>
-            <div class="col-1 border" style="height: 100px">5</div>
-            <div class="col-1 border" style="height: 100px">6</div>
-            <div class="col-1 border" style="height: 100px">7</div>
-        </div>
-    </div>
+        </caption>
+  
+        <thead>
+            <tr style="height: 50px">
+                    <th style="color: white; background: purple;">
+                        Dom</th>
+                    <th style="color: white; background: purple;">
+                        Seg</th>
+                    <th style="color: white; background: purple;">
+                        Ter</th>
+                    <th style="color: white; background: purple;">
+                        Qua</th>
+                    <th style="color: white; background: purple;">
+                        Qui</th>
+                    <th style="color: white; background: purple;">
+                        Sex</th>
+                    <th style="color: white; background: purple;">
+                        Sáb</th>
+            </tr>
+        </thead>
+          
+        <tbody>
+            <tr>
+                <td *ngFor="let dia of semana1;">
+                    <div class="row">
+                        <div class="col-6">{{ dia }}</div>
+                        <div class="col-6"><a class="button"><i class="fa fa-edit" aria-hidden="true"></i></a></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td *ngFor="let dia of semana2;">
+                    <div class="row">
+                        <div class="col-6">{{ dia }}</div>
+                        <div class="col-6"><a class="button"><i class="fa fa-edit" aria-hidden="true"></i></a></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td *ngFor="let dia of semana3;">
+                    <div class="row">
+                        <div class="col-6">{{ dia }}</div>
+                        <div class="col-6"><a class="button"><i class="fa fa-edit" aria-hidden="true"></i></a></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td *ngFor="let dia of semana4;">
+                    <div class="row">
+                        <div class="col-6">{{ dia }}</div>
+                        <div class="col-6"><a class="button"><i class="fa fa-edit" aria-hidden="true"></i></a></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td *ngFor="let dia of semana5;">
+                    <div class="row">
+                        <div class="col-6">{{ dia }}</div>
+                        <div class="col-6"><a class="button"><i class="fa fa-edit" aria-hidden="true"></i></a></div>
+                    </div>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
 
 </div>
 

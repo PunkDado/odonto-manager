@@ -1,4 +1,5 @@
 import { Dentista } from "./dentista.model";
+import { Paciente } from "./paciente.model";
 
 export class Agenda {
     constructor(
