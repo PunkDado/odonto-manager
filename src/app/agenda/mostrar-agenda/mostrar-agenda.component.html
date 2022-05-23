@@ -1,13 +1,52 @@
-<div *ngFor="let agendamento of agendamentos;">
-    {{ agendamento.dentista!.nomeDentista }}
-    {{ agendamento.paciente!.nomePaciente }}
+<div class="row p-3">
+    <div class="col-5">
+        <label for="mes">Mês: </label>
+        <input type="date" class="form-control" name="mes" [(ngModel)]="mes" (change)="montaMes()">
+        <!--<ng-select  name="mes"
+                    [items]="meses" 
+                    [(ngModel)]="mes" 
+                    placeholder="Selecione o mês"> 
+        </ng-select>-->
+    </div>
+    <div class="col-2 p-4">
+        <button type="button" class="btn btn-primary" (click)="setMesAtual(); montaMes();">
+            <i class="fa fa-calendar" aria-hidden="true"></i> Mês atual
+        </button>
+    </div>
+    <div class="col-5">
+        <label for="dentista">Dentista: </label>
+        <ng-select  name="dentista"
+                    [items]="dentistas" 
+                    bindLabel="nomeDentista"
+                    bindValue="id"
+                    [(ngModel)]="dentistaId" 
+                    placeholder="Selecione um dentista"> 
+        </ng-select>
+    </div>
 </div>
 
 <div class="container">
-    <h2 align="center" style="color: darkblue;">
-        Janeiro 2021
-    </h2>
-    <table border="solid" bgcolor="lightgrey" align="center" cellspacing="21" cellpadding="5">
+    
+    <div class="row">
+        <div class="col-1">
+            <button type="button" class="btn" (click)="arrowLeft(); montaMes();">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="col-10">
+            <h2 align="center" style="color: darkblue;">
+                {{ mes | date: 'MMMM yyyy'}}
+            </h2>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn" (click)="arrowRight(); montaMes();">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+    
+    <table border="solid" bgcolor="lightgrey" align="center" cellspacing="21" cellpadding="5"
+        *ngIf="mes != undefined">
           
         <caption align="top">
 
@@ -15,8 +54,7 @@
   
         <thead>
             <tr style="height: 50px">
-                    <th style="color: white; background: purple;">
-                        Dom</th>
+                    
                     <th style="color: white; background: purple;">
                         Seg</th>
                     <th style="color: white; background: purple;">
@@ -29,6 +67,8 @@
                         Sex</th>
                     <th style="color: white; background: purple;">
                         Sáb</th>
+                    <th style="color: white; background: purple;">
+                        Dom</th>
             </tr>
         </thead>
           
@@ -37,7 +77,7 @@
                 <td *ngFor="let dia of semana1;">
                     <div class="row">
                         <div class="col-6">{{ dia }}</div>
-                        <div class="col-6"><a class="button"><i class="fa fa-edit" aria-hidden="true"></i></a></div>
+                        <div class="col-6" *ngIf="dia != '' "><a class="button"><i class="fa fa-edit" aria-hidden="true"></i></a></div>
                     </div>
                 </td>
             </tr>
@@ -68,8 +108,16 @@
             <tr>
                 <td *ngFor="let dia of semana5;">
                     <div class="row">
+                        <div class="col-6">{{ dia  }}</div>
+                        <div class="col-6" *ngIf="dia != '' "><a class="button"><i class="fa fa-edit" aria-hidden="true"></i></a></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td *ngFor="let dia of semana6;">
+                    <div class="row">
                         <div class="col-6">{{ dia }}</div>
-                        <div class="col-6"><a class="button"><i class="fa fa-edit" aria-hidden="true"></i></a></div>
+                        <div class="col-6" *ngIf="dia != '' "><a class="button"><i class="fa fa-edit" aria-hidden="true"></i></a></div>
                     </div>
                 </td>
             </tr>

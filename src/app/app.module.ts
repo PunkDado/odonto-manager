@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -35,7 +35,9 @@ import { AgendaModule } from './agenda/agenda.module';
     TipoProcedimentoModule,
     AgendaModule
   ],
-  providers: [],
+  providers: [
+    //{ provide: LOCALE_ID, useValue: 'pt-PT' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
