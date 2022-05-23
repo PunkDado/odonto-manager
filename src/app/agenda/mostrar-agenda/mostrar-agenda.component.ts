@@ -72,8 +72,13 @@ export class MostrarAgendaComponent implements OnInit {
     let date = new Date(this.mes);
     
     let dd = "01";
-    let mm = String(date.getMonth() + 2 - 1).padStart(2, '0'); //January is 0!
+    let mm = String(date.getMonth() + 2 - 1).padStart(2, '0'); //January is 11
     let yyyy = date.getFullYear();
+    if (date.getMonth() == 11) {
+      //yyyy--
+    } else if (date.getMonth() == 0) {
+      //yyyy++
+    }
 
     this.mes = yyyy + '-' + mm + '-' + dd;
     
@@ -88,8 +93,16 @@ export class MostrarAgendaComponent implements OnInit {
     let date = new Date(this.mes);
     
     let dd = "01";
-    let mm = String(date.getMonth() + 2 + 1).padStart(2, '0'); //January is 0!
+    let mm = String(date.getMonth() + 2 + 1).padStart(2, '0'); //January is 11
     let yyyy = date.getFullYear();
+    if (date.getMonth() == 10) {
+      mm = '01';
+      //yyyy = yyyy + 2
+    }
+    else if (date.getMonth() == 11) {
+      mm = '02';
+    }
+    
 
     this.mes = yyyy + '-' + mm + '-' + dd;
 
@@ -104,7 +117,10 @@ export class MostrarAgendaComponent implements OnInit {
     this.semana6 = ["", "", "", "", "", "", ""];
   
     let date = new Date(this.mes);
-    let mm = String(date.getMonth() + 2).padStart(2, '0'); //January is 0!
+    let mm = String(date.getMonth() + 2).padStart(2, '0'); //January is 11
+    if (date.getMonth() == 11) {
+      mm = '01';
+    }
     let yyyy = date.getFullYear();
     let primeiroDiaDaSemana: number = date.getDay();
     let numeroDiasMes: number = 31;
