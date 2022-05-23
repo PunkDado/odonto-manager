@@ -158,14 +158,14 @@ export class MostrarAgendaComponent implements OnInit {
     for(let diaDaSemana = 0; diaDaSemana < 7; diaDaSemana++) {
       if(dia <= numeroDiasMes) {
         this.semana5[diaDaSemana] = yyyy + "-" + mm + "-" + String(dia).padStart(2, '0');
+        dia++;
       }
-      dia++;
     }
     for(let diaDaSemana = 0; diaDaSemana < 7; diaDaSemana++) {
       if (dia <= numeroDiasMes) {
         this.semana6[diaDaSemana] = yyyy + "-" + mm + "-" + String(dia).padStart(2, '0');
+        dia++;
       }
-      dia++;
     }
 
   }
