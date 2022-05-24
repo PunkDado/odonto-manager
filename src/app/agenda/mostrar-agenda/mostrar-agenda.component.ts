@@ -69,42 +69,36 @@ export class MostrarAgendaComponent implements OnInit {
   }
 
   arrowLeft(): void {
-    let date = new Date(this.mes);
+    let date = strToDate(this.mes);
     
     let dd = "01";
-    let mm = String(date.getMonth() + 2 - 1).padStart(2, '0'); //January is 11
-    let yyyy = date.getFullYear();
-    if (date.getMonth() == 11) {
-      //yyyy--
-    } else if (date.getMonth() == 0) {
-      //yyyy++
+    let mm = String(date.getMonth() + 1 - 1).padStart(2, '0'); //January is 11
+    if (date.getMonth() == 0) {
+      mm = "12";
     }
+    let yyyy = date.getFullYear();
+    if (date.getMonth() == 0) {
+      yyyy--
+    } 
 
-    this.mes = yyyy + '-' + mm + '-' + dd;
+    this.mes = yyyy + '-' + mm + '-' + dd + " 00:00:00";
     
   }
 
   arrowRight(): void {
-    /*let i = this.meses.indexOf(this.mes);
-    if (i < this.meses.length - 1) {
-      this.mes = this.meses[i + 1];
-    }*/
-
-    let date = new Date(this.mes);
+    let date = strToDate(this.mes);
     
     let dd = "01";
-    let mm = String(date.getMonth() + 2 + 1).padStart(2, '0'); //January is 11
+    let mm = String(date.getMonth() + 1 + 1).padStart(2, '0'); //January is 11
+    if (date.getMonth() == 11) {
+      mm = "01";
+    }
     let yyyy = date.getFullYear();
-    if (date.getMonth() == 10) {
-      mm = '01';
-      //yyyy = yyyy + 2
-    }
-    else if (date.getMonth() == 11) {
-      mm = '02';
-    }
-    
+    if (date.getMonth() == 11) {
+      yyyy++
+    } 
 
-    this.mes = yyyy + '-' + mm + '-' + dd;
+    this.mes = yyyy + '-' + mm + '-' + dd + " 00:00:00";
 
   }
 
@@ -116,19 +110,17 @@ export class MostrarAgendaComponent implements OnInit {
     this.semana5 = ["", "", "", "", "", "", ""];
     this.semana6 = ["", "", "", "", "", "", ""];
   
-    let date = new Date(this.mes);
-    let mm = String(date.getMonth() + 2).padStart(2, '0'); //January is 11
-    if (date.getMonth() == 11) {
-      mm = '01';
-    }
+    let date = strToDate(this.mes);
+    
+    let mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0
     let yyyy = date.getFullYear();
     let primeiroDiaDaSemana: number = date.getDay();
     let numeroDiasMes: number = 31;
 
-    if ([2, 4, 7, 9].includes(date.getMonth())) {
+    if ([3, 5, 8, 10].includes(date.getMonth())) {
       numeroDiasMes = 30;
     }
-    else if (date.getMonth() == 0) {
+    else if (date.getMonth() == 1) {
       if (yyyy % 4 == 0) {
         numeroDiasMes = 29;
       } 
@@ -181,7 +173,7 @@ function hoje(): string {
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
-    return yyyy + '-' + mm + '-' + dd;
+    return yyyy + '-' + mm + '-' + dd + " 00:00:00";
 }
 
 function mesAtual(): string {
@@ -189,5 +181,13 @@ function mesAtual(): string {
     var dd = "01";
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
-    return yyyy + '-' + mm + '-' + dd;
+    return yyyy + '-' + mm + '-' + dd + " 00:00:00";
+}
+
+function strToDate(strDate: string): Date {
+    let year = parseInt(strDate.substring(0,4));
+    let month = parseInt(strDate.substring(5,7)) - 1;
+    let day = 1;
+    let date = new Date(year, month, day, 0, 0, 0, 0);
+    return date;
 }
