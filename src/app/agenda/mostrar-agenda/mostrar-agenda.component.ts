@@ -170,7 +170,13 @@ export class MostrarAgendaComponent implements OnInit {
     let agendamentosDia = this.agendamentos.filter(
       agendamento => agendamento.dataHora?.substring(0, 10) == dia
     ).length;
-    return agendamentosDia / 16;
+    if (this.dentistaId == undefined) {
+      return agendamentosDia / 16 / 7;
+    }
+    else {
+      return agendamentosDia / 16;
+    }
+    
   }
 
   filtrarAgendamentosPorDentista(): void {

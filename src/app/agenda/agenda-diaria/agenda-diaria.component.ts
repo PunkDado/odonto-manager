@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Agenda } from 'src/app/shared/models/agenda.model';
+import { Dentista } from 'src/app/shared/models/dentista.model';
 
 @Component({
   selector: 'app-agenda-diaria',
@@ -9,6 +11,10 @@ import { ActivatedRoute } from '@angular/router';
 export class AgendaDiariaComponent implements OnInit {
 
   dia!: string;
+  agendamentos!: Agenda[];
+  dentistas!: Dentista[];
+  dentistaId!: number | undefined;
+  mes!: string;
 
   constructor(private route: ActivatedRoute) { }
 
