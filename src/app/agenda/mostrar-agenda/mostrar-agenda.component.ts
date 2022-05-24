@@ -30,7 +30,7 @@ export class MostrarAgendaComponent implements OnInit {
 
   agendamentos!: Agenda[];
   dentistas!: Dentista[];
-  dentistaId!: number;
+  dentistaId!: number | undefined;
   mes!: string;
   primeiroDia!: string;
 
@@ -164,6 +164,25 @@ export class MostrarAgendaComponent implements OnInit {
 
   setMesAtual(): void {
     this.mes = mesAtual();
+  }
+
+  percentualOcupacaoAgenda(dia: string): number {
+    let agendamentosDia = this.agendamentos.filter(
+      agendamento => agendamento.dataHora?.substring(0, 10) == dia
+    ).length;
+    return agendamentosDia / 16;
+  }
+
+  filtrarAgendamentosPorDentista(): void {
+    
+    let agendamentosPorDentista: Agenda[] = this.agendamentos.filter(
+      agendamento => agendamento.dentista?.id == this.dentistaId
+    );
+    this.agendamentos = agendamentosPorDentista;
+  }
+
+  resetDentista(): void {
+    this.dentistaId = undefined;
   }
 
 }
