@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AgendaDiariaComponent } from './agenda/agenda-diaria/agenda-diaria.component';
 import { MostrarAgendaComponent } from './agenda/mostrar-agenda/mostrar-agenda.component';
 import { EditarAtendimentoComponent } from './atendimento/editar-atendimento/editar-atendimento.component';
 import { InserirAtendimentoComponent } from './atendimento/inserir-atendimento/inserir-atendimento.component';
@@ -18,7 +19,7 @@ import { MostrarPagamentoComponent } from './pagamento/mostrar-pagamento/mostrar
 //import { ListarProcedimentoAplicadoComponent } from './procedimento-aplicado/listar-procedimento-aplicado/listar-procedimento-aplicado.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'atendimentos/listar', pathMatch: 'full'},
+  { path: '', redirectTo: 'agenda', pathMatch: 'full'},
   { path: 'atendimentos', redirectTo: 'atendimentos/listar'},
   { path: 'atendimentos/listar', component: ListarAtendimentoComponent},
   { path: 'atendimentos/novo', component: InserirAtendimentoComponent},
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'pacientes/editar/:id', component: EditarPacienteComponent},
 
   { path: 'agenda', component: MostrarAgendaComponent },
+  { path: 'agenda-diaria/:dia', component: AgendaDiariaComponent },
   
   
 ];

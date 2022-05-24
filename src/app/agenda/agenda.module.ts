@@ -5,12 +5,14 @@ import { AgendaService } from './services/agenda.service';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { AgendaDiariaComponent } from './agenda-diaria/agenda-diaria.component';
 
 
 
 @NgModule({
   declarations: [
-    MostrarAgendaComponent
+    MostrarAgendaComponent,
+    AgendaDiariaComponent
   ],
   imports: [
     CommonModule,
