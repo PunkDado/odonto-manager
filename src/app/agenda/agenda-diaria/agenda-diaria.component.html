@@ -1,11 +1,12 @@
 <div class="row p-3">
     <div class="col-4">
         <label for="mes">Dia: </label>
-        <input type="date" class="form-control" name="dia" [(ngModel)]="dia">
+        <input type="date" class="form-control" name="dia" [(ngModel)]="dia" (change)="setNovoDia()">
+       
     </div>
     <div class="col-2 p-4">
-        <button type="button" class="btn btn-primary">
-            <i class="fa fa-calendar" aria-hidden="true"></i> Mês atual
+        <button type="button" class="btn btn-primary" (click)="setHoje()">
+            <i class="fa fa-calendar" aria-hidden="true"></i> Hoje
         </button>
     </div>
     <div class="col-4">
@@ -24,4 +25,67 @@
             <i class="fa fa-refresh" aria-hidden="true"></i>
         </button>
     </div>
+</div>
+
+<!--<div class="container text-center p-3">
+    <h3>Agenda de {{ dia | date: 'dd/MM/yyyy' }}</h3>
+</div>-->
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-1">
+            <button type="button" class="btn" (click)="arrowLeft();">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="col-10">
+            <h2 align="center" style="color: black;" class="p-0">
+                Agenda de {{ dia | date: 'dd/MM/yyyy' }}
+            </h2>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn" (click)="arrowRight();">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+
+    <table border="solid" bgcolor="white" align="center" cellspacing="21" cellpadding="5">
+
+        <thead>
+            <tr style="color: white; background: purple;">
+                <th class="border border-dark">
+                    Horário
+                </th>
+                <th *ngFor="let dentista of dentistas">
+                    {{ dentista.nomeDentista }}
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr  *ngFor="let horario of horarios">
+                <th class="border border-dark">
+                    {{ horario | date: 'HH'}}h{{ horario | date: 'mm'}}
+                </th>
+                <th class="border border-dark" 
+                    *ngFor="let dentista of dentistas;">
+                    <button class="btn border" style="width:100%" (click)="setHoje()">
+                        
+                            <p *ngFor="let agenda of listarAgendamentosPorHorarioPorDentista(horario, dentista.id!)">
+                                {{ agenda.paciente!.nomePaciente }} {{ agenda.paciente!.sobrenomePaciente }}
+                            </p>
+                        
+                        
+                            
+                        
+                    </button>
+                </th>
+            </tr>
+
+        </tbody>
+
+    </table>
+
 </div>
