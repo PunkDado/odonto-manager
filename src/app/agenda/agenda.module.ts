@@ -6,13 +6,19 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AgendaDiariaComponent } from './agenda-diaria/agenda-diaria.component';
+import { ModalAgendaComponent } from './modal-agenda/modal-agenda.component';
+import { InserirAgendaComponent } from './inserir-agenda/inserir-agenda.component';
+import { EditarAgendaComponent } from './editar-agenda/editar-agenda.component';
 
 
 
 @NgModule({
   declarations: [
     MostrarAgendaComponent,
-    AgendaDiariaComponent
+    AgendaDiariaComponent,
+    ModalAgendaComponent,
+    InserirAgendaComponent,
+    EditarAgendaComponent
   ],
   imports: [
     CommonModule,

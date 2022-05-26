@@ -65,23 +65,34 @@
         </thead>
 
         <tbody>
-            <tr  *ngFor="let horario of horarios">
+
+            <tr *ngFor="let horario of horarios">
+                
                 <th class="border border-dark">
                     {{ horario | date: 'HH'}}h{{ horario | date: 'mm'}}
                 </th>
+
                 <th class="border border-dark" 
                     *ngFor="let dentista of dentistas;">
-                    <button class="btn border" style="width:100%" (click)="setHoje()">
-                        
-                            <p *ngFor="let agenda of listarAgendamentosPorHorarioPorDentista(horario, dentista.id!)">
+                    <div *ngIf="listarAgendamentosPorHorarioPorDentista(horario, dentista.id!).length == 0; else elseBlock">
+                        <button class="btn border" style="width:100%" [routerLink]="['/agenda/novo']">
+                            <div *ngFor="let agenda of listarAgendamentosPorHorarioPorDentista(horario, dentista.id!)">
                                 {{ agenda.paciente!.nomePaciente }} {{ agenda.paciente!.sobrenomePaciente }}
-                            </p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <ng-template #elseBlock>
+                        <div *ngFor="let agenda of listarAgendamentosPorHorarioPorDentista(horario, dentista.id!)">
+                            <button class="btn border" style="width:100%" [routerLink]="['/agenda/editar',agenda.id]">
+                                    {{ agenda.paciente!.nomePaciente }} {{ agenda.paciente!.sobrenomePaciente }}
+                            </button>
+                        </div>
+                    </ng-template>
                         
-                        
-                            
-                        
-                    </button>
+                    
                 </th>
+
             </tr>
 
         </tbody>
