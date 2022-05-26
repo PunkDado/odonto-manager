@@ -87,6 +87,9 @@
                             <button class="btn border" style="width:100%" [routerLink]="['/agenda/editar',agenda.id]">
                                     {{ agenda.paciente!.nomePaciente }} {{ agenda.paciente!.sobrenomePaciente }}
                             </button>
+                            <button type="button" class="btn btn-sm" (click)="remover($event, agenda)">
+                                <i class="fa fa-times" aria-hidden="true"></i> 
+                            </button>
                         </div>
                     </ng-template>
                         

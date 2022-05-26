@@ -59,6 +59,15 @@ export class AgendaDiariaComponent implements OnInit {
     });
   }
 
+  remover($event: any, agenda: Agenda): void {
+    $event.preventDefault();
+    if (confirm('Deseja realmente remover a agenda "' + agenda.dataHora + '"?')) {
+      this.agendaService.remover(agenda.id!).subscribe(
+        () => this.listarTodos()
+      );
+    }
+  }
+
   setHoje(): void {
     let diaDeHoje: string = hoje().substring(0,10);
     this.dia = diaDeHoje;

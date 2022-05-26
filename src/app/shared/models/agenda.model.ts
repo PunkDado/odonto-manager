@@ -12,6 +12,7 @@ export class Agenda {
         public ausenciaPaciente?: boolean,
         public reagendamentoDentista?: boolean,
         public horarioPerdido?: boolean,
+        public horario?: string,
         public dentista?: Dentista,
         public paciente?: Paciente
     ) {}

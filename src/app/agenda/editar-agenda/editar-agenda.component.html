@@ -1,1 +1,107 @@
-<p>editar-agenda works!</p>
+
+   <h1 class="p-3">Editar agendamento</h1>
+   <div class="well p-3">
+        
+        <form #formAgenda="ngForm" >
+
+            <p>
+                Data e hora do atendimento: {{ agenda.dataHora | date: "dd/MM/yyyy"}}
+                às {{ agenda.dataHora | date: "HH"}}h{{ agenda.dataHora | date: "mm"}}
+            </p> 
+            <!--<div class="form-group">
+                <label for="date">Modificar a data do atendimento</label>
+                <input type="date" class="form-control" id="date" name="date" [(ngModel)]="date" required>
+            </div> {{ date }}
+
+            <div class="form-group">
+                <label for="time">Modificar a hora do atendimento</label>
+                <input type="time" class="form-control" id="time" name="time" [(ngModel)]="time" required>
+            </div> {{ time }}-->
+            <br/>
+            <div class="form-group">
+                <label for="dentista">Dentista</label>
+                <ng-select name="dentista" [items]="dentistas" bindLabel="nomeDentista" [(ngModel)]="agenda.dentista" placeholder="Selecione um dentista"> </ng-select>
+            </div>
+
+            <div class="form-group">
+                <label for="paciente">Paciente</label>
+                <ng-select name="paciente" [items]="pacientes" bindLabel="nomePaciente" [(ngModel)]="agenda.paciente" placeholder="Selecione um paciente"> </ng-select>
+            </div>
+
+            <!--<div class="form-group">
+                <label for="dataHora">Hora do atendimento</label>
+                <input type="date" class="form-control" id="dataHora" name="dataAtendimento" [(ngModel)]="agenda.dataHora" #dataHora="ngModel" required>
+                <div class="alert alert-danger" *ngIf="dataHora.errors && (dataHora.dirty || dataHora.touched)">
+                    <div [hidden]="!dataHora.errors.required">Digite a hora do agendamento</div>
+                </div>
+            </div>-->
+           
+
+            
+
+
+     
+            
+            <!--<div class="form-group">
+                <label for="horarioAgendado"></label>
+                <input type="checkbox" class="form-check-input" id="horarioAgendado" name="atendimentoVerificado" [(ngModel)]="agenda.horarioAgendado" #horarioAgendado="ngModel">
+                Horário aberto
+            </div>
+
+            <div class="form-group">
+                <label for="horarioAgendado"></label>
+                <input type="checkbox" class="form-check-input" id="horarioAgendado" name="atendimentoVerificado" [(ngModel)]="agenda.horarioAgendado" #horarioAgendado="ngModel">
+                Horário agendado
+            </div>
+
+            <div class="form-group">
+                <label for="horarioAgendado"></label>
+                <input type="checkbox" class="form-check-input" id="horarioAgendado" name="atendimentoVerificado" [(ngModel)]="agenda.horarioAgendado" #horarioAgendado="ngModel">
+                Horário utilizado
+            </div>
+
+            <div class="form-group">
+                <label for="horarioAgendado"></label>
+                <input type="checkbox" class="form-check-input" id="horarioAgendado" name="atendimentoVerificado" [(ngModel)]="agenda.horarioAgendado" #horarioAgendado="ngModel">
+                Ausência do paciente
+            </div>
+
+            <div class="form-group">
+                <label for="horarioAgendado"></label>
+                <input type="checkbox" class="form-check-input" id="horarioAgendado" name="atendimentoVerificado" [(ngModel)]="agenda.horarioAgendado" #horarioAgendado="ngModel">
+                Reagendado pelo dentista
+            </div>
+
+            <div class="form-group">
+                <label for="horarioAgendado"></label>
+                <input type="checkbox" class="form-check-input" id="horarioAgendado" name="atendimentoVerificado" [(ngModel)]="agenda.horarioAgendado" #horarioAgendado="ngModel">
+                Horário perdido
+            </div>-->
+
+            <div class="form-group">
+                <label for="horario">Horário:</label> <br/>
+                <input type="radio" class="form-check-input" id="horarioAberto" name="horario" [(ngModel)]="agenda.horario" #horarioAberto="ngModel" value="aberto">Aberto<br/>
+                <input type="radio" class="form-check-input" id="horarioAgendado" name="horario" [(ngModel)]="agenda.horario" #horarioAgendado="ngModel" value="agendado">Agendado<br/>
+                <input type="radio" class="form-check-input" id="horarioUtilizado" name="horario" [(ngModel)]="agenda.horario" #horarioUtilizado="ngModel" value="utilizado">Utilizado<br/>
+                <input type="radio" class="form-check-input" id="ausenciaPaciente" name="horario" [(ngModel)]="agenda.horario" #ausenciaPaciente="ngModel" value="ausência paciente">Ausência do paciente<br/>
+                <input type="radio" class="form-check-input" id="reagendamentoDentista" name="horario" [(ngModel)]="agenda.horario" #reagendamentoDentista="ngModel" value="dentista reagendou">Dentista reagendou<br/>
+                <input type="radio" class="form-check-input" id="horarioPerdido" name="horario" [(ngModel)]="agenda.horario" #horarioPerdido="ngModel" value="perdido">Perdido<br/>
+            </div>
+       
+            <div>
+                <br/>
+                <button type="button" class="btn btn-primary" (click)="atualizar()" [disabled]="!formAgenda.form.valid">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Salvar
+                </button>
+                <a class="btn btn-secondary" [routerLink]="['/agenda-diaria/2022-05-23']">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+                </a>
+            </div>
+    
+            
+        </form>
+    </div>
+
+
+
+
