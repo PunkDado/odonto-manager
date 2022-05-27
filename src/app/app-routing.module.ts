@@ -42,7 +42,7 @@ const routes: Routes = [
 
   { path: 'agenda', component: MostrarAgendaComponent },
   { path: 'agenda-diaria/:dia', component: AgendaDiariaComponent },
-  { path: 'agenda/novo', component: InserirAgendaComponent },
+  { path: 'agenda/novo/:horario/:dentistaId', component: InserirAgendaComponent },
   { path: 'agenda/editar/:id', component: EditarAgendaComponent },
   
   

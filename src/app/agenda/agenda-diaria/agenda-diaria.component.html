@@ -1,29 +1,31 @@
-<div class="row p-3">
-    <div class="col-4">
-        <label for="mes">Dia: </label>
-        <input type="date" class="form-control" name="dia" [(ngModel)]="dia" (change)="setNovoDia()">
-       
-    </div>
-    <div class="col-2 p-4">
-        <button type="button" class="btn btn-primary" (click)="setHoje()">
-            <i class="fa fa-calendar" aria-hidden="true"></i> Hoje
-        </button>
-    </div>
-    <div class="col-4">
-        <label for="dentista">Dentista: </label>
-        <ng-select  name="dentista"
-                    [items]="dentistas" 
-                    bindLabel="nomeDentista"
-                    bindValue="id"
-                    [(ngModel)]="dentistaId" 
-                    placeholder="Selecione um dentista"
-                    > 
-        </ng-select>
-    </div>
-    <div class="col-1 p-4">
-        <button class="btn">
-            <i class="fa fa-refresh" aria-hidden="true"></i>
-        </button>
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <label for="mes">Dia: </label>
+            <input type="date" class="form-control" name="dia" [(ngModel)]="dia" (change)="setNovoDia()">
+        
+        </div>
+        <div class="col-2 p-4">
+            <button type="button" class="btn btn-primary" (click)="setHoje()">
+                <i class="fa fa-calendar" aria-hidden="true"></i> Hoje
+            </button>
+        </div>
+        <!--<div class="col-4">
+            <label for="dentista">Dentista: </label>
+            <ng-select  name="dentista"
+                        [items]="dentistas" 
+                        bindLabel="nomeDentista"
+                        bindValue="id"
+                        [(ngModel)]="dentistaId" 
+                        placeholder="Selecione um dentista"
+                        > 
+            </ng-select>
+        </div>
+        <div class="col-1 p-4">
+            <button class="btn">
+                <i class="fa fa-refresh" aria-hidden="true"></i>
+            </button>
+        </div>-->
     </div>
 </div>
 
@@ -74,12 +76,12 @@
 
                 <th class="border border-dark" 
                     *ngFor="let dentista of dentistas;">
-                    <div *ngIf="listarAgendamentosPorHorarioPorDentista(horario, dentista.id!).length == 0; else elseBlock">
-                        <button class="btn border" style="width:100%" [routerLink]="['/agenda/novo']">
-                            <div *ngFor="let agenda of listarAgendamentosPorHorarioPorDentista(horario, dentista.id!)">
-                                {{ agenda.paciente!.nomePaciente }} {{ agenda.paciente!.sobrenomePaciente }}
-                            </div>
-                        </button>
+                    <div *ngIf="listarAgendamentosPorHorarioPorDentista(horario, dentista.id!).length == 0; else elseBlock;">
+                        
+                            <button class="btn border" style="width:100%" [routerLink]="['/agenda/novo/', horario, dentista.id]">
+                                
+                            </button>
+                        
                     </div>
 
                     <ng-template #elseBlock>

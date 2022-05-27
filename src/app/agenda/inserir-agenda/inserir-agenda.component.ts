@@ -17,10 +17,13 @@ export class InserirAgendaComponent implements OnInit {
 
   @ViewChild('formAgenda') formAgenda! : NgForm;
   agenda!: Agenda;
+  
   dentistas!: Dentista[];
+  dentista!: Dentista;
   pacientes!: Paciente[];
   date!: string;
   time!: string;
+  horario!: string;
 
   constructor(
     private agendaService: AgendaService,
@@ -31,7 +34,14 @@ export class InserirAgendaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.horario = this.route.snapshot.params['horario'];
+    let dentistaId = +this.route.snapshot.params['dentistaId'];
+    console.log(dentistaId);
+    this.buscarDentista(dentistaId);
+    console.log(this.dentista);
     this.agenda = new Agenda();
+    this.agenda.dataHora = this.horario;
+    this.agenda.dentista = this.dentista;
     this.listarDentistas();
     this.listarPacientes();
   }
@@ -47,7 +57,17 @@ export class InserirAgendaComponent implements OnInit {
         }
       }
     );
+  }
 
+  buscarDentista(id: number): void {
+    this.dentistaService.buscarPorId(id).subscribe(
+      (dados: Dentista) => {
+        //this.dentista = dados;
+        this.agenda.dentista = dados;
+        console.log(this.agenda.dentista);
+      }
+    );
+    
   }
 
   listarPacientes(): void {
@@ -65,17 +85,24 @@ export class InserirAgendaComponent implements OnInit {
 
   inserir(): void {
     if(this.formAgenda.form.valid) {
-      let dataHora = this.date + " " + this.time + ":00";
-      this.agenda.dataHora = dataHora;
+      this.date = this.horario.substring(0, 10);
+      
       this.agenda.duracaoMinutos = 30;
       this.agendaService.inserir(this.agenda).subscribe(
-        () => this.router.navigate(["agenda-diaria/2022-05-23"])
+        () => this.router.navigate(["agenda-diaria/" + this.date])
       );
     }
-    
+  }
+
+  voltar(): void {
+    this.date = this.horario.substring(0, 10);
+    this.router.navigate(["agenda-diaria/" + this.date]);
   }
 
 }
+
+
+
 
 function hoje(): string {
   let today = new Date();
