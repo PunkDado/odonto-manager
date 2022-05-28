@@ -89,6 +89,11 @@
                             <button class="btn border" style="width:100%" [routerLink]="['/agenda/editar',agenda.id]">
                                     {{ agenda.paciente!.nomePaciente }} {{ agenda.paciente!.sobrenomePaciente }}
                             </button>
+
+                            <button type="button" class="btn btn-link btn-sm" (click)="abrirModalAgenda(agenda)">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </button>
+
                             <button type="button" class="btn btn-sm" (click)="remover($event, agenda)">
                                 <i class="fa fa-times" aria-hidden="true"></i> 
                             </button>

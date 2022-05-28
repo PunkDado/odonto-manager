@@ -73,11 +73,17 @@ export class EditarAgendaComponent implements OnInit {
   }
 
   atualizar(): void {
+    let date = this.agenda.dataHora?.substring(0,10);
     if (this.formAgenda.form.valid) {
       this.agendaService.alterar(this.agenda).subscribe(
-        () => this.router.navigate(['/agenda-diaria/2022-05-23'])
+        () => this.router.navigate(['/agenda-diaria/' + date])
       );
     }
+  }
+
+  voltar(): void {
+    this.date = this.agenda.dataHora!.substring(0, 10);
+    this.router.navigate(["agenda-diaria/" + this.date]);
   }
 
 }

@@ -93,7 +93,7 @@
                 <button type="button" class="btn btn-primary" (click)="atualizar()" [disabled]="!formAgenda.form.valid">
                     <i class="fa fa-arrow-left" aria-hidden="true"></i> Salvar
                 </button>
-                <a class="btn btn-secondary" [routerLink]="['/agenda-diaria/2022-05-23']">
+                <a class="btn btn-secondary" (click)="voltar()">
                     <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
                 </a>
             </div>

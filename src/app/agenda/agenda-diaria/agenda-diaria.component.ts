@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DentistaService } from 'src/app/dentista/services/dentista.service';
 import { Agenda } from 'src/app/shared/models/agenda.model';
 import { Dentista } from 'src/app/shared/models/dentista.model';
+import { ModalAgendaComponent } from '../modal-agenda/modal-agenda.component';
 import { AgendaService } from '../services/agenda.service';
 
 @Component({
@@ -26,7 +28,8 @@ export class AgendaDiariaComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private agendaService: AgendaService,
-    private dentistaService: DentistaService
+    private dentistaService: DentistaService,
+    private modalService: NgbModal
     ) { }
 
   ngOnInit(): void {
@@ -66,6 +69,11 @@ export class AgendaDiariaComponent implements OnInit {
         () => this.listarTodos()
       );
     }
+  }
+
+  abrirModalAgenda(agenda: Agenda) {
+    const modalRef = this.modalService.open(ModalAgendaComponent);
+    modalRef.componentInstance.agenda = agenda;
   }
 
   setHoje(): void {

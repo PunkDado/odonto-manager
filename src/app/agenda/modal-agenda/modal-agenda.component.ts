@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Agenda } from 'src/app/shared/models/agenda.model';
 
 @Component({
   selector: 'app-modal-agenda',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalAgendaComponent implements OnInit {
 
-  constructor() { }
+  @Input() agenda!: Agenda;
+
+  constructor(public activeModal: NgbActiveModal ) { }
 
   ngOnInit(): void {
   }
