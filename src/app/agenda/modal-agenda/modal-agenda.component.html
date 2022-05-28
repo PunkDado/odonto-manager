@@ -1,1 +1,32 @@
-<p>modal-agenda works!</p>
+<div class="modal-header">
+    
+    <h2 class="modal-title" id="modalLabel">Agendamento</h2>
+    <a type="button" aria-label="Fechar" (click)="activeModal.dismiss()">
+        <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i> </span>
+    </a>
+
+    
+</div>
+
+<div class="modal-body text-left">
+    <h4>{{ agenda.dataHora | date: "dd/MM/yyyy"}}
+        às {{ agenda.dataHora | date: "HH"}}h{{ agenda.dataHora | date: "mm"}}
+    </h4>
+    
+    <div class="p-3">
+        <p *ngIf="agenda.dentista!.sexoDentista == 'F' ;">Dentista: Dra. {{ agenda.dentista!.nomeDentista }} {{ agenda.dentista!.sobrenomeDentista }}</p>
+        <p>Paciente: {{ agenda.paciente!.nomePaciente }} {{ agenda.paciente!.sobrenomePaciente }}</p>
+        <p>Horário {{ agenda.horario }}</p>
+    </div>
+   
+
+</div>
+
+
+
+<div class="modal-footer">
+        <a href="#" title="Editar" alt="Editar" class="btn btn-xs btn-primary" (click)="activeModal.close()" [routerLink]="['/agenda/editar', agenda.id]">
+            <i class="fa fa-edit" aria-hidden="true"></i> Editar
+        </a>
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Fechar</button>
+</div>
