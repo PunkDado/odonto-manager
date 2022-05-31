@@ -13,13 +13,15 @@ import { PacienteModule } from './paciente/paciente.module';
 import { ProcedimentoModule } from './procedimento/procedimento.module';
 import { TipoProcedimentoModule } from './tipo-procedimento/tipo-procedimento.module';
 import { AgendaModule } from './agenda/agenda.module';
+
 //import { AngularFontAwesomeModule } from 'angular-font-awesome';
-//import { ProcedimentoAplicadoModule } from './procedimento-aplicado/procedimento-aplicado.module';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,

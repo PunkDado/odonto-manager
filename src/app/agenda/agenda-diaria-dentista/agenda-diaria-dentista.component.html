@@ -1,0 +1,119 @@
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <label for="mes">Dia: </label>
+            <input type="date" class="form-control" name="dia" [(ngModel)]="dia" (change)="setNovoDia()">
+        
+        </div>
+        <div class="col-2 p-4">
+            <button type="button" class="btn btn-primary" (click)="setHoje()">
+                <i class="fa fa-calendar" aria-hidden="true"></i> Hoje
+            </button>
+        </div>
+        <div class="col-4">
+            <label for="dentista">Dentista: </label>
+            <ng-select  name="dentista"
+                        [items]="dentistas" 
+                        bindLabel="nomeDentista"
+                        bindValue="id"
+                        [(ngModel)]="dentistaId" 
+                        placeholder="Selecione um dentista"
+                        (change)="selecionarAgendaDiariaDentista()"
+                        > 
+            </ng-select>
+        </div>
+
+        {{ dentistaId }}
+        
+            {{ dentistaSelecionado.nomeDentista }}
+       
+        
+        <div class="col-1 p-4">
+            <button class="btn" [routerLink]="['/agenda-diaria/', dia]">
+                <i class="fa fa-refresh" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!--<div class="container text-center p-3">
+    <h3>Agenda de {{ dia | date: 'dd/MM/yyyy' }}</h3>
+</div>-->
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-1">
+            <button type="button" class="btn" (click)="arrowLeft();">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="col-10">
+            <h2 align="center" style="color: black;" class="p-0">
+                Agenda de {{ dia | date: 'dd/MM/yyyy' }}
+            </h2>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn" (click)="arrowRight();">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+
+    <table border="solid" bgcolor="white" align="center" cellspacing="21" cellpadding="5">
+
+        <thead>
+            <tr style="color: white; background: purple;">
+                <th class="border border-dark">
+                    Horário
+                </th>
+                <th *ngFor="let data of datas">
+                    {{ data | date: 'dd/MM' }}
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let horario of horarios">
+                
+                <th class="border border-dark">
+                    {{ horario | date: 'HH'}}h{{ horario | date: 'mm'}}
+                </th>
+
+                <th class="border border-dark" 
+                    *ngFor="let data of datas;">
+                    <div *ngIf="listarAgendamentosPorHorarioPorDentista(horario, dentistaId!).length == 0; else elseBlock;">
+                        
+                            <button class="btn border" style="width:100%" [routerLink]="['/agenda/novo/', horario, dentistaId]">
+                                
+                            </button>
+                        
+                    </div>
+
+                    <ng-template #elseBlock>
+                        <div *ngFor="let agenda of listarAgendamentosPorHorarioPorDentista(horario, dentistaId!)">
+                            <button class="btn border" style="width:100%" (click)="abrirModalAgenda(agenda)">
+                                    {{ agenda.paciente!.nomePaciente }} {{ agenda.paciente!.sobrenomePaciente }}
+                            </button>
+
+                            <button type="button" class="btn" [routerLink]="['/agenda/editar',agenda.id]">
+                                <i class="fa fa-pen" aria-hidden="true"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-sm" (click)="remover($event, agenda)">
+                                <i class="fa fa-times" aria-hidden="true"></i> 
+                            </button>
+                        </div>
+                    </ng-template>
+                        
+                    
+                </th>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>

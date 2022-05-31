@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AgendaDiariaDentistaComponent } from './agenda/agenda-diaria-dentista/agenda-diaria-dentista.component';
 import { AgendaDiariaComponent } from './agenda/agenda-diaria/agenda-diaria.component';
 import { EditarAgendaComponent } from './agenda/editar-agenda/editar-agenda.component';
 import { InserirAgendaComponent } from './agenda/inserir-agenda/inserir-agenda.component';
@@ -44,6 +45,7 @@ const routes: Routes = [
   { path: 'agenda-diaria/:dia', component: AgendaDiariaComponent },
   { path: 'agenda/novo/:horario/:dentistaId', component: InserirAgendaComponent },
   { path: 'agenda/editar/:id', component: EditarAgendaComponent },
+  { path: 'agenda/:dia/:dentistaId', component: AgendaDiariaDentistaComponent },
   
   
 ];

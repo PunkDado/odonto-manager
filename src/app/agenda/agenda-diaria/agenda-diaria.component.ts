@@ -76,6 +76,10 @@ export class AgendaDiariaComponent implements OnInit {
     modalRef.componentInstance.agenda = agenda;
   }
 
+  selecionarAgendaDiariaDentista(): void {
+    this.router.navigate(['agenda/' + this.dia + '/' + this.dentistaId]);
+  }
+
   setHoje(): void {
     let diaDeHoje: string = hoje().substring(0,10);
     this.dia = diaDeHoje;
