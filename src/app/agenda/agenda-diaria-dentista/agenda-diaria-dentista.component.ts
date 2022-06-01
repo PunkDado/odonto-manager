@@ -91,10 +91,6 @@ export class AgendaDiariaDentistaComponent implements OnInit {
     modalRef.componentInstance.agenda = agenda;
   }
 
-  /*selecionarAgendaDiariaDentista(): void {
-    this.router.navigate(['agenda/' + this.dia + '/' + this.dentistaId]);
-  }*/
-
   selecionarAgendaDiariaDentista(): void {
     this.router.navigate(['agenda/' + this.dia + '/' + this.dentistaId]);
     this.listarTodos();
@@ -161,14 +157,6 @@ export class AgendaDiariaDentistaComponent implements OnInit {
     return agendamentosFiltrados;
   }
 
-  listarAgendamentosPorHorarioPorDentista(horario: string, dentistaId: number): Agenda[] {
-    //return this.listarAgendamentosPorHorario(horario).filter(
-    //  agendamento => agendamento.dentista!.id == dentistaId
-    //)
-
-    return [];
-  }
-
   arrowLeft(): void {
     this.dia = diaAnterior(this.dia);
     this.setNovoDia();
@@ -182,7 +170,6 @@ export class AgendaDiariaDentistaComponent implements OnInit {
   }
 
   novoAgendamento(data: string, horario: string): void {
-    //[routerLink]="['/agenda/novo/', horario, dentistaId]";
     let hora = horario.substring(11,19);
     this.router.navigate(['agenda/novo/' + data + ' ' + hora + "/" + this.dentistaId]);
   }
