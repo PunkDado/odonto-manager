@@ -43,7 +43,7 @@ export class AgendaDiariaDentistaComponent implements OnInit {
     this.listarDentistaSelecionado();
     this.listarDatas();
     this.listarHorarios();
-    console.log(this.agendamentos);
+    
   }
 
   listarTodos(): void {
@@ -91,8 +91,16 @@ export class AgendaDiariaDentistaComponent implements OnInit {
     modalRef.componentInstance.agenda = agenda;
   }
 
-  selecionarAgendaDiariaDentista(): void {
+  /*selecionarAgendaDiariaDentista(): void {
     this.router.navigate(['agenda/' + this.dia + '/' + this.dentistaId]);
+  }*/
+
+  selecionarAgendaDiariaDentista(): void {
+    this.listarTodos();
+    this.listarDentistas();
+    this.listarDentistaSelecionado();
+    this.listarDatas();
+    this.listarHorarios();
   }
 
   setHoje(): void {
@@ -171,6 +179,12 @@ export class AgendaDiariaDentistaComponent implements OnInit {
     this.dia = diaPosterior(this.dia);
     this.setNovoDia();
     this.listarDatas();
+  }
+
+  novoAgendamento(data: string, horario: string): void {
+    //[routerLink]="['/agenda/novo/', horario, dentistaId]";
+    let hora = horario.substring(11,19);
+    this.router.navigate(['agenda/novo/' + data + ' ' + hora + "/" + this.dentistaId]);
   }
 
 }

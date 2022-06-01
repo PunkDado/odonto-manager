@@ -87,7 +87,7 @@
                     *ngFor="let data of datas;">
                     <div *ngIf="listarAgendamentosPorHorarioData(horario, data).length == 0; else elseBlock;">
                         
-                            <button class="btn border" style="width:100%" [routerLink]="['/agenda/novo/', horario, dentistaId]">
+                            <button class="btn border" style="width:100%" (click)="novoAgendamento(data, horario)">
                                 
                             </button>
                         
