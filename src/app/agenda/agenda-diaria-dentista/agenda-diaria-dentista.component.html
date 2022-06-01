@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-2">
-            <label for="mes">Dia: </label>
+            <label for="mes">Primeiro dia: </label>
             <input type="date" class="form-control" name="dia" [(ngModel)]="dia" (change)="setNovoDia()">
         
         </div>
@@ -25,12 +25,13 @@
 
         {{ dentistaId }}
         
-            {{ dentistaSelecionado.nomeDentista }}
+            
        
         
-        <div class="col-1 p-4">
-            <button class="btn" [routerLink]="['/agenda-diaria/', dia]">
-                <i class="fa fa-refresh" aria-hidden="true"></i>
+        <div class="col-2 p-4">
+            <button class="btn btn-secondary" [routerLink]="['/agenda-diaria/', dia]">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                Agenda de {{ dia | date: "dd/MM"}}
             </button>
         </div>
     </div>
@@ -50,8 +51,9 @@
         </div>
         <div class="col-10">
             <h2 align="center" style="color: black;" class="p-0">
-                Agenda de {{ dia | date: 'dd/MM/yyyy' }}
+                Agenda de {{ dentistaSelecionado.nomeDentista }}
             </h2>
+            
         </div>
         <div class="col-1">
             <button type="button" class="btn" (click)="arrowRight();">
@@ -78,12 +80,12 @@
             <tr *ngFor="let horario of horarios">
                 
                 <th class="border border-dark">
-                    {{ horario | date: 'HH'}}h{{ horario | date: 'mm'}}
+                    {{ horario | date: 'dd/MM'}} {{ horario | date: 'HH'}}h{{ horario | date: 'mm'}}
                 </th>
 
                 <th class="border border-dark" 
                     *ngFor="let data of datas;">
-                    <div *ngIf="listarAgendamentosPorHorarioPorDentista(horario, dentistaId!).length == 0; else elseBlock;">
+                    <div *ngIf="listarAgendamentosPorHorarioData(horario, data).length == 0; else elseBlock;">
                         
                             <button class="btn border" style="width:100%" [routerLink]="['/agenda/novo/', horario, dentistaId]">
                                 
@@ -92,7 +94,7 @@
                     </div>
 
                     <ng-template #elseBlock>
-                        <div *ngFor="let agenda of listarAgendamentosPorHorarioPorDentista(horario, dentistaId!)">
+                        <div *ngFor="let agenda of listarAgendamentosPorHorarioData(horario, data)">
                             <button class="btn border" style="width:100%" (click)="abrirModalAgenda(agenda)">
                                     {{ agenda.paciente!.nomePaciente }} {{ agenda.paciente!.sobrenomePaciente }}
                             </button>

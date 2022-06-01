@@ -18,7 +18,7 @@ export class AgendaDiariaDentistaComponent implements OnInit {
   @ViewChild('formAgenda') formAgenda!: NgForm;
 
   dia!: string;
-  datas: string[] = ["2022-05-30", "2022-06-01", "2022-06-02", "2022-06-03",  "2022-06-04"];
+  datas: string[] = [];
   agendamentos!: Agenda[];
   dentistas!: Dentista[];
   dentistaSelecionado!: Dentista;
@@ -43,7 +43,7 @@ export class AgendaDiariaDentistaComponent implements OnInit {
     this.listarDentistaSelecionado();
     this.listarDatas();
     this.listarHorarios();
-    console.log(this.dentistas);
+    console.log(this.agendamentos);
   }
 
   listarTodos(): void {
@@ -52,9 +52,12 @@ export class AgendaDiariaDentistaComponent implements OnInit {
         this.agendamentos = [];
       }
       else {
-        this.agendamentos = dados;
+        this.agendamentos = dados.filter(
+          agendamento => agendamento.dentista!.id == this.dentistaId
+        );;
       }
     });
+    
   }
 
   listarDentistas(): void {
@@ -98,6 +101,8 @@ export class AgendaDiariaDentistaComponent implements OnInit {
     this.router.navigate(['agenda/' + this.dia + '/' + this.dentistaId]);
     this.listarTodos();
     this.listarDentistas();
+    this.listarDentistaSelecionado();
+    this.listarDatas();
     this.listarHorarios();
   }
 
@@ -105,12 +110,20 @@ export class AgendaDiariaDentistaComponent implements OnInit {
     this.router.navigate(['agenda/' + this.dia + '/' + this.dentistaId]);
     this.listarTodos();
     this.listarDentistas();
+    this.listarDentistaSelecionado();
+    this.listarDatas();
     this.listarHorarios();
   }
 
   listarDatas(): void {
-    // Precisa concatenar o dia com as horas, para poder selecionar corretamente os agendamentos no template
-    // Olhar o listarHorarios() abaixo
+    // datas: string[] = ["2022-05-30", "2022-05-31", ...]
+    // array com 5 strings
+    this.datas = [];
+    let diaToPush = this.dia;
+    for (let i = 0; i < 5; i++) {
+      this.datas.push(diaToPush);
+      diaToPush = diaPosterior(diaToPush);
+    }
   }
 
   listarHorarios(): void {
@@ -127,21 +140,67 @@ export class AgendaDiariaDentistaComponent implements OnInit {
     }
   }
 
-  listarAgendamentosPorHorario(horario: string): Agenda[] {
-    return this.agendamentos.filter(
-      agendamento => agendamento.dataHora == horario
-    );
+  listarAgendamentosPorHorarioData(horario: string, data: string): Agenda[] {
+    let horarioSemDia: string = horario.substring(11,19);
+    let dataHora: string = data + " " + horarioSemDia;
+    let agendamentos = this.agendamentos;
+    let agendamentosFiltrados = agendamentos
+      .filter(
+      agendamento => agendamento.dataHora == dataHora
+      )
+      
+    console.log(agendamentosFiltrados);
+    return agendamentosFiltrados;
   }
 
   listarAgendamentosPorHorarioPorDentista(horario: string, dentistaId: number): Agenda[] {
-    return this.listarAgendamentosPorHorario(horario).filter(
-      agendamento => agendamento.dentista!.id == dentistaId
-    )
+    //return this.listarAgendamentosPorHorario(horario).filter(
+    //  agendamento => agendamento.dentista!.id == dentistaId
+    //)
+
+    return [];
   }
 
   arrowLeft(): void {
-    let date = strToDate(this.dia);
-    console.log(date);
+    this.dia = diaAnterior(this.dia);
+    this.setNovoDia();
+    this.listarDatas();
+  }
+
+  arrowRight(): void {
+    this.dia = diaPosterior(this.dia);
+    this.setNovoDia();
+    this.listarDatas();
+  }
+
+}
+
+function hoje(): string {
+  let today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    return yyyy + '-' + mm + '-' + dd + " 00:00:00";
+}
+
+function mesAtual(): string {
+  let today = new Date();
+    var dd = "01";
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    return yyyy + '-' + mm + '-' + dd + " 00:00:00";
+}
+
+function strToDate(strDate: string): Date {
+    let year = parseInt(strDate.substring(0,4));
+    let month = parseInt(strDate.substring(5,7)) - 1;
+    let day = parseInt(strDate.substring(8,10));
+    let date = new Date(year, month, day, 0, 0, 0, 0);
+    return date;
+}
+
+function diaAnterior(dia: string): string {
+  let date = strToDate(dia);
     let day = date.getDate();
     let month = date.getMonth();
     let yyyy = date.getFullYear();
@@ -179,13 +238,13 @@ export class AgendaDiariaDentistaComponent implements OnInit {
     
     let dd = String(day).padStart(2, '0');
     let mm = String(month + 1).padStart(2, '0');
-    this.dia = yyyy + '-' + mm + '-' + dd;
-    this.setNovoDia();
-  }
+    
+    return yyyy + '-' + mm + '-' + dd;
 
-  arrowRight(): void {
-    let date = strToDate(this.dia);
-    console.log(date);
+}
+
+function diaPosterior(dia: string): string {
+  let date = strToDate(dia);
     let day = date.getDate();
     let month = date.getMonth();
     let yyyy = date.getFullYear();
@@ -232,32 +291,7 @@ export class AgendaDiariaDentistaComponent implements OnInit {
 
     let dd = String(day).padStart(2, '0');
     let mm = String(month + 1).padStart(2, '0');
-    this.dia = yyyy + '-' + mm + '-' + dd;
-    this.setNovoDia();
-  }
-
-}
-
-function hoje(): string {
-  let today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-    return yyyy + '-' + mm + '-' + dd + " 00:00:00";
-}
-
-function mesAtual(): string {
-  let today = new Date();
-    var dd = "01";
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-    return yyyy + '-' + mm + '-' + dd + " 00:00:00";
-}
-
-function strToDate(strDate: string): Date {
-    let year = parseInt(strDate.substring(0,4));
-    let month = parseInt(strDate.substring(5,7)) - 1;
-    let day = parseInt(strDate.substring(8,10));
-    let date = new Date(year, month, day, 0, 0, 0, 0);
-    return date;
+    
+    return yyyy + '-' + mm + '-' + dd;
+    
 }
