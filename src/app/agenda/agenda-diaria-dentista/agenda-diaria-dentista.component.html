@@ -65,7 +65,7 @@
                     Horário
                 </th>
                 <th *ngFor="let data of datas">
-                    {{ data | date: 'dd/MM' }}
+                    {{ data | date: 'dd/MM' }} {{ getWeekday(data) }}
                 </th>
             </tr>
         </thead>

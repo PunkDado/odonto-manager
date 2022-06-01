@@ -96,6 +96,7 @@ export class AgendaDiariaDentistaComponent implements OnInit {
   }*/
 
   selecionarAgendaDiariaDentista(): void {
+    this.router.navigate(['agenda/' + this.dia + '/' + this.dentistaId]);
     this.listarTodos();
     this.listarDentistas();
     this.listarDentistaSelecionado();
@@ -157,7 +158,6 @@ export class AgendaDiariaDentistaComponent implements OnInit {
       agendamento => agendamento.dataHora == dataHora
       )
       
-    console.log(agendamentosFiltrados);
     return agendamentosFiltrados;
   }
 
@@ -187,6 +187,10 @@ export class AgendaDiariaDentistaComponent implements OnInit {
     this.router.navigate(['agenda/novo/' + data + ' ' + hora + "/" + this.dentistaId]);
   }
 
+  getWeekday(date: string): string {
+    return strToWeekday(date);
+  }
+
 }
 
 function hoje(): string {
@@ -211,6 +215,29 @@ function strToDate(strDate: string): Date {
     let day = parseInt(strDate.substring(8,10));
     let date = new Date(year, month, day, 0, 0, 0, 0);
     return date;
+}
+
+function strToWeekday(strDate: string): string {
+  let date = strToDate(strDate);
+  let weekdayIndex = date.getDay();
+  let weekday: string = "A";
+  switch (weekdayIndex) {
+    case 0: weekday = "Dom";
+    break;
+    case 1: weekday = "Seg";
+    break;
+    case 2: weekday = "Ter";
+    break;
+    case 3: weekday = "Qua";
+    break;
+    case 4: weekday = "Qui";
+    break;
+    case 5: weekday = "Sex";
+    break;
+    case 6: weekday = "Sáb";
+    break;
+  }
+  return weekday;
 }
 
 function diaAnterior(dia: string): string {
