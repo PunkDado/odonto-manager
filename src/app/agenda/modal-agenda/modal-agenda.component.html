@@ -9,6 +9,7 @@
 </div>
 
 <div class="modal-body text-left">
+    
     <h4>{{ agenda.dataHora | date: "dd/MM/yyyy"}}
         às {{ agenda.dataHora | date: "HH"}}h{{ agenda.dataHora | date: "mm"}}
     </h4>
@@ -20,15 +21,19 @@
         <h5>Atendimento:</h5>
         <p>GTO núm. {{ agenda.atendimento!.numGto }}</p>
     </div>
-   
 
 </div>
 
 
 
 <div class="modal-footer">
-        <a href="#" title="Editar" alt="Editar" class="btn btn-xs btn-primary" (click)="activeModal.close()" [routerLink]="['/agenda/editar', agenda.id]">
+       <!-- <button type="button" title="Novo atendimento" alt="Novo atendimento" class="btn btn-xs btn-primary" (click)="activeModal.close()" [routerLink]="['/atendimentos/novo']">
+            <i class="fa fa-plus" aria-hidden="true"></i> Atendimento
+        </button>
+
+        <a href="" title="Editar" alt="Editar" class="btn btn-xs btn-primary" (click)="activeModal.close()" [routerLink]="['/agenda/editar', agenda.id]">
             <i class="fa fa-edit" aria-hidden="true"></i> Editar
-        </a>
+        </a>-->
+
         <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Fechar</button>
 </div>
