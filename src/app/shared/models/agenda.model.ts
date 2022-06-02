@@ -1,3 +1,4 @@
+import { Atendimento } from "./atendimento.model";
 import { Dentista } from "./dentista.model";
 import { Paciente } from "./paciente.model";
 
@@ -14,6 +15,7 @@ export class Agenda {
         public horarioPerdido?: boolean,
         public horario?: string,
         public dentista?: Dentista,
-        public paciente?: Paciente
+        public paciente?: Paciente,
+        public atendimento?: Atendimento
     ) {}
 }

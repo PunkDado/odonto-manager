@@ -31,6 +31,7 @@ export class InserirAtendimentoComponent implements OnInit {
 
   ngOnInit(): void {
     this.atendimento = new Atendimento();
+    this.atendimento.paciente = "";
     this.dentistaService.listarTodos().subscribe(
       (dados: Dentista[]) => {
         if(dados == null) {

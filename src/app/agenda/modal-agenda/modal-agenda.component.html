@@ -17,6 +17,8 @@
         <p *ngIf="agenda.dentista!.sexoDentista == 'F' ;">Dentista: Dra. {{ agenda.dentista!.nomeDentista }} {{ agenda.dentista!.sobrenomeDentista }}</p>
         <p>Paciente: {{ agenda.paciente!.nomePaciente }} {{ agenda.paciente!.sobrenomePaciente }}</p>
         <p>Horário {{ agenda.horario }}</p>
+        <h5>Atendimento:</h5>
+        <p>GTO núm. {{ agenda.atendimento!.numGto }}</p>
     </div>
    
 
