@@ -8,6 +8,7 @@ import { InserirAtendimentoComponent } from './inserir-atendimento/inserir-atend
 import { EditarAtendimentoComponent } from './editar-atendimento/editar-atendimento.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ModalAtendimentoComponent } from './modal-atendimento/modal-atendimento.component';
+import { InserirAtendimentoDentistaPacienteDataComponent } from './inserir-atendimento-dentista-paciente-data/inserir-atendimento-dentista-paciente-data.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ModalAtendimentoComponent } from './modal-atendimento/modal-atendimento
     ListarAtendimentoComponent,
     InserirAtendimentoComponent,
     EditarAtendimentoComponent,
-    ModalAtendimentoComponent
+    ModalAtendimentoComponent,
+    InserirAtendimentoDentistaPacienteDataComponent
   ],
   imports: [
     CommonModule,

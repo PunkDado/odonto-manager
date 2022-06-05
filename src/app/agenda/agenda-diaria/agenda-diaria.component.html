@@ -99,7 +99,7 @@
                                 <i class="fa fa-times" aria-hidden="true"></i> 
                             </button>
 
-                            <button type="button" title="Novo atendimento" alt="Novo atendimento" class="btn btn-xs btn-link" [routerLink]="['/atendimentos/novo']">
+                            <button type="button" title="Novo atendimento" alt="Novo atendimento" class="btn btn-xs btn-link" [routerLink]="['/atendimentos/novo/', agenda.dentista!.id, agenda.paciente!.id, dia]">
                                 <i class="fa fa-plus" aria-hidden="true"></i> Atendimento
                             </button>
                         </div>

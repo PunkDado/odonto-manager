@@ -5,9 +5,16 @@
         <p>
             Data e hora do atendimento: {{ agenda.dataHora | date: "dd/MM/yyyy"}}
             às {{ agenda.dataHora | date: "HH"}}h{{ agenda.dataHora | date: "mm"}}
-        </p> 
+        </p>
 
         
+
+        <!--<div *ngIf="agenda.paciente!.dadosConvenioPacientes.length <= 1">
+            <div *ngFor="dados of agenda.paciente!.dadosConvenioPacientes">
+                <div>{{ dados.convenio.nomeConvenio }}</div>
+            </div>
+        </div>-->
+       
         
         <form #formAgenda="ngForm" >
             <div class="form-group">
@@ -18,6 +25,10 @@
             <div class="form-group">
                 <label for="paciente">Paciente</label>
                 <ng-select name="paciente" [items]="pacientes" bindLabel="nomePaciente" [(ngModel)]="agenda.paciente" placeholder="Selecione um paciente"> </ng-select>
+            </div>
+
+            <div class="form-group">
+                
             </div>
 
             <!--<div class="form-group">

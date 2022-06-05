@@ -6,6 +6,7 @@ import { EditarAgendaComponent } from './agenda/editar-agenda/editar-agenda.comp
 import { InserirAgendaComponent } from './agenda/inserir-agenda/inserir-agenda.component';
 import { MostrarAgendaComponent } from './agenda/mostrar-agenda/mostrar-agenda.component';
 import { EditarAtendimentoComponent } from './atendimento/editar-atendimento/editar-atendimento.component';
+import { InserirAtendimentoDentistaPacienteDataComponent } from './atendimento/inserir-atendimento-dentista-paciente-data/inserir-atendimento-dentista-paciente-data.component';
 import { InserirAtendimentoComponent } from './atendimento/inserir-atendimento/inserir-atendimento.component';
 import { ListarAtendimentoComponent } from './atendimento/listar-atendimento/listar-atendimento.component';
 import { EditarDentistaComponent } from './dentista/editar-dentista/editar-dentista.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'atendimentos', redirectTo: 'atendimentos/listar'},
   { path: 'atendimentos/listar', component: ListarAtendimentoComponent},
   { path: 'atendimentos/novo', component: InserirAtendimentoComponent},
+  { path: 'atendimentos/novo/:dentistaId/:pacienteId/:dia', component: InserirAtendimentoDentistaPacienteDataComponent},
   { path: 'atendimentos/editar/:id', component: EditarAtendimentoComponent},
 
   { path: 'dentistas', redirectTo: 'dentistas/listar'},

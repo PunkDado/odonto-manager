@@ -17,9 +17,17 @@
     <div class="p-3">
         <p *ngIf="agenda.dentista!.sexoDentista == 'F' ;">Dentista: Dra. {{ agenda.dentista!.nomeDentista }} {{ agenda.dentista!.sobrenomeDentista }}</p>
         <p>Paciente: {{ agenda.paciente!.nomePaciente }} {{ agenda.paciente!.sobrenomePaciente }}</p>
+        <p>Convênios do paciente:</p>
+        <ul>
+            <li *ngFor="let dadosConvenio of agenda.paciente!.dadosConvenioPacientes; let i = index;" class="p-3">
+                {{ dadosConvenio.convenio!.nomeConvenio }}
+                (<i *ngIf="dadosConvenio.numCarteirinha != null">núm. {{ dadosConvenio.numCarteirinha }}, </i> <i>info {{ dadosConvenio.dataInformacao | date: 'dd/MM/yyyy'}}</i>)
+            </li>
+        </ul>
+        
         <p>Horário {{ agenda.horario }}</p>
-        <h5>Atendimento:</h5>
-        <p>GTO núm. {{ agenda.atendimento!.numGto }}</p>
+        <!--<h5>Atendimento:</h5>
+        <p>GTO núm. {{ agenda.atendimento!.numGto }}</p>-->
     </div>
 
 </div>

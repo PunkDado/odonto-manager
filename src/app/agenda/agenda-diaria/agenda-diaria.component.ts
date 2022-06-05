@@ -17,7 +17,7 @@ export class AgendaDiariaComponent implements OnInit {
 
   @ViewChild('formAgenda') formAgenda!: NgForm;
 
-  dia!: string;
+  dia!: string; // formato: yyyy-MM-dd
   agendamentos!: Agenda[];
   dentistas!: Dentista[];
   dentistaId!: number | undefined;
