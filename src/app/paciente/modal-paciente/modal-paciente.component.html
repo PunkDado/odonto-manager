@@ -105,10 +105,13 @@
                     Data: {{ atendimento.dataAtendimento | date: 'dd/MM/yyyy' }}
                 </a>
             </div>
+            <div class="small">
+                <i>{{ atendimento.comentario }}</i>
+            </div>
             <div class="small" *ngFor="let procedimento of atendimento.procedimentosAplicados">
-                <div>
-                    {{ procedimento.procedimento }}
-                </div>
+                <ul>
+                    <li>{{ procedimento.procedimento }}. <i>{{ procedimento.comentario }}</i></li>
+                </ul>
             </div>
         </div>
     </div>

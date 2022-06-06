@@ -81,6 +81,14 @@
                 <input type="checkbox" class="form-check-input" id="atendimentoVerificado" name="atendimentoVerificado" [(ngModel)]="atendimento.atendimentoVerificado" #atendimentoVerificado="ngModel">
                 Atendimento verificado
             </div>
+            <div class="form-group">
+                <label for="convenio">Comentário p/ ficha clínica: </label>
+                <input type="text" class="form-control" id="comentario" name="comentario" [(ngModel)]="atendimento.comentario" #comentario="ngModel">
+                <div *ngIf="comentario.errors && (comentario.dirty || comentario.touched)" class="alert alert-danger">
+                    <div [hidden]="!comentario.errors.required">Digite o nome do convênio</div>
+                    <div [hidden]="!comentario.errors.minlength">O nome do convênio deve conter ao menos dois caracteres</div>
+                </div>
+            </div>
             
             <!--
             <div class="form-group">
@@ -189,6 +197,15 @@
 
                     <label for="dataRepasse">Data de repasse</label>
                     <input type="date" class="form-control" id="dataRepasse" name="dataRepasse" [(ngModel)]="procedimentoAplicado.dataRepasse" #dataRepasse="ngModel" >
+
+                    <div class="form-group">
+                        <label for="convenio">Comentário p/ ficha clínica: </label>
+                        <input type="text" class="form-control" id="comentario" name="comentario" [(ngModel)]="procedimentoAplicado.comentario" #comentario="ngModel">
+                        <div *ngIf="comentario.errors && (comentario.dirty || comentario.touched)" class="alert alert-danger">
+                            <div [hidden]="!comentario.errors.required">Digite o nome do convênio</div>
+                            <div [hidden]="!comentario.errors.minlength">O nome do convênio deve conter ao menos dois caracteres</div>
+                        </div>
+                    </div>
 
                 </form>
             </div>
