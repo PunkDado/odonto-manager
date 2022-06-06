@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="dataEnvio">Data de envio</label>
+                <label for="dataEnvio">Data de envio:</label>
                 <input type="date" class="form-control" id="dataEnvio" name="dataEnvio" [(ngModel)]="atendimento.dataEnvio" #dataEnvio="ngModel">
                 <div class="alert alert-danger" *ngIf="dataEnvio.errors && (dataEnvio.dirty || dataEnvio.touched)">
                 </div>

@@ -10,6 +10,7 @@ import { ModalAgendaComponent } from './modal-agenda/modal-agenda.component';
 import { InserirAgendaComponent } from './inserir-agenda/inserir-agenda.component';
 import { EditarAgendaComponent } from './editar-agenda/editar-agenda.component';
 import { AgendaDiariaDentistaComponent } from './agenda-diaria-dentista/agenda-diaria-dentista.component';
+import { AgendaDiariaDentistaMobileComponent } from './agenda-diaria-dentista-mobile/agenda-diaria-dentista-mobile.component';
 
 
 
@@ -20,7 +21,8 @@ import { AgendaDiariaDentistaComponent } from './agenda-diaria-dentista/agenda-d
     ModalAgendaComponent,
     InserirAgendaComponent,
     EditarAgendaComponent,
-    AgendaDiariaDentistaComponent
+    AgendaDiariaDentistaComponent,
+    AgendaDiariaDentistaMobileComponent
   ],
   imports: [
     CommonModule,

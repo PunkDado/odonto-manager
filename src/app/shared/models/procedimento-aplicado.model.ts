@@ -11,7 +11,7 @@ export class ProcedimentoAplicado {
         public motivoGlosa?: string,
         public dataRecebimento?: string,
         public repassado?: boolean,
-        public dataRepasse?: string
-
+        public dataRepasse?: string,
+        public comentario?: string
     ) { }
 }

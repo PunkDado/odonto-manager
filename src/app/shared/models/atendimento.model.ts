@@ -16,6 +16,7 @@ export class Atendimento {
         public formaPagamento?: string,
         public dataEnvio?: string,
         public atendimentoVerificado?: boolean,
+        public comentario?: string,
         public procedimentosAplicados: ProcedimentoAplicado[] = []
     ) { }
 }

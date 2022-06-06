@@ -1,0 +1,130 @@
+<div class="container">
+    <div class="row">
+        <div class="mb-4">
+            <button type="button" class="btn btn-primary" [routerLink]="['/agenda/', dia, dentistaId]">
+                <i class="fa fa-desktop" aria-hidden="true"></i> Versão desktop
+            </button>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-5">
+            <label for="mes">Dia: </label>
+            <input type="date" class="form-control" name="dia" [(ngModel)]="dia" (change)="setNovoDia()">
+        
+        </div>
+        <div class="col-3 mt-4">
+            <button type="button" class="btn btn-primary" (click)="setHoje()">
+                <i class="fa fa-calendar" aria-hidden="true"></i> Hoje
+            </button>
+        </div>
+        <div class="col-4 mt-4">
+            <button class="btn btn-secondary" [routerLink]="['/agenda-diaria/', dia]">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                Agenda de {{ dia | date: "dd/MM"}}
+            </button>
+        </div>
+    </div>
+        <div class="mb-4">
+            <label for="dentista">Dentista: </label>
+            <ng-select  name="dentista"
+                        [items]="dentistas" 
+                        bindLabel="nomeDentista"
+                        bindValue="id"
+                        [(ngModel)]="dentistaId" 
+                        placeholder="Selecione um dentista"
+                        (change)="selecionarAgendaDiariaDentista()"
+                        > 
+            </ng-select>
+        </div>
+
+        
+    
+</div>
+
+<!--<div class="container text-center p-3">
+    <h3>Agenda de {{ dia | date: 'dd/MM/yyyy' }}</h3>
+</div>-->
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-1">
+            <button type="button" class="btn" (click)="arrowLeft();">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="col-9">
+            <h2 align="center" style="color: black;" class="p-0">
+                Agenda de {{ dentistaSelecionado.nomeDentista }}
+            </h2>
+            
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn" (click)="arrowRight();">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+
+    <table border="solid" bgcolor="white" align="center" cellspacing="21" cellpadding="5">
+
+        <thead>
+            <tr style="color: white; background: purple;">
+                <th class="border border-dark">
+                    Horário
+                </th>
+                <th *ngFor="let data of datas">
+                    {{ data | date: 'dd/MM' }} {{ getWeekday(data) }}
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let horario of horarios">
+                
+                <th class="border border-dark">
+                    {{ horario | date: 'HH'}}h{{ horario | date: 'mm'}}
+                </th>
+
+                <th class="border border-dark" 
+                    *ngFor="let data of datas;">
+                    <div *ngIf="listarAgendamentosPorHorarioData(horario, data).length == 0; else elseBlock;">
+                        
+                            <button class="btn border" style="width:100%" (click)="novoAgendamento(data, horario)">
+                                
+                            </button>
+                        
+                    </div>
+
+                    <ng-template #elseBlock>
+                        <div *ngFor="let agenda of listarAgendamentosPorHorarioData(horario, data)">
+                            <button class="btn border" style="width:100%" (click)="abrirModalAgenda(agenda)">
+                                    {{ agenda.paciente!.nomePaciente }} {{ agenda.paciente!.sobrenomePaciente }}
+                            </button>
+
+                            <button type="button" class="btn" [routerLink]="['/agenda/editar',agenda.id]">
+                                <i class="fa fa-pen" aria-hidden="true"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-sm" (click)="remover($event, agenda)">
+                                <i class="fa fa-times" aria-hidden="true"></i> 
+                            </button>
+
+                            <button type="button" title="Novo atendimento" alt="Novo atendimento" class="btn btn-xs btn-link" [routerLink]="['/atendimentos/novo', agenda.dentista!.id, agenda.paciente!.id, dia]">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Atendimento
+                            </button>
+                        </div>
+                    </ng-template>
+                        
+                    
+                </th>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
