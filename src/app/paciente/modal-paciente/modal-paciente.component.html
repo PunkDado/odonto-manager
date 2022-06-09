@@ -1,4 +1,4 @@
-<div style="max-width: 400px">
+<div style="max-width: 800px">
 
 
 <div class="modal-header">
@@ -87,6 +87,97 @@
         
         
     </div>
+
+    <!-- ODONTOGRAMA -->
+    <div class="border m-3" style="width: 850px">
+        <div class="row border bg-primary p-3 m-0 text-white">
+                <h3>Odontograma</h3>
+        </div>
+
+        <div class="p-3 bg-light">
+
+                <div class="d-inline-block p-1" *ngFor="let condicaoDentePaciente of paciente.condicaoDentePacientes">
+                    <!-- Número do dente -->
+                    <div class="small d-block" style="width: 40px;"><p class="text-center">{{ condicaoDentePaciente.dente }}</p></div>
+                    <!-- Dente -->
+                    <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+                    <div class="d-inline-block">
+                        <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
+                        <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 20px;" [style.background-color]="backgroundColor"></div>
+                        <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
+                    </div>
+                    <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+                </div>
+
+        </div>
+
+        <div class="p-3 bg-light">
+
+            <div class="d-inline-block p-1" *ngFor="let dente of dentes1;">
+                <!-- Número do dente -->
+                <div class="small d-block" style="width: 40px;"><p class="text-center">{{ dente }}</p></div>
+                <!-- Dente -->
+                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+                <div class="d-inline-block">
+                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
+                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 20px; background-color: white;"></div>
+                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
+                </div>
+                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+            </div>
+
+            <div class="d-inline-block p-3"></div>
+
+            <div class="d-inline-block p-1" *ngFor="let dente of dentes2;">
+                <!-- Número do dente -->
+                <div class="small d-block" style="width: 40px;"><p class="text-center">{{ dente }}</p></div>
+                <!-- Dente -->
+                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+                <div class="d-inline-block">
+                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
+                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 20px; background-color: white;"></div>
+                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
+                </div>
+                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+            </div>
+
+        </div>
+
+        <div class="p-3 bg-light">
+
+            <div class="d-inline-block p-1" *ngFor="let dente of dentes3;">
+                
+                <!-- Dente -->
+                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+                <div class="d-inline-block">
+                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
+                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 20px; background-color: white;"></div>
+                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
+                </div>
+                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+                <!-- Número do dente -->
+                <div class="small d-block" style="width: 40px;"><p class="text-center">{{ dente }}</p></div>
+            </div>
+
+            <div class="d-inline-block p-3"></div>
+
+            <div class="d-inline-block p-1" *ngFor="let dente of dentes4;">
+                <!-- Dente -->
+                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+                <div class="d-inline-block">
+                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
+                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 20px; background-color: white;"></div>
+                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
+                </div>
+                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+                <!-- Número do dente -->
+                <div class="small d-block" style="width: 40px;"><p class="text-center">{{ dente }}</p></div>
+            </div>
+
+        </div>
+        {{ rodape }}
+    </div>
+    <!-- FIM DO ODONTOGRAMA -->
 
     <div class="border m-3">
         <div class="row border bg-primary p-3 m-0 text-white">

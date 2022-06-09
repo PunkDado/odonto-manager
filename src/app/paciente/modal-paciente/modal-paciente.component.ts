@@ -13,6 +13,16 @@ export class ModalPacienteComponent implements OnInit {
 
   @Input() paciente!: Paciente;
   atendimentos!: Atendimento[];
+  rodape: string = "";
+  backgroundColor = "white";
+  dentes1: string[] = ['18', '17', '16', '15', '14', '13', '12', '11'];
+  dentes2: string[] = ['21', '22', '23', '24', '25', '26', '27', '28'];
+  dentes3: string[] = ['48', '47', '46', '45', '44', '43', '42', '41'];
+  dentes4: string[] = ['31', '32', '33', '34', '35', '36', '37', '38'];
+  dentes5: string[] = ['18', '17', '16', '15', '14', '13', '12', '11'];
+  dentes6: string[] = ['18', '17', '16', '15', '14', '13', '12', '11'];
+  dentes7: string[] = ['18', '17', '16', '15', '14', '13', '12', '11'];
+  dentes8: string[] = ['18', '17', '16', '15', '14', '13', '12', '11'];
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -28,6 +38,15 @@ export class ModalPacienteComponent implements OnInit {
         this.atendimentos = dados;
       }
     });
+  }
+
+  setRodape(): void {
+    if (this.backgroundColor == "white") {
+      this.backgroundColor = "red";
+    } 
+    else {
+      this.backgroundColor = "white";
+    }
   }
 
 }
