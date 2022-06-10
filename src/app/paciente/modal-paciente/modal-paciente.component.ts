@@ -2,7 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AtendimentoService } from 'src/app/atendimento/services/atendimento.service';
 import { Atendimento } from 'src/app/shared/models/atendimento.model';
+import { CondicaoDentePaciente } from 'src/app/shared/models/condicao-dente-paciente.model';
+import { Dente } from 'src/app/shared/models/dente.model';
 import { Paciente } from 'src/app/shared/models/paciente.model';
+import { PacienteService } from '../services/paciente.service';
 
 @Component({
   selector: 'app-modal-paciente',
@@ -105,7 +108,8 @@ export class ModalPacienteComponent implements OnInit {
 
   constructor(
     public activeModal: NgbActiveModal,
-    public atendimentoService: AtendimentoService
+    public atendimentoService: AtendimentoService,
+    public pacienteService: PacienteService
     ) { }
 
   ngOnInit(): void {
@@ -118,6 +122,8 @@ export class ModalPacienteComponent implements OnInit {
       }
     });
 
+    // Precisa preencher a cor dos dentes conforme a condição de cada face
+    this.setCorInicialDentes();
   }
 
   setCorDenteBloco1(dente: string, face: number): void {
@@ -165,10 +171,81 @@ export class ModalPacienteComponent implements OnInit {
   setCorDenteBloco8(dente: string, face: number): void {
     let dentes: string[] = this.dentes8;
     let indexDente = dentes.indexOf(dente);
-    this.bgColor8[indexDente][face] = nextColor(this.bgColor8[indexDente][face]);
+    let color = nextColor(this.bgColor8[indexDente][face]);
+    this.bgColor8[indexDente][face] = color;
+    this.persisteCondicaoDentePaciente(dente, face, color);
   }
 
+  // Precisa preencher a cor dos dentes conforme a condição de cada face
+  setCorInicialDentes(): void {
+    let dentes!: string[];
+    let indexDente!: number;
+    for (let condicao of this.paciente.condicaoDentePacientes) {
 
+      switch (condicao.dente?.slice(0,1)) {
+        case "1": 
+          dentes = this.dentes1;
+          indexDente = dentes.indexOf(condicao.dente);
+          this.bgColor1[indexDente][faceIndex(condicao.face!)] = corInicial(condicao.condicao!);
+          break;
+        case "2":
+          dentes = this.dentes2;
+          indexDente = dentes.indexOf(condicao.dente);
+          this.bgColor2[indexDente][faceIndex(condicao.face!)] = corInicial(condicao.condicao!);
+          break;
+        case "4":
+          dentes = this.dentes3;
+          indexDente = dentes.indexOf(condicao.dente);
+          this.bgColor3[indexDente][faceIndex(condicao.face!)] = corInicial(condicao.condicao!);
+          break;
+        case "3":
+          dentes = this.dentes4;
+          indexDente = dentes.indexOf(condicao.dente);
+          this.bgColor4[indexDente][faceIndex(condicao.face!)] = corInicial(condicao.condicao!);
+          break;
+        case "5":
+          dentes = this.dentes5;
+          indexDente = dentes.indexOf(condicao.dente);
+          this.bgColor5[indexDente][faceIndex(condicao.face!)] = corInicial(condicao.condicao!);
+          break;
+        case "6":
+          dentes = this.dentes6;
+          indexDente = dentes.indexOf(condicao.dente);
+          this.bgColor6[indexDente][faceIndex(condicao.face!)] = corInicial(condicao.condicao!);
+          break;
+        case "8":
+          dentes = this.dentes7;
+          indexDente = dentes.indexOf(condicao.dente);
+          this.bgColor7[indexDente][faceIndex(condicao.face!)] = corInicial(condicao.condicao!);
+          break;
+        case "7":
+          dentes = this.dentes8;
+          indexDente = dentes.indexOf(condicao.dente);
+          this.bgColor8[indexDente][faceIndex(condicao.face!)] = corInicial(condicao.condicao!);
+          break;
+      }
+      
+    }
+  }
+
+  persisteCondicaoDentePaciente(dente: string, face: number, color: string): void {
+
+    let condicao = this.paciente.condicaoDentePacientes.filter(
+      condicao => condicao.dente == dente
+    );
+    if (condicao.length == 0) {
+      let novaCondicao: CondicaoDentePaciente = new CondicaoDentePaciente();
+      novaCondicao.dente = dente;
+      novaCondicao.face = String(face);
+      novaCondicao.condicao = "Cárie encontrada";
+      novaCondicao.dataInformacao = String(new Date());
+      this.paciente.condicaoDentePacientes.push(novaCondicao);
+    }
+    else {
+      
+    }
+    this.pacienteService.atualizar(this.paciente).subscribe();
+  }
 
 }
 
@@ -176,11 +253,35 @@ function nextColor(color: string): string {
   switch (color) {
     case "white": return "lightblue";
     break;
-    case "lightblue": return "red";
-    break;
-    case "red": return "black";
+    case "lightblue": return "gray";
     break;
     default: return  "white";
   }
-
 }
+
+function corInicial(condicao: string): string {
+  switch (condicao) {
+    case "Cárie encontrada": return "lightblue";
+    break;
+    case "Cárie restaurada": return "gray";
+    break;
+    default: return "white";
+  }
+}
+
+function faceIndex(face: string): number {
+  switch (face) {
+    case "Vestibular": return 0;
+    break;
+    case "Palatino": return 1;
+    break;
+    case "Lingual": return 2;
+    break;
+    case "Mesial": return 3;
+    break;
+    case "Distal": return 4;
+    break;
+    default: return  5;
+  }
+}
+
