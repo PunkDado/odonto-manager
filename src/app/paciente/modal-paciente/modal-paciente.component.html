@@ -94,88 +94,151 @@
                 <h3>Odontograma</h3>
         </div>
 
-        <div class="p-3 bg-light">
+        <!--<div class="p-3 bg-light">
 
-                <div class="d-inline-block p-1" *ngFor="let condicaoDentePaciente of paciente.condicaoDentePacientes">
-                    <!-- Número do dente -->
+                <div class="d-inline-block p-1" *ngFor="let condicaoDentePaciente of paciente.condicaoDentePacientes; let i = index;">
+                    
                     <div class="small d-block" style="width: 40px;"><p class="text-center">{{ condicaoDentePaciente.dente }}</p></div>
-                    <!-- Dente -->
-                    <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+                    
+                    <div type="button" (click)="setCorDente(0,dente,0)" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
                     <div class="d-inline-block">
-                        <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
-                        <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 20px;" [style.background-color]="backgroundColor"></div>
-                        <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
+                        <div type="button" (click)="setCorDente(0,dente,0)" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
+                        <div type="button" (click)="setCorDente(0,dente,0)" class="border border-dark" style="width:20px; height: 20px;" [style.background-color]="bgColor1[i]"></div>
+                        <div type="button" (click)="setCorDente(0,dente,0)" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
                     </div>
-                    <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+                    <div type="button" (click)="setCorDente(0,dente,0)" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
                 </div>
+
+        </div>-->
+
+        <div class="p-3 bg-light">
+
+            <div class="d-inline-block p-1" *ngFor="let dente of dentes1; let indexDente = index;">
+                <!-- Número do dente -->
+                <div class="small d-block" style="width: 40px;"><p class="text-center">{{ dente }}</p></div>
+                <!-- Dente -->
+                <div type="button" (click)="setCorDenteBloco1(dente,0)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor1[indexDente][0]"></div>
+                <div class="d-inline-block">
+                    <div type="button" (click)="setCorDenteBloco1(dente,1)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor1[indexDente][1]"></div>
+                    <div type="button" (click)="setCorDenteBloco1(dente,2)" class="border border-dark" style="width:20px; height: 20px;" [style.background-color]="bgColor1[indexDente][2]"></div>
+                    <div type="button" (click)="setCorDenteBloco1(dente,3)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor1[indexDente][3]"></div>
+                </div>
+                <div type="button" (click)="setCorDenteBloco1(dente,4)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor1[indexDente][4]"></div>
+            </div>
+
+            <div class="d-inline-block p-3"></div>
+
+            <div class="d-inline-block p-1" *ngFor="let dente of dentes2; let i2 = index;">
+                <!-- Número do dente -->
+                <div class="small d-block" style="width: 40px;"><p class="text-center">{{ dente }}</p></div>
+                <!-- Dente -->
+                <div type="button" (click)="setCorDenteBloco2(dente,0)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor2[i2][0]"></div>
+                <div class="d-inline-block">
+                    <div type="button" (click)="setCorDenteBloco2(dente,1)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor2[i2][1]"></div>
+                    <div type="button" (click)="setCorDenteBloco2(dente,2)" class="border border-dark" style="width:20px; height: 20px;" [style.background-color]="bgColor2[i2][2]"></div>
+                    <div type="button" (click)="setCorDenteBloco2(dente,3)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor2[i2][3]"></div>
+                </div>
+                <div type="button" (click)="setCorDenteBloco2(dente,4)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor2[i2][4]"></div>
+            </div>
 
         </div>
 
         <div class="p-3 bg-light">
 
-            <div class="d-inline-block p-1" *ngFor="let dente of dentes1;">
+            <div class="d-inline-block p-1" *ngFor="let dente of dentes3; let indexDente = index;">
                 <!-- Número do dente -->
                 <div class="small d-block" style="width: 40px;"><p class="text-center">{{ dente }}</p></div>
                 <!-- Dente -->
-                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+                <div type="button" (click)="setCorDenteBloco3(dente,0)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor3[indexDente][0]"></div>
                 <div class="d-inline-block">
-                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
-                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 20px; background-color: white;"></div>
-                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
+                    <div type="button" (click)="setCorDenteBloco3(dente,1)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor3[indexDente][1]"></div>
+                    <div type="button" (click)="setCorDenteBloco3(dente,2)" class="border border-dark" style="width:20px; height: 20px;" [style.background-color]="bgColor3[indexDente][2]"></div>
+                    <div type="button" (click)="setCorDenteBloco3(dente,3)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor3[indexDente][3]"></div>
                 </div>
-                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+                <div type="button" (click)="setCorDenteBloco3(dente,4)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor3[indexDente][4]"></div>
             </div>
 
             <div class="d-inline-block p-3"></div>
 
-            <div class="d-inline-block p-1" *ngFor="let dente of dentes2;">
+            <div class="d-inline-block p-1" *ngFor="let dente of dentes4; let indexDente = index;">
                 <!-- Número do dente -->
                 <div class="small d-block" style="width: 40px;"><p class="text-center">{{ dente }}</p></div>
                 <!-- Dente -->
-                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+                <div type="button" (click)="setCorDenteBloco4(dente,0)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor4[indexDente][0]"></div>
                 <div class="d-inline-block">
-                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
-                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 20px; background-color: white;"></div>
-                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
+                    <div type="button" (click)="setCorDenteBloco4(dente,1)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor4[indexDente][1]"></div>
+                    <div type="button" (click)="setCorDenteBloco4(dente,2)" class="border border-dark" style="width:20px; height: 20px;" [style.background-color]="bgColor4[indexDente][2]"></div>
+                    <div type="button" (click)="setCorDenteBloco4(dente,3)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor4[indexDente][3]"></div>
                 </div>
-                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+                <div type="button" (click)="setCorDenteBloco4(dente,4)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor4[indexDente][4]"></div>
             </div>
 
         </div>
 
         <div class="p-3 bg-light">
 
-            <div class="d-inline-block p-1" *ngFor="let dente of dentes3;">
-                
-                <!-- Dente -->
-                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
-                <div class="d-inline-block">
-                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
-                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 20px; background-color: white;"></div>
-                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
-                </div>
-                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+            <div class="d-inline-block p-1" *ngFor="let dente of dentes5; let indexDente = index;">
                 <!-- Número do dente -->
                 <div class="small d-block" style="width: 40px;"><p class="text-center">{{ dente }}</p></div>
+                <!-- Dente -->
+                <div type="button" (click)="setCorDenteBloco5(dente,0)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor5[indexDente][0]"></div>
+                <div class="d-inline-block">
+                    <div type="button" (click)="setCorDenteBloco5(dente,1)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor5[indexDente][1]"></div>
+                    <div type="button" (click)="setCorDenteBloco5(dente,2)" class="border border-dark" style="width:20px; height: 20px;" [style.background-color]="bgColor5[indexDente][2]"></div>
+                    <div type="button" (click)="setCorDenteBloco5(dente,3)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor5[indexDente][3]"></div>
+                </div>
+                <div type="button" (click)="setCorDenteBloco5(dente,4)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor5[indexDente][4]"></div>
             </div>
 
             <div class="d-inline-block p-3"></div>
 
-            <div class="d-inline-block p-1" *ngFor="let dente of dentes4;">
-                <!-- Dente -->
-                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
-                <div class="d-inline-block">
-                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
-                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 20px; background-color: white;"></div>
-                    <div type="button" (click)="setRodape()" class="border border-dark" style="width:20px; height: 10px; background-color: white;"></div>
-                </div>
-                <div type="button" (click)="setRodape()" class="border border-dark d-inline-block" style="width:10px; height: 40px; background-color: white;"></div>
+            <div class="d-inline-block p-1" *ngFor="let dente of dentes6; let indexDente = index;">
                 <!-- Número do dente -->
                 <div class="small d-block" style="width: 40px;"><p class="text-center">{{ dente }}</p></div>
+                <!-- Dente -->
+                <div type="button" (click)="setCorDenteBloco6(dente,0)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor6[indexDente][0]"></div>
+                <div class="d-inline-block">
+                    <div type="button" (click)="setCorDenteBloco6(dente,1)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor6[indexDente][1]"></div>
+                    <div type="button" (click)="setCorDenteBloco6(dente,2)" class="border border-dark" style="width:20px; height: 20px;" [style.background-color]="bgColor6[indexDente][2]"></div>
+                    <div type="button" (click)="setCorDenteBloco6(dente,3)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor6[indexDente][3]"></div>
+                </div>
+                <div type="button" (click)="setCorDenteBloco6(dente,4)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor6[indexDente][4]"></div>
             </div>
 
         </div>
-        {{ rodape }}
+
+        <div class="p-3 bg-light">
+
+            <div class="d-inline-block p-1" *ngFor="let dente of dentes7; let indexDente = index;">
+                <!-- Número do dente -->
+                <div class="small d-block" style="width: 40px;"><p class="text-center">{{ dente }}</p></div>
+                <!-- Dente -->
+                <div type="button" (click)="setCorDenteBloco7(dente,0)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor7[indexDente][0]"></div>
+                <div class="d-inline-block">
+                    <div type="button" (click)="setCorDenteBloco7(dente,1)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor7[indexDente][1]"></div>
+                    <div type="button" (click)="setCorDenteBloco7(dente,2)" class="border border-dark" style="width:20px; height: 20px;" [style.background-color]="bgColor7[indexDente][2]"></div>
+                    <div type="button" (click)="setCorDenteBloco7(dente,3)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor7[indexDente][3]"></div>
+                </div>
+                <div type="button" (click)="setCorDenteBloco7(dente,4)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor7[indexDente][4]"></div>
+            </div>
+
+            <div class="d-inline-block p-3"></div>
+
+            <div class="d-inline-block p-1" *ngFor="let dente of dentes8; let indexDente = index;">
+                <!-- Número do dente -->
+                <div class="small d-block" style="width: 40px;"><p class="text-center">{{ dente }}</p></div>
+                <!-- Dente -->
+                <div type="button" (click)="setCorDenteBloco8(dente,0)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor8[indexDente][0]"></div>
+                <div class="d-inline-block">
+                    <div type="button" (click)="setCorDenteBloco8(dente,1)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor8[indexDente][1]"></div>
+                    <div type="button" (click)="setCorDenteBloco8(dente,2)" class="border border-dark" style="width:20px; height: 20px;" [style.background-color]="bgColor8[indexDente][2]"></div>
+                    <div type="button" (click)="setCorDenteBloco8(dente,3)" class="border border-dark" style="width:20px; height: 10px;" [style.background-color]="bgColor8[indexDente][3]"></div>
+                </div>
+                <div type="button" (click)="setCorDenteBloco8(dente,4)" class="border border-dark d-inline-block" style="width:10px; height: 40px;" [style.background-color]="bgColor8[indexDente][4]"></div>
+            </div>
+
+        </div>
+        
     </div>
     <!-- FIM DO ODONTOGRAMA -->
 
