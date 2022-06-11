@@ -267,9 +267,9 @@ export class ModalPacienteComponent implements OnInit {
 
 function nextColor(color: string): string {
   switch (color) {
-    case "white": return "lightblue";
+    case "white": return "red";
     break;
-    case "lightblue": return "gray";
+    case "red": return "gray";
     break;
     default: return  "white";
   }
@@ -277,7 +277,7 @@ function nextColor(color: string): string {
 
 function corInicial(condicao: string): string {
   switch (condicao) {
-    case "Cárie encontrada": return "lightblue";
+    case "Cárie encontrada": return "red";
     break;
     case "Cárie restaurada": return "gray";
     break;
@@ -291,11 +291,11 @@ function faceIndex(face: string): number {
     break;
     case "Palatino": return 1;
     break;
-    case "Lingual": return 2;  
+    case "Lingual": return 1;  
     break;
-    case "Mesial": return 3;
+    case "Mesial": return 2;
     break;
-    case "Distal": return 4;
+    case "Distal": return 3;
     break;
     case "Incisal": return 4;
     break;
