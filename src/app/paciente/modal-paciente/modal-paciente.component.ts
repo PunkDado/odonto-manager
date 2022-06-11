@@ -129,43 +129,57 @@ export class ModalPacienteComponent implements OnInit {
   setCorDenteBloco1(dente: string, face: number): void {
     let dentes: string[] = this.dentes1;
     let indexDente = dentes.indexOf(dente);
-    this.bgColor1[indexDente][face] = nextColor(this.bgColor1[indexDente][face]);
+    let color = nextColor(this.bgColor1[indexDente][face]);
+    this.bgColor1[indexDente][face] = color;
+    this.persisteCondicaoDentePaciente(dente, face, color);
   }
 
   setCorDenteBloco2(dente: string, face: number): void {
     let dentes: string[] = this.dentes2;
     let indexDente = dentes.indexOf(dente);
-    this.bgColor2[indexDente][face] = nextColor(this.bgColor2[indexDente][face]);
+    let color = nextColor(this.bgColor2[indexDente][face]);
+    this.bgColor2[indexDente][face] = color;
+    this.persisteCondicaoDentePaciente(dente, face, color);
   }
 
   setCorDenteBloco3(dente: string, face: number): void {
     let dentes: string[] = this.dentes3;
     let indexDente = dentes.indexOf(dente);
-    this.bgColor3[indexDente][face] = nextColor(this.bgColor3[indexDente][face]);
+    let color = nextColor(this.bgColor3[indexDente][face]);
+    this.bgColor3[indexDente][face] = color;
+    this.persisteCondicaoDentePaciente(dente, face, color);
   }
 
   setCorDenteBloco4(dente: string, face: number): void {
     let dentes: string[] = this.dentes4;
     let indexDente = dentes.indexOf(dente);
-    this.bgColor4[indexDente][face] = nextColor(this.bgColor4[indexDente][face]);
+    let color = nextColor(this.bgColor4[indexDente][face]);
+    this.bgColor4[indexDente][face] = color;
+    this.persisteCondicaoDentePaciente(dente, face, color);
   }
 
   setCorDenteBloco5(dente: string, face: number): void {
     let dentes: string[] = this.dentes5;
     let indexDente = dentes.indexOf(dente);
-    this.bgColor5[indexDente][face] = nextColor(this.bgColor5[indexDente][face]);
+    let color = nextColor(this.bgColor5[indexDente][face]);
+    this.bgColor5[indexDente][face] = color;
+    this.persisteCondicaoDentePaciente(dente, face, color);
   }
 
   setCorDenteBloco6(dente: string, face: number): void {
     let dentes: string[] = this.dentes6;
     let indexDente = dentes.indexOf(dente);
-    this.bgColor6[indexDente][face] = nextColor(this.bgColor6[indexDente][face]);
+    let color = nextColor(this.bgColor6[indexDente][face]);
+    this.bgColor6[indexDente][face] = color;
+    this.persisteCondicaoDentePaciente(dente, face, color);
   }
 
   setCorDenteBloco7(dente: string, face: number): void {
     let dentes: string[] = this.dentes7;
     let indexDente = dentes.indexOf(dente);
-    this.bgColor7[indexDente][face] = nextColor(this.bgColor7[indexDente][face]);
+    let color = nextColor(this.bgColor7[indexDente][face]);
+    this.bgColor7[indexDente][face] = color;
+    this.persisteCondicaoDentePaciente(dente, face, color);
   }
 
   setCorDenteBloco8(dente: string, face: number): void {
@@ -224,11 +238,13 @@ export class ModalPacienteComponent implements OnInit {
           this.bgColor8[indexDente][faceIndex(condicao.face!)] = corInicial(condicao.condicao!);
           break;
       }
-      
+
     }
   }
 
-  persisteCondicaoDentePaciente(dente: string, face: number, color: string): void {
+  // Tem que acertar para localizar por par dente-face
+  // Tem que fazer para filtrar e alterar a condição de um dente já presente
+  persisteCondicaoDentePaciente(dente: string, faceIndex: number, color: string): void {
 
     let condicao = this.paciente.condicaoDentePacientes.filter(
       condicao => condicao.dente == dente
@@ -236,7 +252,7 @@ export class ModalPacienteComponent implements OnInit {
     if (condicao.length == 0) {
       let novaCondicao: CondicaoDentePaciente = new CondicaoDentePaciente();
       novaCondicao.dente = dente;
-      novaCondicao.face = String(face);
+      novaCondicao.face = faceFromIndex(dente, faceIndex);
       novaCondicao.condicao = "Cárie encontrada";
       novaCondicao.dataInformacao = String(new Date());
       this.paciente.condicaoDentePacientes.push(novaCondicao);
@@ -275,13 +291,40 @@ function faceIndex(face: string): number {
     break;
     case "Palatino": return 1;
     break;
-    case "Lingual": return 2;
+    case "Lingual": return 2;  
     break;
     case "Mesial": return 3;
     break;
     case "Distal": return 4;
     break;
+    case "Incisal": return 4;
+    break;
+    case "Oclusal": return 4;
+    break;
     default: return  5;
   }
 }
 
+function faceFromIndex(dente: string, faceIndex: number) {
+  switch (faceIndex) {
+    case 0: return "Vestibular";
+    break;
+    case 1: {
+      return "Palatino";
+      //return "Lingual";
+    }
+    break;
+    case 2: return "Mesial";
+    break;
+    case 3: return "Distal";
+    break;
+    case 4: {
+      return "Incisal";
+      //return "Oclusal";
+    }
+    break;
+    default: return  "";
+  }
+}
+
+// ["Vestibular", "Palatino", "Lingual", "Mesial", "Distal", "Incisal", "Oclusal"]

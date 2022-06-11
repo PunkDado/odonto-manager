@@ -22,7 +22,7 @@ export class EditarPacienteComponent implements OnInit {
   paciente!: Paciente;
   convenios!: Convenio[];
   dentes: string[] = ["11", "21", "31"];
-  faces: string[] = ["Vestibular", "Frontal"];
+  faces: string[] = ["Vestibular", "Palatino", "Lingual", "Mesial", "Distal", "Incisal", "Oclusal"];
   condicoes: string[] = ["Cárie encontrada", "Cárie restaurada"];
   tiposTelefone: string[] = ["Celular", "Residencial", "Comercial"];
 
