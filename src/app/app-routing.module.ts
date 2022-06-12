@@ -10,6 +10,8 @@ import { EditarAtendimentoComponent } from './atendimento/editar-atendimento/edi
 import { InserirAtendimentoDentistaPacienteDataComponent } from './atendimento/inserir-atendimento-dentista-paciente-data/inserir-atendimento-dentista-paciente-data.component';
 import { InserirAtendimentoComponent } from './atendimento/inserir-atendimento/inserir-atendimento.component';
 import { ListarAtendimentoComponent } from './atendimento/listar-atendimento/listar-atendimento.component';
+import { LoginRoutes } from './auth/auth-routing.module';
+import { LoginComponent } from './auth/login/login.component';
 import { EditarDentistaComponent } from './dentista/editar-dentista/editar-dentista.component';
 import { InserirDentistaComponent } from './dentista/inserir-dentista/inserir-dentista.component';
 import { ListarDentistaComponent } from './dentista/listar-dentista/listar-dentista.component';
@@ -50,6 +52,9 @@ const routes: Routes = [
   { path: 'agenda/editar/:id', component: EditarAgendaComponent },
   { path: 'agenda/:dia/:dentistaId', component: AgendaDiariaDentistaComponent },
   { path: 'agenda-mobile/:dia/:dentistaId', component: AgendaDiariaDentistaMobileComponent },
+
+  //{ path: 'login', component: LoginComponent },
+  ...LoginRoutes
   
   
 ];

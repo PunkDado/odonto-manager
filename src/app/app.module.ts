@@ -13,6 +13,7 @@ import { PacienteModule } from './paciente/paciente.module';
 import { ProcedimentoModule } from './procedimento/procedimento.module';
 import { TipoProcedimentoModule } from './tipo-procedimento/tipo-procedimento.module';
 import { AgendaModule } from './agenda/agenda.module';
+import { AuthModule } from './auth/auth.module';
 
 //import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -35,7 +36,8 @@ import { AgendaModule } from './agenda/agenda.module';
     PacienteModule,
     ProcedimentoModule,
     TipoProcedimentoModule,
-    AgendaModule
+    AgendaModule, 
+    AuthModule
   ],
   providers: [
     //{ provide: LOCALE_ID, useValue: 'pt-PT' }
