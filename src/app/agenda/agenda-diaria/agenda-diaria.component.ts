@@ -3,8 +3,10 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DentistaService } from 'src/app/dentista/services/dentista.service';
+import { ModalPacienteComponent } from 'src/app/paciente/modal-paciente/modal-paciente.component';
 import { Agenda } from 'src/app/shared/models/agenda.model';
 import { Dentista } from 'src/app/shared/models/dentista.model';
+import { Paciente } from 'src/app/shared/models/paciente.model';
 import { ModalAgendaComponent } from '../modal-agenda/modal-agenda.component';
 import { AgendaService } from '../services/agenda.service';
 
@@ -74,6 +76,11 @@ export class AgendaDiariaComponent implements OnInit {
   abrirModalAgenda(agenda: Agenda) {
     const modalRef = this.modalService.open(ModalAgendaComponent);
     modalRef.componentInstance.agenda = agenda;
+  }
+
+  abrirModalPaciente(paciente: Paciente) {
+    const modalRef = this.modalService.open(ModalPacienteComponent);
+    modalRef.componentInstance.paciente = paciente;
   }
 
   selecionarAgendaDiariaDentista(): void {
