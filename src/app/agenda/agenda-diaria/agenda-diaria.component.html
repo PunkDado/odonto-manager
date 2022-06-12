@@ -59,10 +59,10 @@
         <thead>
             <tr style="color: white; background: purple;">
                 <th class="border border-dark">
-                    Horário
+                    <i>Horário</i>
                 </th>
                 <th *ngFor="let dentista of dentistas">
-                    {{ dentista.nomeDentista }}
+                    <i type="button" (click)="clicarAgendaDiariaDentista(dentista)">{{ dentista.nomeDentista }}</i>
                 </th>
             </tr>
         </thead>

@@ -87,6 +87,10 @@ export class AgendaDiariaComponent implements OnInit {
     this.router.navigate(['agenda/' + this.dia + '/' + this.dentistaId]);
   }
 
+  clicarAgendaDiariaDentista(dentista: Dentista): void {
+    this.router.navigate(['agenda/' + this.dia + '/' + dentista.id]);
+  }
+
   setHoje(): void {
     let diaDeHoje: string = hoje().substring(0,10);
     this.dia = diaDeHoje;
