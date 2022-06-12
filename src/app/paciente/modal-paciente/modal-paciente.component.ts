@@ -242,24 +242,15 @@ export class ModalPacienteComponent implements OnInit {
     }
   }
 
-  // Tem que acertar para localizar por par dente-face
-  // Tem que fazer para filtrar e alterar a condição de um dente já presente
   persisteCondicaoDentePaciente(dente: string, faceIndex: number, color: string): void {
 
-    let condicao = this.paciente.condicaoDentePacientes.filter(
-      condicao => condicao.dente == dente
-    );
-    if (condicao.length == 0) {
-      let novaCondicao: CondicaoDentePaciente = new CondicaoDentePaciente();
-      novaCondicao.dente = dente;
-      novaCondicao.face = faceFromIndex(dente, faceIndex);
-      novaCondicao.condicao = "Cárie encontrada";
-      novaCondicao.dataInformacao = String(new Date());
-      this.paciente.condicaoDentePacientes.push(novaCondicao);
-    }
-    else {
-      
-    }
+    let novaCondicao: CondicaoDentePaciente = new CondicaoDentePaciente();
+    novaCondicao.dente = dente;
+    novaCondicao.face = faceFromIndex(dente, faceIndex);
+    novaCondicao.condicao = condicaoFromColor(color);
+    novaCondicao.dataInformacao = String(new Date());
+    this.paciente.condicaoDentePacientes.push(novaCondicao);
+    
     this.pacienteService.atualizar(this.paciente).subscribe();
   }
 
@@ -282,6 +273,16 @@ function corInicial(condicao: string): string {
     case "Cárie restaurada": return "gray";
     break;
     default: return "white";
+  }
+}
+
+function condicaoFromColor(color: string): string {
+  switch (color) {
+    case "red": return "Cárie encontrada";
+    break;
+    case "gray": return "Cárie restaurada";
+    break;
+    default: return "Dente íntegro";
   }
 }
 
