@@ -14,6 +14,7 @@ import { ProcedimentoModule } from './procedimento/procedimento.module';
 import { TipoProcedimentoModule } from './tipo-procedimento/tipo-procedimento.module';
 import { AgendaModule } from './agenda/agenda.module';
 import { AuthModule } from './auth/auth.module';
+import { HomeComponent } from './home/home.component';
 
 //import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -22,6 +23,7 @@ import { AuthModule } from './auth/auth.module';
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     
   ],
   imports: [

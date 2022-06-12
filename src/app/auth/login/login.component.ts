@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute) {
     
       if (this.loginService.usuarioLogado) {
-      this.router.navigate([""]);
+      this.router.navigate(["login"]);
     
     }
   }
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         (usu) => {
           this.loginService.usuarioLogado = usu;
           this.loading = false;
-          this.router.navigate([""]);
+          this.router.navigate(["home"]);
         }
       )
       
