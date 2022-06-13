@@ -2,9 +2,10 @@
   <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
     <div class="conteiner-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="atendimentos/">
+        <a class="navbar-brand" href="home/">
           {{ title }}
         </a>
+        
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
@@ -15,18 +16,31 @@
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['pacientes']">Pacientes</a>
             </li>
-            <li class="nav-item">
+
+            <li *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE' || usuarioLogado.perfil==='DENTISTA'" class="nav-item">
               <a class="nav-link" [routerLink]="['atendimentos']">Atendimentos</a>
             </li>
-            <li class="nav-item">
+            <li *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE' || usuarioLogado.perfil==='DENTISTA'" class="nav-item">
               <a class="nav-link" [routerLink]="['dentistas']">Dentistas</a>
             </li>
-            <li class="nav-item">
+            <li *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE'" class="nav-item">
               <a class="nav-link" [routerLink]="['pagamentos']">Pagamentos</a>
             </li>
+
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['login']">Login</a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link">
+                <i class="fa fa-user"></i>  
+                {{ usuarioLogado.login }}
+              </a>
+            </li>
+            
+            <!--<li class="nav-item">
+              <a class="nav-link" [routerLink]="['login']" (click)="logout()">Logout</a>
+            </li>-->
             
           </ul>
         </div>
@@ -39,42 +53,24 @@
 
 
   <!--
-  <div class="conteiner-fluid">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-      
-      <a class="navbar-brand" href="#">{{ title }}</a>
-  
-      
-  
-      <button class="navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarSupportedContent">
-        
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="/pedidos/listar">Pedidos <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/clientes/listar">Clientes <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/produtos/listar">Produtos <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a href="#" title="Novo" alt="Novo" class="btn btn-xs btn-outline-primary" [routerLink]="['/pedidos/novo']">
-              <i class="fa fa-plus" aria-hidden="true"></i> pedido
-          </a>
-          </li>
-          
-          
-        </ul>
-      </div>
-    </nav>
-  </div>
-  <div>
-    <br/><br/><br/>
-    <router-outlet></router-outlet>
-  </div>
+            <li *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE' || usuarioLogado.perfil==='DENTISTA'" class="nav-item">
+              <a class="nav-link" [routerLink]="['atendimentos']">Atendimentos</a>
+            </li>
+            <li *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE' || usuarioLogado.perfil==='DENTISTA'" class="nav-item">
+              <a class="nav-link" [routerLink]="['dentistas']">Dentistas</a>
+            </li>
+            <li *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE'" class="nav-item">
+              <a class="nav-link" [routerLink]="['pagamentos']">Pagamentos</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['atendimentos']">Atendimentos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['dentistas']">Dentistas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['pagamentos']">Pagamentos</a>
+            </li>  
 -->
 

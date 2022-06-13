@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Login } from 'src/app/shared/models/login.model';
+import { Usuario } from 'src/app/shared/models/usuario.model';
 import { LoginService } from '../services/login.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   login!: Login;
   loading: boolean = false;
   message!: string;
+  //usuarioLogado!: Usuario;
 
   constructor(
     private loginService: LoginService,
@@ -51,5 +53,11 @@ export class LoginComponent implements OnInit {
       
     }
   }
+
+  
+  get usuarioLogado(): Usuario {
+    return this.loginService.usuarioLogado;
+  }
+  
 
 }

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from './auth/services/login.service';
+import { Usuario } from './shared/models/usuario.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Odonto Manager';
+  title = 'Alisystem';
+
+  constructor(
+    private router: Router,
+    private loginService: LoginService
+  ) {}
+
+  get usuarioLogado(): Usuario {
+    return this.loginService.usuarioLogado;
+  }
+
+  logout() {
+    this.loginService.logout();
+    this.router.navigate(['/login']);
+  }
 }
