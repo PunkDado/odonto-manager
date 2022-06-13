@@ -1,26 +1,29 @@
 <div class="container">
-    <h1>ALISYSTEM</h1>
+    <h1 class="text-secondary pb-3">
+        <i class="fa fa-tooth"></i>
+        ALISYSTEM
+    </h1>
 
-    <div class="border p-3 m-3" type="button" [routerLink]="['/agenda/']">
-        <h4>Agenda</h4>
+    <div class="border rounded p-3 m-3 border-primary text-primary" type="button" [routerLink]="['/agenda/']">
+        <h4><i class="fa fa-calendar"></i> Agenda</h4>
     </div>
-    <div class="border p-3 m-3" type="button" [routerLink]="['/pacientes/']">
-        <h4>Pacientes</h4>
+    <div class="border rounded p-3 m-3 border-secondary text-secondary" type="button" [routerLink]="['/pacientes/']">
+        <h4><i class="fa fa-hospital-user"></i> Pacientes</h4>
     </div>
-    <div class="border p-3 m-3" type="button" [routerLink]="['/atendimentos/']"
+    <div class="border rounded p-3 m-3 border-success text-success" type="button" [routerLink]="['/atendimentos/']"
         *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE' || usuarioLogado.perfil==='DENTISTA'">
-        <h4>Atendimentos</h4>
+        <h4><i class="fa fa-bed"></i> Atendimentos</h4>
     </div>
-    <div class="border p-3 m-3" type="button" [routerLink]="['/dentistas/']"
+    <div class="border rounded p-3 m-3 border-danger text-danger" type="button" [routerLink]="['/dentistas/']"
         *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE' || usuarioLogado.perfil==='DENTISTA'">
-        <h4>Dentistas</h4>
+        <h4><i class="fa fa-user-doctor"></i> Dentistas</h4>
     </div>
-    <div class="border p-3 m-3" type="button" [routerLink]="['/pagamentos/']"
+    <div class="border rounded p-3 m-3 border-warning text-warning" type="button" [routerLink]="['/pagamentos/']"
         *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE'">
-        <h4>Pagamentos</h4>
+        <h4><i class="fa fa-dollar"></i> Pagamentos</h4>
     </div>
-    <div class="border p-3 m-3" type="button" [routerLink]="['/login/']">
-        <h4>Login</h4>
+    <div class="border rounded p-3 m-3 border-info text-info" type="button" [routerLink]="['/login/']">
+        <h4><i class="fa fa-user"></i> Login</h4>
     </div>
     
 </div>
