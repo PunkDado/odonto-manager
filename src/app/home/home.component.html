@@ -1,6 +1,41 @@
 <div class="container">
     <h1>ALISYSTEM</h1>
+
+    <div class="border p-3 m-3" type="button" [routerLink]="['/agenda/']">
+        <h4>Agenda</h4>
+    </div>
+    <div class="border p-3 m-3" type="button" [routerLink]="['/pacientes/']">
+        <h4>Pacientes</h4>
+    </div>
+    <div class="border p-3 m-3" type="button" [routerLink]="['/atendimentos/']"
+        *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE' || usuarioLogado.perfil==='DENTISTA'">
+        <h4>Atendimentos</h4>
+    </div>
+    <div class="border p-3 m-3" type="button" [routerLink]="['/dentistas/']"
+        *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE' || usuarioLogado.perfil==='DENTISTA'">
+        <h4>Dentistas</h4>
+    </div>
+    <div class="border p-3 m-3" type="button" [routerLink]="['/pagamentos/']"
+        *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE'">
+        <h4>Pagamentos</h4>
+    </div>
+    <div class="border p-3 m-3" type="button" [routerLink]="['/login/']">
+        <h4>Login</h4>
+    </div>
+    
 </div>
 
 
 
+
+<!--
+            <li *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE' || usuarioLogado.perfil==='DENTISTA'" class="nav-item">
+              <a class="nav-link" [routerLink]="['atendimentos']">Atendimentos</a>
+            </li>
+            <li *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE' || usuarioLogado.perfil==='DENTISTA'" class="nav-item">
+              <a class="nav-link" [routerLink]="['dentistas']">Dentistas</a>
+            </li>
+            <li *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE'" class="nav-item">
+              <a class="nav-link" [routerLink]="['pagamentos']">Pagamentos</a>
+            </li>
+-->
