@@ -17,8 +17,15 @@ export class AppComponent {
   ) {}
 
   get usuarioLogado(): Usuario {
-    return this.loginService.usuarioLogado;
+    if (this.loginService.usuarioLogado == null) {
+      return {}
+    }
+    else {
+      return this.loginService.usuarioLogado;
+    }
   }
+
+
 
   logout() {
     this.loginService.logout();

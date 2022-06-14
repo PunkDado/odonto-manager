@@ -10,10 +10,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             
-            <li class="nav-item">
+            <li class="nav-item"
+            *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE' || usuarioLogado.perfil==='DENTISTA' || usuarioLogado.perfil==='FUNC'">
               <a class="nav-link" [routerLink]="['agenda']">Agenda</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item"
+            *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE' || usuarioLogado.perfil==='DENTISTA' || usuarioLogado.perfil==='FUNC'">
               <a class="nav-link" [routerLink]="['pacientes']">Pacientes</a>
             </li>
 
@@ -38,9 +40,10 @@
               </a>
             </li>
             
-            <!--<li class="nav-item">
-              <a class="nav-link" [routerLink]="['login']" (click)="logout()">Logout</a>
-            </li>-->
+            <li class="nav-item"
+            *ngIf="usuarioLogado.perfil==='ADMIN' || usuarioLogado.perfil==='GERENTE' || usuarioLogado.perfil==='DENTISTA' || usuarioLogado.perfil==='FUNC'">
+              <a class="nav-link" [routerLink]="['login']" (click)="logout()">Sair</a>
+            </li>
             
           </ul>
         </div>

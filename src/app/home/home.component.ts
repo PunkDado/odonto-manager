@@ -15,7 +15,12 @@ export class HomeComponent implements OnInit {
   }
 
   get usuarioLogado(): Usuario {
-    return this.loginService.usuarioLogado;
+    if (this.loginService.usuarioLogado == null) {
+      return {}
+    }
+    else {
+      return this.loginService.usuarioLogado;
+    }
   }
 
 }
