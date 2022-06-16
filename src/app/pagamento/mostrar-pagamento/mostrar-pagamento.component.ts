@@ -134,9 +134,12 @@ export class MostrarPagamentoComponent implements OnInit {
       );
       return atendimentosFiltrados;
     }
+    
     else if (dataRepasse == null || dataRepasse == "") {
       atendimentosFiltrados = this.atendimentos
-        .filter(atendimento => atendimento.dentista!.id == dentistaId);
+        .filter(atendimento => {
+          atendimento.dentista!.id == dentistaId;
+        });
       return atendimentosFiltrados;
     }
     else {
@@ -280,20 +283,10 @@ function procedimentosAplicadosAtendimentos(atendimentos: Atendimento[]): Proced
 }
 
 function getFilename(dentistaId: number): string {
-  
-  /*if (dentistaId == 0) {
-    return "Todos_os_atendimentos";
-  }
-  else {
-    return this.dentistas.filter(
-      dentista => dentista.id == dentistaId
-    ).nomeDentista;
-  }*/
   if (dentistaId == undefined) {
     return "atendimentos_"
   }
   else {
     return "atendimentos_" + dentistaId.toString();
   }
-  
 }

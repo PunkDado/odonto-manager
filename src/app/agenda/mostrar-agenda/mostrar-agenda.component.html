@@ -1,7 +1,7 @@
 <div class="row p-3">
     <div class="col-4">
         <label for="mes">Mês: </label>
-        <input type="date" class="form-control" name="mes" [(ngModel)]="mes" (change)="montaMes()">
+        <input type="month" class="form-control" name="mes" [(ngModel)]="mes" (change)="montaMes()">
         <!--<ng-select  name="mes"
                     [items]="meses" 
                     [(ngModel)]="mes" 
