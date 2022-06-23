@@ -12,6 +12,9 @@ import { InserirAtendimentoComponent } from './atendimento/inserir-atendimento/i
 import { ListarAtendimentoComponent } from './atendimento/listar-atendimento/listar-atendimento.component';
 import { LoginRoutes } from './auth/auth-routing.module';
 import { AuthGuard } from './auth/auth.guard';
+import { EditarUsuarioComponent } from './auth/editar-usuario/editar-usuario.component';
+import { InserirUsuarioComponent } from './auth/inserir-usuario/inserir-usuario.component';
+import { ListarUsuarioComponent } from './auth/listar-usuario/listar-usuario.component';
 import { LoginComponent } from './auth/login/login.component';
 import { EditarDentistaComponent } from './dentista/editar-dentista/editar-dentista.component';
 import { InserirDentistaComponent } from './dentista/inserir-dentista/inserir-dentista.component';
@@ -82,6 +85,11 @@ const routes: Routes = [
   { path: 'agenda/editar/:id', component: EditarAgendaComponent },
   { path: 'agenda/:dia/:dentistaId', component: AgendaDiariaDentistaComponent },
   { path: 'agenda-mobile/:dia/:dentistaId', component: AgendaDiariaDentistaMobileComponent },
+
+  { path: 'usuarios', redirectTo: 'usuarios/listar' },
+  { path: 'usuarios/listar', component: ListarUsuarioComponent },
+  { path: 'usuarios/novo', component: InserirUsuarioComponent },
+  { path: 'usuarios/editar/:id', component: EditarUsuarioComponent },
 
   //{ path: 'login', component: LoginComponent },
   ...LoginRoutes

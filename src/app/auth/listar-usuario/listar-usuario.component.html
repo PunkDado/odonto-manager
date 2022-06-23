@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <h2>USUÁRIOS</h2>
+        </div>
+        <div class="col-3">
+            <a href = "usuarios/novo">
+                <button type="button" class="btn btn-primary btn-floating rounded-circle">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!--<div class="container">
+    <form>
+        <input type="search" id="search" name="search" placeholder="Buscar dentista..." size="32" [(ngModel)]="searchTerm">
+        <button class="btn">
+            <i class="fa fa-search" aria-hidden="true" (click)="filtrarDentistas(searchTerm)"></i>
+        </button>
+        <button class="btn" (click)="listarDentistas()">
+            <i class="fa fa-refresh" aria-hidden="true"></i>
+        </button>
+    </form>
+</div>-->
+
+<br/>
+
+<div class="container border rounded p-3">
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <strong>Nome</strong>
+        </div>
+        <div class="col-2">
+            <strong>Login</strong>
+        </div>
+        <div class="col-2">
+            <strong>Senha</strong>
+        </div>
+        <div class="col-4">
+            <strong>Perfil</strong>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="container" *ngFor="let usuario of usuarios">
+    <div class="row">
+        <div class="col-2">
+            {{ usuario.nome }}
+        </div>
+        <div class="col-2">
+            {{ usuario.login }}
+        </div>
+        <div class="col-2">
+            {{ usuario.senha }}
+        </div>
+        <div class="col-4">
+            {{ usuario.perfil }}
+        </div>
+        
+        <div class="col-1">
+            <a href = "#" type="button" class="button btn" title="Editar" alt="Editar" [routerLink]="['/usuarios/editar', usuario.id]">
+                <i class="fa fa-edit" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="col-1">
+            <a href = "#" type="button" class="button btn" title="Remover" alt="Remover" (click)="remover($event, usuario)">
+                <i class="fa fa-times" aria-hidden="true"></i> 
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!--
+<a href="#" title="Editar" alt="Editar" class="btn btn-xs btn-primary" [routerLink]="['/dentistas/editar', dentista.id]">
+    <i class="fa fa-edit" aria-hidden="true"></i> Editar
+</a>
+<a href="#" title="Remover" alt="Remover" class="btn btn-xs btn-danger" (click)="remover($event, dentista)">
+    <i class="fa fa-times" aria-hidden="true"></i> Remover
+</a>
+-->
+
