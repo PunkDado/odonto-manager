@@ -1,4 +1,20 @@
 export class Usuario {
+    /*constructor(
+        public id?: number,
+        public usernameme?: string,
+        public first_name?: string,
+        public last_name?: string,
+        public email?: string,
+        public password?: string,
+        //public groups?: Group[],
+        //public user_permissions?: Permission[],
+        public is_staff?: boolean,
+        public is_active?: boolean,
+        public is_superuser?: boolean,
+        public last_login?: boolean,
+        public date_joined?: boolean,
+    ) {}*/
+
     constructor(
         public id?: number,
         public nome?: string,
