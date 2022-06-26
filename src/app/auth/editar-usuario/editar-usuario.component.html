@@ -31,6 +31,11 @@
                     </div>
                 </div>
 
+                <!--<div class="form-group">
+                    <label for="perfil">Perfil</label>
+                    <ng-select name="perfil" [items]="perfis" bindLabel="perfil" [(ngModel)]="usuario.perfil" placeholder="Selecione o perfil"> </ng-select>
+                </div>-->
+
                 <div class="form-group">
                     <label for="senha">Senha: </label>
                     <input type="password" class="form-control" id="senha" name="senha" minlength="2" required [(ngModel)]="usuario.senha" #senha="ngModel">
@@ -40,14 +45,14 @@
                     </div>
                 </div>
 
-                
-                
-
-                
-                <!--<div class="form-group">
-                    <label for="perfil">Perfil</label>
-                    <ng-select name="perfil" [items]="perfis" bindLabel="perfil" [(ngModel)]="usuario.perfil" placeholder="Selecione o perfil"> </ng-select>
-                </div>-->
+                <div class="form-group">
+                    <label for="confirmaSenha">Confirme a senha: </label>
+                    <input type="password" class="form-control" id="confirmaSenha" name="confirmaSenha" [(ngModel)]="confirmaSenha">
+                    <!--<div *ngIf="confirmaSenha.errors && (confirmaSenha.dirty || confirmaSenha.touched)" class="alert alert-danger">
+                        <div [hidden]="!confirmaSenha.errors.required">Digite a confirmaSenha do usuário</div>
+                        <div [hidden]="!confirmaSenha.errors.minlength">A confirmaSenha do usuário deve conter ao menos dois caracteres</div>
+                    </div>-->
+                </div>
 
                 <div class="p-3">
                     <button type="button" class="btn btn-primary" (click)="atualizar()" [disabled]="!formUsuario.form.valid">
@@ -61,14 +66,7 @@
             </form>
 
             <form>
-                <div class="form-group">
-                    <label for="confirmaSenha">Confirme a senha: </label>
-                    <input type="password" class="form-control" id="confirmaSenha" name="confirmaSenha" [(ngModel)]="confirmaSenha">
-                    <!--<div *ngIf="confirmaSenha.errors && (confirmaSenha.dirty || confirmaSenha.touched)" class="alert alert-danger">
-                        <div [hidden]="!confirmaSenha.errors.required">Digite a confirmaSenha do usuário</div>
-                        <div [hidden]="!confirmaSenha.errors.minlength">A confirmaSenha do usuário deve conter ao menos dois caracteres</div>
-                    </div>-->
-                </div>
+                
             </form>
 
         </div>
