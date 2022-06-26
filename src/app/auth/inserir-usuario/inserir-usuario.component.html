@@ -58,6 +58,9 @@
                     <button type="button" class="btn btn-primary" (click)="inserir()" [disabled]="!formUsuario.form.valid">
                         <i class="fa fa-arrow-left" aria-hidden="true"></i> Salvar
                     </button>
+                    <button type="button" class="btn btn-primary" (click)="inserirInserirNovamente()" [disabled]="!formUsuario.form.valid">
+                        <i class="fa fa-plus" aria-hidden="true"></i> Salvar e inserir outro usuário
+                    </button>
                     <a class="btn btn-secondary" [routerLink]="['/usuarios/']">
                         <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
                     </a>

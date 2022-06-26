@@ -36,7 +36,22 @@ export class InserirUsuarioComponent implements OnInit {
         confirm('As senhas são diferentes');
       }
     }
-    
+  }
+
+  inserirInserirNovamente(): void {
+    if(this.formUsuario.form.valid) {
+      if (this.usuario.senha == this.confirmaSenha) {
+        this.usuarioService.inserir(this.usuario).subscribe(
+          () => {
+            this.usuario = new Usuario();
+            this.router.navigate(["usuarios/novo"]);
+          }
+        );
+      }
+      else {
+        confirm('As senhas são diferentes');
+      }
+    }
   }
 
 }
