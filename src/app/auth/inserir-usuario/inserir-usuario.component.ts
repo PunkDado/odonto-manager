@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Usuario } from 'src/app/shared/models/usuario.model';
+import { UsuarioService } from '../services/usuario.service';
 
 @Component({
   selector: 'app-inserir-usuario',
@@ -7,9 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InserirUsuarioComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('formUsuario') formUsuario! : NgForm;
+  usuario!: Usuario;
+  perfis: string[] = ["ADMIN", "GERENTE", "DENTISTA", "FUNC"];
+
+  constructor(
+    private usuarioService: UsuarioService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
+    this.usuario = new Usuario();
+  }
+
+  inserir(): void {
+    if(this.formUsuario.form.valid) {
+      this.usuarioService.inserir(this.usuario).subscribe(
+        () => this.router.navigate(["usuarios/"])
+      );
+    }
+    
   }
 
 }

@@ -1,1 +1,61 @@
-<p>inserir-usuario works!</p>
+<div class="p-3">
+    <h1>Novo usuário</h1>
+        <div class="well">
+            
+            <form #formUsuario="ngForm">
+
+                <div class="form-group">
+                    <label for="nome">Nome: </label>
+                    <input type="text" class="form-control" id="nome" name="nome" minlength="2" required [(ngModel)]="usuario.nome" #nome="ngModel">
+                    <div *ngIf="nome.errors && (nome.dirty || nome.touched)" class="alert alert-danger">
+                        <div [hidden]="!nome.errors.required">Digite o nome do usuário</div>
+                        <div [hidden]="!nome.errors.minlength">O nome do usuário deve conter ao menos dois caracteres</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="login">Login: </label>
+                    <input type="text" class="form-control" id="login" name="login" minlength="2" required [(ngModel)]="usuario.login" #login="ngModel">
+                    <div *ngIf="login.errors && (login.dirty || login.touched)" class="alert alert-danger">
+                        <div [hidden]="!login.errors.required">Digite o login do usuário</div>
+                        <div [hidden]="!login.errors.minlength">O login do usuário deve conter ao menos dois caracteres</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="senha">Senha: </label>
+                    <input type="text" class="form-control" id="senha" name="senha" minlength="2" required [(ngModel)]="usuario.senha" #senha="ngModel">
+                    <div *ngIf="senha.errors && (senha.dirty || senha.touched)" class="alert alert-danger">
+                        <div [hidden]="!senha.errors.required">Digite a senha do usuário</div>
+                        <div [hidden]="!senha.errors.minlength">A senha do usuário deve conter ao menos dois caracteres</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="perfil">Perfil: </label>
+                    <input type="text" class="form-control" id="perfil" name="perfil" minlength="2" required [(ngModel)]="usuario.perfil" #perfil="ngModel">
+                    <div *ngIf="perfil.errors && (perfil.dirty || perfil.touched)" class="alert alert-danger">
+                        <div [hidden]="!perfil.errors.required">Digite o perfil do usuário</div>
+                        <div [hidden]="!perfil.errors.minlength">O perfil do usuário deve conter ao menos dois caracteres</div>
+                    </div>
+                </div>
+
+                <!--<div class="form-group">
+                    <label for="perfil">Perfil</label>
+                    <ng-select name="perfil" [items]="perfis" bindLabel="perfil" [(ngModel)]="usuario.perfil" placeholder="Selecione o perfil"> </ng-select>
+                </div>-->
+
+                <div class="p-3">
+                    <button type="button" class="btn btn-primary" (click)="inserir()" [disabled]="!formUsuario.form.valid">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i> Salvar
+                    </button>
+                    <a class="btn btn-secondary" [routerLink]="['/usuarios/']">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+                    </a>
+                </div>
+
+            </form>
+
+        </div>
+    
+</div>
