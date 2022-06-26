@@ -14,6 +14,7 @@ export class InserirUsuarioComponent implements OnInit {
   @ViewChild('formUsuario') formUsuario! : NgForm;
   usuario!: Usuario;
   perfis: string[] = ["ADMIN", "GERENTE", "DENTISTA", "FUNC"];
+  confirmaSenha!: string;
 
   constructor(
     private usuarioService: UsuarioService,
@@ -26,9 +27,14 @@ export class InserirUsuarioComponent implements OnInit {
 
   inserir(): void {
     if(this.formUsuario.form.valid) {
-      this.usuarioService.inserir(this.usuario).subscribe(
-        () => this.router.navigate(["usuarios/"])
-      );
+      if (this.usuario.senha == this.confirmaSenha) {
+        this.usuarioService.inserir(this.usuario).subscribe(
+          () => this.router.navigate(["usuarios/"])
+        );
+      }
+      else {
+        confirm('As senhas são diferentes');
+      }
     }
     
   }

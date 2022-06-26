@@ -24,11 +24,20 @@
 
                 <div class="form-group">
                     <label for="senha">Senha: </label>
-                    <input type="text" class="form-control" id="senha" name="senha" minlength="2" required [(ngModel)]="usuario.senha" #senha="ngModel">
+                    <input type="password" class="form-control" id="senha" name="senha" minlength="2" required [(ngModel)]="usuario.senha" #senha="ngModel">
                     <div *ngIf="senha.errors && (senha.dirty || senha.touched)" class="alert alert-danger">
                         <div [hidden]="!senha.errors.required">Digite a senha do usuário</div>
                         <div [hidden]="!senha.errors.minlength">A senha do usuário deve conter ao menos dois caracteres</div>
                     </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmaSenha">Confirme a senha: </label>
+                    <input type="password" class="form-control" id="confirmaSenha" name="confirmaSenha" minlength="2" required [(ngModel)]="confirmaSenha">
+                    <!--<div *ngIf="confirmaSenha.errors && (confirmaSenha.dirty || confirmaSenha.touched)" class="alert alert-danger">
+                        <div [hidden]="!confirmaSenha.errors.required">Digite a confirmaSenha do usuário</div>
+                        <div [hidden]="!confirmaSenha.errors.minlength">A confirmaSenha do usuário deve conter ao menos dois caracteres</div>
+                    </div>-->
                 </div>
 
                 <div class="form-group">

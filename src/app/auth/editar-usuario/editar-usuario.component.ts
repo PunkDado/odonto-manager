@@ -13,7 +13,8 @@ export class EditarUsuarioComponent implements OnInit {
 
   @ViewChild('formUsuario') formUsuario!: NgForm;
   usuario!: Usuario;
-  perfis: string[] = [];
+  perfis: string[] = ["ADMIN", "GERENTE", "DENTISTA", "FUNC"];
+  confirmaSenha!: string | undefined;
 
   constructor(
     private usuarioService: UsuarioService,
@@ -28,14 +29,19 @@ export class EditarUsuarioComponent implements OnInit {
         this.usuario = dados;
       }
     );
-    console.log(this.usuario);
+    this.confirmaSenha = this.usuario.senha;
   }
 
   atualizar(): void {
     if(this.formUsuario.form.valid) {
-      this.usuarioService.alterar(this.usuario).subscribe(
-        () => this.router.navigate(["usuarios/"])
-      );
+      if (this.usuario.senha == this.confirmaSenha) {
+        this.usuarioService.alterar(this.usuario).subscribe(
+          () => this.router.navigate(["usuarios/"])
+        );
+      }
+      else {
+        confirm('As senhas são diferentes');
+      }
     }
   }
 
